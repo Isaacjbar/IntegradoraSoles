@@ -1,0 +1,220 @@
+/* Generales */
+body {
+  padding-top: 60px;
+}
+
+:root {
+  --color-text-dark: #1c1a42;
+  --color-brand-dark: #2b298a;
+  --color-brand-standard: #5a4cdb;
+  --color-brand-light: #7a6ee5;
+  --color-brand-background: #d7d3fc;
+  --color-accent-1-dark: #9f3bd4;
+  --color-accent-1-standard: #a74ad9;
+  --color-accent-1-light: #c874d9;
+  --color-accent-1-background: #f8cdf6;
+  --color-accent-2-dark: #2574de;
+  --color-accent-2-standard: #468be8;
+  --color-accent-2-light: #64a5f5;
+  --color-accent-2-background: #cde1f8;
+  --color-background-off-white: #fbfbfc;
+  --color-social-messenger: #0086ff;
+  --color-social-facebook: #1977f2;
+  --color-social-twitter: #1da1f2;
+  --color-social-linkedin: #0077b5;
+}
+/* Variables */
+:root {
+  --blue1: #002b55;
+  --blue2: #174c82;
+  --blue3: #3182d4;
+  --blue4: #5084b8;
+  --green1: #078d73;
+
+  --background-image-1:linear-gradient(
+    to left,
+    #078d73,
+    #008083,
+    #00708d,
+    #005f8d,
+    #174c82
+  );
+  --background-image-1--reverse:linear-gradient(
+    to right,
+    #078d73,
+    #008083,
+    #00708d,
+    #005f8d,
+    #174c82
+  ); 
+}
+/* Estilos de componentes reutilzables */
+#navbar1 {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  opacity: 0.96;
+  z-index: 1000;
+  background-image: var(--background-image-1);
+  height: 45px;
+  padding: 0 !important;
+}
+#navbar1 > div{
+  height: inherit;
+}
+.userSession {
+  padding: 4px 6px;
+  border-radius: 10px;
+  transition: all 300ms;
+  margin-right: 10px;
+}
+.userSession:hover {
+  transform: scale(1.04);
+  background-color: var(--blue1);
+  opacity: 1;
+  }
+.userSession > p {
+  width: auto;
+  margin: auto 0;
+}
+.textUser{
+  font-size: 14px;
+  margin-right: 10px;
+}
+  
+#logo {
+  transition: all 300ms;
+}
+
+#logo:hover {
+  transform: scale(1.08);
+}
+#logo svg {
+  transition: all 500ms;
+}
+#logo:hover > svg {
+  transform: rotate(360deg); 
+}
+
+footer {
+  background: rgb(2, 0, 36);
+  color: white;
+  background: rgb(15, 49, 73);
+  background-image: var(--background-image-1--reverse);
+  width: 100%;
+  margin-top: 40px !important;
+  position: static;
+  bottom: 0%;
+  height: 35px;
+  padding: 5;
+  font-size: 13px;
+}
+
+hr {
+  height: 3.5px !important;
+  opacity: 1 !important;
+  border: none;
+  background-image: var(--background-image-1--reverse);
+  border-radius: 10px;
+  width: 70vw;
+  margin: 10px auto;
+}
+
+.hoverscale {
+  transition: all 300ms;
+}
+
+.hoverscale:hover {
+  transform: scale(1.02);
+}
+
+.title-1 {
+  width: 80%;
+  text-align: center;
+  margin: 20px auto;
+  font-size: 25px;
+}
+
+.title-2{
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+.btn-positive {
+  background-color: #078d73 !important;
+  border: none;
+  color: white;
+  transition: all 300ms;
+}
+
+.btn-positive:hover {
+  background-image: var(--background-image-1);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Buscador */
+.searchBar1{
+  width: 80%;
+}
+.searchBar1-input{
+  max-width: 650px;
+  border-radius: 15px;
+  font-size: 15px;
+  padding: 10px;
+  padding-left: 20px;
+  min-width: 200px;
+}
+
+@media screen and (max-width: 900px) {
+  .searchBar1-input {
+    width: 300px; 
+  }
+}
+@media screen and (max-width: 405px) {
+  .searchBar1-input {
+    width: 250px;
+  }
+}
+
+.searchBar1{
+  box-shadow: 1px 1px 5px -1px rgba(133,133,133,0.75);
+  -webkit-box-shadow: 5px 7px 14px -1px rgba(133,133,133,0.75);
+  -moz-box-shadow: 2px 4px 10px -1px rgba(133,133,133,0.75);
+  border-radius: 30px;
+  margin: 40px auto;
+  max-width: 740px;
+  min-width: 288px;
+  padding: 0;
+}
+.searchBar1__form{
+  position: relative;   
+}
+
+.searchBar1-input{
+  border: none;
+  padding: 5px ;
+  height: inherit !important;
+  font-size: 12px;
+  padding-left: 15px !important;
+}
+.btn-search{
+  width: 35px;
+  height: 35px;
+  transition: all 300ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  /* position: absolute; */
+  right: 0;
+  /* margin-right: 2em; */
+  border-radius: 50%;
+  z-index: 900;
+}
+.btn-search:hover{
+  transform: scale(1.03);
+  background-color: var(--blue3);
+  color: white;
+  font-weight: bold;
+}

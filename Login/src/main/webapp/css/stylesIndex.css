@@ -1,0 +1,143 @@
+@import url('global.css');
+
+/* ESTILOS DEL INDEX */
+.card {
+    margin: 1em .5em;
+    transition: all 300ms;
+    cursor: default;
+    box-shadow: 13px 11px 9px -11px rgba(0,0,0,0.35) !important;
+    -webkit-box-shadow: 13px 11px 9px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 13px 11px 9px -11px rgba(0,0,0,0.75);
+    /* border-left: 4px solid var(--blue2); */
+    padding: 10px 5px;
+}
+
+h5{
+    color: var(--blue1);
+  }
+
+.card:hover{
+    transform: scale(1.03);
+}
+
+.img_d_card{
+    object-fit: contain;
+    height: 200px;
+}
+
+
+
+.mostRecent{
+    width: 60%;
+    margin: 20px auto;
+    font-size: 13px;
+    }
+.mostRecent__card{
+        width: 90%;
+        padding: 15px;
+        min-width: 300px;
+        max-width: 1460px;
+}
+
+.mostRecent__card small{
+    padding: 10px;
+    margin: 10px;
+}
+
+@media screen and (max-width: 928px) {
+    .mostRecent__card{
+        flex-direction: column-reverse !important;
+    }
+    .mostRecent__card small{
+        width: 100% !important;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+    .card_title{
+        text-align: center !important;
+    }
+    .card-text{
+        text-align: justify;
+    }
+    .btn-group{
+        margin: 15px auto;
+    }
+    .app-name-text{
+        margin-left: 10px;
+    }
+}
+
+
+@media screen and (max-width: 500px){
+    .most-recent{
+        width: 100%;
+    }   
+    .app-name-text{
+        font-size: 15px;
+        margin-left: 10px;
+    }
+    .sesionUsuario_container,.sesionUsuario{
+        width: 60px;
+        display: flex;
+        justify-content: center;
+
+    }
+    .textUser{
+        display: none;
+    }
+}
+
+#createHistoryButton{
+    margin: 1em auto;
+    background-color: #078d73 !important;
+    transition: all 300ms;
+}
+
+.card-body{
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
+}
+
+footer{
+    background: rgb(2,0,36);
+    color: white; 
+    background: rgb(15,49,73);
+    background: linear-gradient(90deg, rgba(15,49,73,1) 0%, rgba(7,141,115,1) 38%, rgba(0,212,255,1) 100%);
+    background-image: linear-gradient(to right, #078d73, #008083, #00708d, #005f8d, #174c82);
+}
+
+.ultima-mod{
+    background-color: var(--blue1);
+    opacity: .8;
+    color: white;
+    padding: 4px;
+}
+
+.btn-publicar{
+    transform: all 300ms;
+}
+.btn-publicar:hover{
+    background-color: var(--green1);
+}
+.btn-editar:hover{
+    background-color: var(--blue3);
+}
+
+.card-normal{
+    width: 90%;
+    margin: 10px auto;
+}
+.card-normal img{
+    height: 150px;
+    padding-top: 10px;
+}
+.card-normal .card-body{
+    font-size: 13px;
+}
+@media screen and (max-width: 576px) {
+    .card-normal{
+        width: 70%;
+    }
+}
+
