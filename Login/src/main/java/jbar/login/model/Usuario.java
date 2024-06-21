@@ -7,7 +7,7 @@ public class Usuario {
     private int id;
     private String nombre;
     private String apellido;
-    private Date fechaNacimiento;
+    private Timestamp fechaNacimiento;
     private String correoElectronico;
     private String contrasena;
     private boolean estado;
@@ -39,7 +39,7 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public Date getFechaNacimiento() {
+    public Timestamp getFechaNacimiento() {
         return fechaNacimiento;
     }
 

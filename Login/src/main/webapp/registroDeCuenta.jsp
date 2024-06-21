@@ -42,6 +42,8 @@
     <input class="form-control" type="text" name="apellidosUsuaro" id="input_apellidos" placeholder="Apellidos" required>
     <label for="input_correo">Ingresa tu email</label>
     <input class="form-control" type="email" name="correoUsuario" id="input_correo" placeholder="Email" required>
+    <label for="input_fechaNacimiento">Fecha de nacimiento</label>
+    <input class="form-control" type="date" name="fechaNacimiento" id="input_fechaNacimiento" required>
     <label for="input_contra">Ingresa tu contraseña</label>
     <input class="form-control" type="password" name="contraUsuario" id="input_contra" placeholder="Contraseña" required>
     <label for="input_contraRepetida">Repite la contraseña</label>
