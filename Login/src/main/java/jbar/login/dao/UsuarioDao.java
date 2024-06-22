@@ -28,7 +28,6 @@ public class UsuarioDao {
                 usuario.setId(resultSet.getInt("ID"));
                 usuario.setNombre(resultSet.getString("Nombre"));
                 usuario.setApellido(resultSet.getString("Apellido"));
-                usuario.setFechaNacimiento(resultSet.getDate("FechaNacimiento"));
                 usuario.setCorreoElectronico(resultSet.getString("CorreoElectronico"));
                 usuario.setContrasena(resultSet.getString("Contraseña"));
                 usuario.setEstado(resultSet.getBoolean("estado"));
@@ -44,15 +43,15 @@ public class UsuarioDao {
     }
 
     public boolean insertUsuario(Usuario usuario) {
-        String sql = "INSERT INTO Usuarios (Nombre, Apellido, FechaNacimiento, CorreoElectronico, Contraseña, estado, FechaRegistro) " +
-                "VALUES (?, ?, ?, SHA2(?, 256), ?, ?, ?)";
+        String sql = "INSERT INTO Usuarios (Nombre, Apellido, CorreoElectronico, Contraseña, estado, FechaRegistro) " +
+                "VALUES (?, ?, ?, SHA2(?, 256), ?, ?)";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setString(1, usuario.getNombre());
             statement.setString(2, usuario.getApellido());
-            statement.setDate(3, new java.sql.Date(usuario.getFechaNacimiento().getTime())); // Aquí usamos java.sql.Date
+            statement.setString(3, usuario.getCorreoElectronico());
             statement.setString(4, usuario.getContrasena());
             statement.setBoolean(5, usuario.isEstado());
             statement.setTimestamp(6, usuario.getFechaRegistro());
@@ -65,5 +64,4 @@ public class UsuarioDao {
             return false; // Asegúrate de devolver false en caso de excepción
         }
     }
-
 }

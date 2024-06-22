@@ -3,30 +3,54 @@ CREATE DATABASE IF NOT EXISTS historiasinteractivas;
 USE historiasinteractivas;
 
 -- Creación de la tabla Usuarios
-CREATE TABLE Usuarios (
+CREATE TABLE IF NOT exists Usuarios (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(100) NOT NULL,
     Apellido VARCHAR(100) NOT NULL,
-    FechaNacimiento DATE NOT NULL,
     CorreoElectronico VARCHAR(100) UNIQUE NOT NULL,
     Contraseña VARCHAR(100),
     estado BOOLEAN NOT NULL,
     codigo VARCHAR(100),
+    -- Administrador = admin, Cliente = client
     FechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE Escenas (
+CREATE TABLE IF NOT exists Escenas (
     EscenaID VARCHAR(100) PRIMARY KEY,
     Contenido TEXT,
     WayOne TEXT,
     WayTwo TEXT
 );
 
--- Inserción de dos usuarios en la tabla Usuarios
-INSERT INTO Usuarios (Nombre, Apellido, FechaNacimiento, CorreoElectronico, Contraseña, estado, codigo)
-VALUES ('Juan', 'Pérez', '1990-05-15', 'juan.perez@example.com', SHA2('password123', 256), TRUE, 'codigo1'),
-       ('María', 'González', '1985-10-20', 'maria.gonzalez@example.com', SHA2('password456', 256), TRUE, 'codigo2');
+-- A la base completa hace falta por agregar y adaptar lo siguiente 
+-- Creación de la tabla Escenas
+CREATE TABLE IF NOT exists Escenas (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    HistoriaID INT NOT NULL,
+    NumeroEscena INT NOT NULL,
+    Titulo VARCHAR(20) NOT NULL,
+    Video BLOB,
+    Audio BLOB,
+    Imagen BLOB,
+    EsFinal BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (HistoriaID) REFERENCES Historias(ID)
+);
 
-INSERT INTO Usuarios (Nombre, Apellido, FechaNacimiento, CorreoElectronico, Contraseña, estado, codigo)
-VALUES ('Isaac', 'Barcelata', '2000-02-08', 'isaacjbar@outlook.com', SHA2('pedropedro', 256), TRUE, 'codigo1');
+-- Creación de la tabla Decisiones
+CREATE TABLE IF NOT exists Decisiones (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    EscenaID INT NOT NULL,
+    Descripcion VARCHAR(1000),
+    EscenaDestinoID INT,
+    FOREIGN KEY (EscenaID) REFERENCES Escenas(ID),
+    FOREIGN KEY (EscenaDestinoID) REFERENCES Escenas(ID)
+);
 
+-- Creación de la tabla EstadosPublicacion
+CREATE TABLE IF NOT exists EstadosPublicacion (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    HistoriaID INT NOT NULL,
+    Estado VARCHAR(20) NOT NULL, -- 'Publicado', 'Oculto', etc.
+    FechaCambio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (HistoriaID) REFERENCES Historias(ID)
+);

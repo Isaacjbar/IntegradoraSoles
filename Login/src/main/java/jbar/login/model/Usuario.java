@@ -39,14 +39,6 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public Timestamp getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
     public String getCorreoElectronico() {
         return correoElectronico;
     }
