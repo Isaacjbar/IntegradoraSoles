@@ -15,13 +15,6 @@ CREATE TABLE IF NOT exists Usuarios (
     FechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT exists Escenas (
-    EscenaID VARCHAR(100) PRIMARY KEY,
-    Contenido TEXT,
-    WayOne TEXT,
-    WayTwo TEXT
-);
-
 -- A la base completa hace falta por agregar y adaptar lo siguiente 
 -- Creación de la tabla Escenas
 CREATE TABLE IF NOT exists Escenas (
