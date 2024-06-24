@@ -30,29 +30,57 @@
                 <path
                         d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5z" />
             </svg>
-            <strong class="app-name-text fs-6">Histority</strong>
+            <strong class="app-name-text fs-6">Histority</strong>   
+        </a>
+        <a class="userSession text-decoration-none" href="">
+            <p class="text-white d-flex align-items-center justify-content-around">
+                <span class="textUser text-white  d-sm-block">
+                    <%
+                        Usuario usuario = (Usuario) session.getAttribute("usuario");
+                        if (usuario != null) {
+                    %>
+                    Hola, <%= usuario.getNombre() %> <%= usuario.getApellido() %><% } else { %><% response.sendRedirect("login.jsp"); %><% } %>
+                </span>
+            </p>
         </a>
     </div>
 </nav>
 <br>
-<div class="container">
-    <h2>Bienvenido</h2>
-    <%
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        if (usuario != null) {
-    %>
-    <p>Hola, <%= usuario.getNombre() %> <%= usuario.getApellido() %></p>
-    <% } else { %>
-    <% response.sendRedirect("login.jsp"); %>
-    <% } %>
-</div>
-<br>
+
 <h1 class="title-1 fs-3">Gestión de Historias</h1>
+
+<div class="container mostRecent flex-column d-flex justify-content-center align-items-center">
+    <div class="mostRecent__card card shadow-sm d-flex flex-row">
+        <div class="card-body">
+            <h5 class="card_title card__title--modified">Título Historia</h5>
+            <p class="card-text">Esta es una historia interactiva que trata de x cosa y mediante la toma de decisiones puede cambiar su curso. Debes estar atento para tomar la mejor decisión posible y llegar al final correcto.</p>
+            <div class="d-flex justify-content-between
+    flex-column
+    flex-xl-row
+    align-items-xl-center
+    justify-content-xl-around
+    my-xl-2
+    ">
+                <div class="btn-group my-xl-2">
+                    <button type="button" class="btn btn-sm btn-outline-secondary btn-editar">Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary btn-publicar">Publicar</button>
+                </div>
+                <small class="text-body-secondary"><span class="ultima-mod">Últm. mod:</span> 12/8/24</small>
+            </div>
+        </div>
+        <img class="m-auto bd-placeholder-img card-img-top img_d_card h-2" src="img/1.png" alt="1">
+    </div>
+
+    <button id="createHistoryButton" class="btn btn-success btn-positive">
+        Crear nueva historia
+    </button>
+
+</div>
 
 
 <hr class="my-4">
 
-<h4 class="title-2 mt-5" >Historias interactivas creadas</h4>
+<h4 class="title-2 mt-5" >Historias creadas</h4>
 
 <div class="searchBar1 container w-50">
     <form class="d-flex flex-md-row align-items-center  justify-content-between searchBar1__form" role="search">
@@ -80,8 +108,11 @@
                             <!-- <hr> -->
                             <p class="card-text">Esta es una historia interactiva que trata de x cosa y mediante la toma de decisiones puede cambiar su curso. Debes estar atento para tomar la mejor decisión posible y llegar al final correcto.</p>
                             <div class="d-flex justify-content-between flex-column text-center flex-lg-row align-items-center">
-
-                                <small class="text-body-secondary"><span class="ultima-mod">Autor:</span> Federico Casillas</small>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-editar">Editar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-publicar">Publicar</button>
+                                </div>
+                                <small class="text-body-secondary"><span class="ultima-mod">Últm. mod:</span> 12/8/24</small>
                             </div>
                         </div>
                     </div>
@@ -93,8 +124,11 @@
                             <h5 class="card_title">Título Historia</h5>
                             <p class="card-text">Esta es una historia interactiva que trata de x cosa y mediante la toma de decisiones puede cambiar su curso. Debes estar atento para tomar la mejor decisión posible y llegar al final correcto.</p>
                             <div class="d-flex justify-content-between flex-column text-center flex-lg-row align-items-center">
-
-                                <small class="text-body-secondary"><span class="ultima-mod" class="ultima-mod">Autor:</span> Federico Casillas</small>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-editar">Editar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-publicar">Publicar</button>
+                                </div>
+                                <small class="text-body-secondary"><span class="ultima-mod" class="ultima-mod">Últm. mod:</span> 12/8/24</small>
                             </div>
                         </div>
                     </div>
@@ -106,8 +140,11 @@
                             <h5 class="card_title">Título Historia</h5>
                             <p class="card-text">Esta es una historia interactiva que trata de x cosa y mediante la toma de decisiones puede cambiar su curso. Debes estar atento para tomar la mejor decisión posible y llegar al final correcto.</p>
                             <div class="d-flex justify-content-between flex-column text-center flex-lg-row align-items-center">
-
-                                <small class="text-body-secondary"><span class="ultima-mod">Autor:</span> Federico Casillas</small>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-editar">Editar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-publicar">Publicar</button>
+                                </div>
+                                <small class="text-body-secondary"><span class="ultima-mod">Últm. mod:</span> 12/8/24</small>
                             </div>
                         </div>
                     </div>
@@ -120,8 +157,11 @@
                             <h5 class="card_title">Título Historia</h5>
                             <p class="card-text">Esta es una historia interactiva que trata de x cosa y mediante la toma de decisiones puede cambiar su curso. Debes estar atento para tomar la mejor decisión posible y llegar al final correcto.</p>
                             <div class="d-flex justify-content-between flex-column text-center flex-lg-row align-items-center">
-
-                                <small class="text-body-secondary"><span class="ultima-mod">Autor:</span> Federico Casillas</small>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-editar">Editar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-publicar">Publicar</button>
+                                </div>
+                                <small class="text-body-secondary"><span class="ultima-mod">Últm. mod:</span> 12/8/24</small>
                             </div>
                         </div>
                     </div>
@@ -133,8 +173,11 @@
                             <h5 class="card_title">Título Historia</h5>
                             <p class="card-text">Esta es una historia interactiva que trata de x cosa y mediante la toma de decisiones puede cambiar su curso. Debes estar atento para tomar la mejor decisión posible y llegar al final correcto.</p>
                             <div class="d-flex justify-content-between flex-column text-center flex-lg-row align-items-center">
-
-                                <small class="text-body-secondary"><span class="ultima-mod">Autor:</span> Federico Casillas</small>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-editar">Editar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-publicar">Publicar</button>
+                                </div>
+                                <small class="text-body-secondary"><span class="ultima-mod">Últm. mod:</span> 12/8/24</small>
                             </div>
                         </div>
                     </div>
@@ -146,8 +189,11 @@
                             <h5 class="card_title">Título Historia</h5>
                             <p class="card-text">Esta es una historia interactiva que trata de x cosa y mediante la toma de decisiones puede cambiar su curso. Debes estar atento para tomar la mejor decisión posible y llegar al final correcto.</p>
                             <div class="d-flex justify-content-between flex-column text-center flex-lg-row align-items-center">
-
-                                <small class="text-body-secondary"><span class="ultima-mod">Autor:</span> Federico Casillas</small>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-editar">Editar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-publicar">Publicar</button>
+                                </div>
+                                <small class="text-body-secondary"><span class="ultima-mod">Últm. mod:</span> 12/8/24</small>
                             </div>
                         </div>
                     </div>
@@ -160,8 +206,11 @@
                             <h5 class="card_title">Título Historia</h5>
                             <p class="card-text">Esta es una historia interactiva que trata de x cosa y mediante la toma de decisiones puede cambiar su curso. Debes estar atento para tomar la mejor decisión posible y llegar al final correcto.</p>
                             <div class="d-flex justify-content-between flex-column text-center flex-lg-row align-items-center">
-
-                                <small class="text-body-secondary"><span class="ultima-mod">Autor:</span> Federico Casillas</small>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-editar">Editar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-publicar">Publicar</button>
+                                </div>
+                                <small class="text-body-secondary"><span class="ultima-mod">Últm. mod:</span> 12/8/24</small>
                             </div>
                         </div>
                     </div>
@@ -173,8 +222,11 @@
                             <h5 class="card_title">Título Historia</h5>
                             <p class="card-text">Esta es una historia interactiva que trata de x cosa y mediante la toma de decisiones puede cambiar su curso. Debes estar atento para tomar la mejor decisión posible y llegar al final correcto.</p>
                             <div class="d-flex justify-content-between flex-column text-center flex-lg-row align-items-center">
-
-                                <small class="text-body-secondary"><span class="ultima-mod">Autor:</span> Federico Casillas</small>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-editar">Editar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-publicar">Publicar</button>
+                                </div>
+                                <small class="text-body-secondary"><span class="ultima-mod">Últm. mod:</span> 12/8/24</small>
                             </div>
                         </div>
                     </div>
@@ -186,8 +238,11 @@
                             <h5 class="card_title">Título Historia</h5>
                             <p class="card-text">Esta es una historia interactiva que trata de x cosa y mediante la toma de decisiones puede cambiar su curso. Debes estar atento para tomar la mejor decisión posible y llegar al final correcto.</p>
                             <div class="d-flex justify-content-between flex-column text-center flex-lg-row align-items-center">
-
-                                <small class="text-body-secondary"><span class="ultima-mod">Autor:</span> Federico Casillas</small>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-editar">Editar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-publicar">Publicar</button>
+                                </div>
+                                <small class="text-body-secondary"><span class="ultima-mod">Últm. mod:</span> 12/8/24</small>
                             </div>
                         </div>
                     </div>
@@ -205,4 +260,3 @@
 <script src="bootstrap-5.2.3-dist/js/bootstrap.js"> </script>
 </body>
 </html>
-
