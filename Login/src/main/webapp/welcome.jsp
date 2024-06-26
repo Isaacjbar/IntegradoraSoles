@@ -71,9 +71,10 @@
         <img class="m-auto bd-placeholder-img card-img-top img_d_card h-2" src="img/1.png" alt="1">
     </div>
 
-    <button id="createHistoryButton" class="btn btn-success btn-positive">
+    <button id="createHistoryButton" class="btn btn-success btn-positive" onclick="window.location.href='createHistory.jsp'">
         Crear nueva historia
     </button>
+
 
 </div>
 
