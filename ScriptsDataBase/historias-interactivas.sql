@@ -8,7 +8,7 @@ CREATE TABLE IF NOT exists Usuarios (
     Nombre VARCHAR(100) NOT NULL,
     Apellido VARCHAR(100) NOT NULL,
     CorreoElectronico VARCHAR(100) UNIQUE NOT NULL,
-    Contraseña VARCHAR(100),
+    Contraseña VARCHAR(100), 
     estado BOOLEAN NOT NULL,
     codigo VARCHAR(100),
     -- Administrador = admin, Cliente = client
