@@ -32,8 +32,8 @@
         background-color: darkcyan;
         padding: 10px;
       ">
-                <div class="draggable" draggable="true" style="">Decisión</div>
-                <div class="draggable" draggable="true" style="">Mensaje final</div>
+                <div class="draggable" draggable="true" style="">Escena</div>
+                <div class="draggable" draggable="true" style="">Escena final</div>
                 <!-- <div class="draggable" draggable="true">Tea</div> -->
             </div>
 

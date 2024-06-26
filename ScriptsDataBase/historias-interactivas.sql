@@ -15,7 +15,14 @@ CREATE TABLE IF NOT exists Usuarios (
     FechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- A la base completa hace falta por agregar y adaptar lo siguiente 
+-- Creación de la tabla Historias
+CREATE TABLE IF NOT exists Historias (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Titulo VARCHAR(255) NOT NULL,
+    AutorID INT NOT NULL,
+    FOREIGN KEY (AutorID) REFERENCES Usuarios(ID)
+);
+
 -- Creación de la tabla Escenas
 CREATE TABLE IF NOT exists Escenas (
     ID INT AUTO_INCREMENT PRIMARY KEY,
