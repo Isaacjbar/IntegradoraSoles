@@ -27,10 +27,9 @@ CREATE TABLE IF NOT exists Historias (
 CREATE TABLE IF NOT exists Escenas (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     HistoriaID INT NOT NULL,
-    NumeroEscena INT NOT NULL,
     Titulo VARCHAR(20) NOT NULL,
-    Video BLOB,
-    Audio BLOB,
+    Video VARCHAR(1000),
+    Audio BLOB,   
     Imagen BLOB,
     Descripcion VARCHAR(1000),
     EsFinal BOOLEAN DEFAULT FALSE,
