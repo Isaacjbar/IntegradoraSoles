@@ -32,7 +32,9 @@ CREATE TABLE IF NOT exists Escenas (
     Video BLOB,
     Audio BLOB,
     Imagen BLOB,
+    Descripcion VARCHAR(1000),
     EsFinal BOOLEAN DEFAULT FALSE,
+    IF EsFiinal = TRUE THEN TextoFinal VARCHAR(1000),
     FOREIGN KEY (HistoriaID) REFERENCES Historias(ID)
 );
 
