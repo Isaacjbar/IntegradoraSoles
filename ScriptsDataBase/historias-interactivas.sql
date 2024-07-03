@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS historiasinteractivas;
 USE historiasinteractivas;
 
 -- Creación de la tabla Usuarios
-CREATE TABLE IF NOT exists Usuarios (
+CREATE TABLE IF NOT EXISTS Usuarios (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(100) NOT NULL,
     Apellido VARCHAR(100) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT exists Usuarios (
 );
 
 -- Creación de la tabla Historias
-CREATE TABLE IF NOT exists Historias (
+CREATE TABLE IF NOT EXISTS Historias (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Titulo VARCHAR(255) NOT NULL,
     AutorID INT NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT exists Historias (
 );
 
 -- Creación de la tabla Escenas
-CREATE TABLE IF NOT exists Escenas (
+CREATE TABLE IF NOT EXISTS Escenas (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     HistoriaID INT NOT NULL,
     Titulo VARCHAR(20) NOT NULL,
@@ -33,12 +33,12 @@ CREATE TABLE IF NOT exists Escenas (
     Imagen BLOB,
     Descripcion VARCHAR(1000),
     EsFinal BOOLEAN DEFAULT FALSE,
-    IF EsFiinal = TRUE THEN TextoFinal VARCHAR(1000),
+    TextoFinal VARCHAR(1000),
     FOREIGN KEY (HistoriaID) REFERENCES Historias(ID)
 );
 
 -- Creación de la tabla Decisiones
-CREATE TABLE IF NOT exists Decisiones (
+CREATE TABLE IF NOT EXISTS Decisiones (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     EscenaID INT NOT NULL,
     Descripcion VARCHAR(1000),
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT exists Decisiones (
 );
 
 -- Creación de la tabla EstadosPublicacion
-CREATE TABLE IF NOT exists EstadosPublicacion (
+CREATE TABLE IF NOT EXISTS EstadosPublicacion (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     HistoriaID INT NOT NULL,
     Estado VARCHAR(20) NOT NULL, -- 'Publicado', 'Oculto', etc.
