@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS Historias (
 );
 
 -- Creación de la tabla Escenas
-CREATE TABLE IF NOT EXISTS Escenas (
+CREATE TABLE IF NOT EXISTS Escenas ( 
     ID INT AUTO_INCREMENT PRIMARY KEY,
     HistoriaID INT NOT NULL,
     Titulo VARCHAR(20) NOT NULL,
