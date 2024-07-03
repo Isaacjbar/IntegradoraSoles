@@ -1,7 +1,7 @@
 package jbar.login.dao;
 
 import jbar.login.database.DatabaseConnection;
-import jbar.login.model.Decision;
+import jbar.login.model.Historia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,17 +10,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DecisionDao {
+public class HistoriaDao {
 
-    public boolean insertDecision(Decision decision) {
-        String sql = "INSERT INTO Decisiones (EscenaID, Descripcion, EscenaDestinoID) VALUES (?, ?, ?)";
+    public boolean insertHistoria(Historia historia) {
+        String sql = "INSERT INTO Historias (Titulo, AutorID) VALUES (?, ?)";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setInt(1, decision.getEscenaId());
-            statement.setString(2, decision.getDescripcion());
-            statement.setInt(3, decision.getEscenaDestinoId());
+            statement.setString(1, historia.getTitulo());
+            statement.setInt(2, historia.getAutorId());
 
             int rowsInserted = statement.executeUpdate();
             return rowsInserted > 0;
@@ -31,9 +30,9 @@ public class DecisionDao {
         }
     }
 
-    public Decision getDecisionById(int id) {
-        Decision decision = null;
-        String sql = "SELECT * FROM Decisiones WHERE ID = ?";
+    public Historia getHistoriaById(int id) {
+        Historia historia = null;
+        String sql = "SELECT * FROM Historias WHERE ID = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -43,54 +42,51 @@ public class DecisionDao {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                decision = new Decision();
-                decision.setId(resultSet.getInt("ID"));
-                decision.setEscenaId(resultSet.getInt("EscenaID"));
-                decision.setDescripcion(resultSet.getString("Descripcion"));
-                decision.setEscenaDestinoId(resultSet.getInt("EscenaDestinoID"));
+                historia = new Historia();
+                historia.setId(resultSet.getInt("ID"));
+                historia.setTitulo(resultSet.getString("Titulo"));
+                historia.setAutorId(resultSet.getInt("AutorID"));
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return decision;
+        return historia;
     }
 
-    public List<Decision> getAllDecisiones() {
-        List<Decision> decisiones = new ArrayList<>();
-        String sql = "SELECT * FROM Decisiones";
+    public List<Historia> getAllHistorias() {
+        List<Historia> historias = new ArrayList<>();
+        String sql = "SELECT * FROM Historias";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
 
             while (resultSet.next()) {
-                Decision decision = new Decision();
-                decision.setId(resultSet.getInt("ID"));
-                decision.setEscenaId(resultSet.getInt("EscenaID"));
-                decision.setDescripcion(resultSet.getString("Descripcion"));
-                decision.setEscenaDestinoId(resultSet.getInt("EscenaDestinoID"));
-                decisiones.add(decision);
+                Historia historia = new Historia();
+                historia.setId(resultSet.getInt("ID"));
+                historia.setTitulo(resultSet.getString("Titulo"));
+                historia.setAutorId(resultSet.getInt("AutorID"));
+                historias.add(historia);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return decisiones;
+        return historias;
     }
 
-    public boolean updateDecision(Decision decision) {
-        String sql = "UPDATE Decisiones SET EscenaID = ?, Descripcion = ?, EscenaDestinoID = ? WHERE ID = ?";
+    public boolean updateHistoria(Historia historia) {
+        String sql = "UPDATE Historias SET Titulo = ?, AutorID = ? WHERE ID = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setInt(1, decision.getEscenaId());
-            statement.setString(2, decision.getDescripcion());
-            statement.setInt(3, decision.getEscenaDestinoId());
-            statement.setInt(4, decision.getId());
+            statement.setString(1, historia.getTitulo());
+            statement.setInt(2, historia.getAutorId());
+            statement.setInt(3, historia.getId());
 
             int rowsUpdated = statement.executeUpdate();
             return rowsUpdated > 0;
@@ -101,8 +97,8 @@ public class DecisionDao {
         }
     }
 
-    public boolean deleteDecision(int id) {
-        String sql = "DELETE FROM Decisiones WHERE ID = ?";
+    public boolean deleteHistoria(int id) {
+        String sql = "DELETE FROM Historias WHERE ID = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {

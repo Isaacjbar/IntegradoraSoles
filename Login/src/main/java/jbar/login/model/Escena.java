@@ -3,12 +3,13 @@ package jbar.login.model;
 public class Escena {
     private int id;
     private int historiaId;
-    private int numeroEscena;
     private String titulo;
-    private byte[] video;
+    private String video;
     private byte[] audio;
     private byte[] imagen;
+    private String descripcion;
     private boolean esFinal;
+    private String textoFinal;
 
     // Getters and Setters
     public int getId() {
@@ -27,14 +28,6 @@ public class Escena {
         this.historiaId = historiaId;
     }
 
-    public int getNumeroEscena() {
-        return numeroEscena;
-    }
-
-    public void setNumeroEscena(int numeroEscena) {
-        this.numeroEscena = numeroEscena;
-    }
-
     public String getTitulo() {
         return titulo;
     }
@@ -43,11 +36,11 @@ public class Escena {
         this.titulo = titulo;
     }
 
-    public byte[] getVideo() {
+    public String getVideo() {
         return video;
     }
 
-    public void setVideo(byte[] video) {
+    public void setVideo(String video) {
         this.video = video;
     }
 
@@ -67,6 +60,14 @@ public class Escena {
         this.imagen = imagen;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public boolean isEsFinal() {
         return esFinal;
     }
@@ -74,5 +75,12 @@ public class Escena {
     public void setEsFinal(boolean esFinal) {
         this.esFinal = esFinal;
     }
-}
 
+    public String getTextoFinal() {
+        return textoFinal;
+    }
+
+    public void setTextoFinal(String textoFinal) {
+        this.textoFinal = textoFinal;
+    }
+}
