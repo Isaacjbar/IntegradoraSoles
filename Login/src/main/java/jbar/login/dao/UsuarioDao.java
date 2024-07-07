@@ -164,4 +164,114 @@ public class UsuarioDao {
             return false;
         }
     }
+    public boolean updateWithEmail(String email, String codigoRecuperacion){
+        boolean flag = false;
+        String query = "update Usuarios set codigo = ? where CorreoElectronico = ?";
+        try{
+            Connection con = DatabaseConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, codigoRecuperacion);
+            ps.setString(2, email);
+            if(ps.executeUpdate()>0){
+                flag = true;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return flag;
+    }
+
+    public Usuario getOne(int id){
+        Usuario u = new Usuario();
+        // Los símbolos de ? son para evitar la inyección de código SQL
+        String query = "select * from Usuarios where id = ?";
+
+        try{
+            //Conectarse a la base de datos
+            Connection con = DatabaseConnection.getConnection();
+            //Prepara la consulta para ser ejecutada
+            PreparedStatement ps = con.prepareStatement(query);
+            //Definir los parámetros del query (los símbolos de interrogación)
+            ps.setInt(1,id);
+            //Ejecutar la consulta
+            ResultSet rs = ps.executeQuery();
+            //Obtener la información del ResultSet
+            if(rs.next()){
+                //El usuario si existe en la base de datos
+                u.setId(rs.getInt("id"));
+                u.setNombre(rs.getString("user_name"));
+                u.setContrasena(rs.getString("pass"));
+                u.setCorreoElectronico(rs.getString("email"));
+                u.setCodigo(rs.getString("cody"));
+                u.setEstado(rs.getBoolean("status"));
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return u;
+    }
+
+    public Boolean getOne(String correo){
+        Boolean flag = false;
+        // Los símbolos de ? son para evitar la inyección de código SQL
+        String query = "select * from Usuarios where CorreoElectronico = ?";
+
+        try{
+            //Conectarse a la base de datos
+            Connection con = DatabaseConnection.getConnection();
+            //Prepara la consulta para ser ejecutada
+            PreparedStatement ps = con.prepareStatement(query);
+            //Definir los parámetros del query (los símbolos de interrogación)
+            ps.setString(1,correo);
+            //Ejecutar la consulta
+            ResultSet rs = ps.executeQuery();
+            //Obtener la información del ResultSet
+            if(rs.next()){
+                flag = true;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return flag;
+    }
+    public Boolean codeExist(String codigo){
+        Boolean flag = false;
+        // Los símbolos de ? son para evitar la inyección de código SQL
+        String query = "select * from Usuarios where codigo = ?";
+
+        try{
+            //Conectarse a la base de datos
+            Connection con = DatabaseConnection.getConnection();
+            //Prepara la consulta para ser ejecutada
+            PreparedStatement ps = con.prepareStatement(query);
+            //Definir los parámetros del query (los símbolos de interrogación)
+            ps.setString(1,codigo);
+            //Ejecutar la consulta
+            ResultSet rs = ps.executeQuery();
+            //Obtener la información del ResultSet
+            if(rs.next()){
+                flag = true;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return flag;
+    }
+    public boolean updatePassword(String cody,String nuevaContra) {
+        boolean flag = false;
+        String query = "update Usuarios set contraseña = sha2(?, 256),codigo = null where codigo = ?";
+        try {
+            Connection con = DatabaseConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, nuevaContra);
+            ps.setString(2, cody);
+            if (ps.executeUpdate() > 0) {
+                flag = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
 }
