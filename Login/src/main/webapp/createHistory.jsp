@@ -8,54 +8,31 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prueba de diagrama</title>
+    <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css"> <!-- Asegúrate de que las rutas sean correctas -->
     <link rel="stylesheet" href="css/diagramStyles.css">
-    <script src="https://unpkg.com/gojs@3.0.3/release/go.js"></script>
+    <title>GoJS Test 5</title>
+    <script src="https://unpkg.com/gojs/release/go.js"></script>
 </head>
-
-<body id="body">
-
-<!-- Contenedor principal que envuelve todo lo relacionado al diagrama -->
-<div id="allSampleContent" class="p-4 w-full">
-    <!-- Este div agrupa los elementos según esta muestra de goJS -->
-    <div id="sample">
-        <div style="width: 100%; display: flex; justify-content: space-between">
-            <!-- Este div es la paleta donde están los elementos a arrastrar -->
-            <div id="paletteZone" style="
-        width: 160px;
-        height: 400px;
-        margin-right: 2px;
-        background-color: darkcyan;
-        padding: 10px;
-      ">
-                <div class="draggable" draggable="true" style="">Escena</div>
-                <div class="draggable" draggable="true" style="">Escena final</div>
-                <!-- <div class="draggable" draggable="true">Tea</div> -->
+<body>
+<div id="myDiagramDiv"></div>
+<div id="myOverlay" style="display: none;">
+    <div id="myFormDiv">
+        <form id="agregarUsuarioForm" class="d-flex flex-column p-4">
+            <h1 class="title-1 fs-5">Modificar Escena</h1>
+            <label for="nombreUsuario">Nombre </label>
+            <input class="form-control" type="text" name="nombreUsuario" id="nodeName" placeholder="Nombre">
+            <label for="descripcionNodo">Descripción</label>
+            <textarea class="form-control" name="descripcionNodo" id="nodeDesc" placeholder="Descripción"></textarea>
+            <div class="d-flex justify-content-between mt-3">
+                <button type="button" class="btn btn-primary" onclick="saveForm()">Guardar</button>
+                <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancelar</button>
             </div>
-
-            <!-- myDiagramDiv es el contenedor principal donde se renderiza el diagrama GoJS. Contiene un <canvas> donde se dibuja el diagrama y un <div> adicional para manejar eventos y capas del diagrama. -->
-            <div id="myDiagramDiv">
-                <canvas tabindex="0" width="1084" height="398"
-                        style="position: absolute; top: 0px; left: 0px; z-index: 2; user-select: none; touch-action: none; width: 1084px; height: 398px; cursor: auto;"></canvas>
-                <div style="position: absolute; overflow: auto; width: 1084px; height: 398px; z-index: 1;">
-                    <div style="position: absolute; width: 1px; height: 1px;"></div>
-                </div>
-            </div>
-
-        </div>
+        </form>
     </div>
 </div>
-
-<!-- <input id="removeCheckBox" type="checkbox"><label
-for="removeCheckBox">Remove HTML item after drop</label> -->
-
-
-
 <script src="js/scripts.js"></script>
 </body>
-
 </html>

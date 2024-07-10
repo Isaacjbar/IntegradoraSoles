@@ -1,102 +1,81 @@
-body{
-  position: relative;
-}
-
-.draggable {
-    font: bold 16px sans-serif;
-    width: 140px;
-    height: 20px;
-    text-align: center;
-    background: white;
-    cursor: move;
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 4px;
-  }
-
-  .palettezone {
-    width: 160px;
-    height: 400px;
-    background: darkorchid;
-    padding: 10px;
-    padding-top: 1px;
-    float: left;
-  }
-
- #myDiagramDiv {
-    flex-grow: 1; 
-    height: 400px; 
-    border: 1px solid black;
-    position: relative; 
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); cursor: auto;
-  }
-
-  #sample{
-    display: flex;    
-    flex-direction: column;
-  }
-
-  .decitionForm{
-    max-width: 500px; 
-    margin: 0 auto;
-    position: absolute;
-    border-radius: 10px;
-    padding: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Ajusta el z-index según sea necesario */
-  }
-
-  .decitionformContainer{
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Ajusta el z-index según sea necesario */
-    opacity: .93;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-
-  .decitionformContainer form{
-    opacity: 1 !important;
-    width: 80%;
-    z-index: 3000;
-    border-radius: 20px;
-    border: 2px solid #222;
-    padding: 20px 15px;
-    max-width: 500px;
+    height: 100vh;
+    background-color: #f0f0f0;
     position: relative;
-  }
-
-  .decitionformContainer form *{
-      margin: 10px 5px;
-  }
-  .decitionformContainer textarea{
-      width: 300px;
-      height: 60px;
-  }
-
-#decitionText{
-  resize: none;
 }
-#btn_close_form{
-  position: absolute;
-  top: 0;
-  right: 0;
+
+#myDiagramDiv {
+    width: 80%;
+    height: 80%;
+    border: 1px solid black;
+    background-color: white;
+}
+
+#myOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+#myFormDiv {
+    margin: 10px auto;
+    border-radius: 10px;
+    box-shadow: 5px 7px 14px -1px rgba(133,133,133,0.75);
+    -webkit-box-shadow: 5px 7px 14px -1px rgba(133,133,133,0.75);
+    -moz-box-shadow: 5px 7px 14px -1px rgba(133,133,133,0.75);
+    margin: 30px auto;
+    max-width: 420px;
+    padding: 15px 40px  !important;
+    width: 80% !important;
+}
+
+#agregarUsuarioForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#agregarUsuarioForm input,
+#agregarUsuarioForm textarea {
+    margin-bottom: 15px;
+    padding-left: .8em;
+    font-size: 13px;
+}
+
+#agregarUsuarioForm label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+#agregarUsuarioForm .btn-primary {
+    background-color: #0A7890;
+    border-color: #0A7890;
+}
+
+#agregarUsuarioForm .btn-primary:hover {
+    background-color: #0B8884;
+    border-color: #0B8884;
+}
+
+#agregarUsuarioForm .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+#agregarUsuarioForm .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
 }

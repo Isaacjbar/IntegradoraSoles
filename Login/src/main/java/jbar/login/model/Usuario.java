@@ -6,14 +6,13 @@ public class Usuario {
     private int id;
     private String nombre;
     private String apellido;
-    private Timestamp fechaNacimiento;
     private String correoElectronico;
     private String contrasena;
     private boolean estado;
     private String codigo;
     private Timestamp fechaRegistro;
 
-    // Getters and Setters
+    // Getters y Setters
     public int getId() {
         return id;
     }
