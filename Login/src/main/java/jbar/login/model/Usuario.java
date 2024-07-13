@@ -11,8 +11,9 @@ public class Usuario {
     private boolean estado;
     private String codigo;
     private Timestamp fechaRegistro;
+    private Timestamp fechaCreacion;
 
-    // Getters y Setters
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -75,5 +76,13 @@ public class Usuario {
 
     public void setFechaRegistro(Timestamp fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
+    }
+
+    public Timestamp getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Timestamp fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 }

@@ -3,7 +3,6 @@
 <%@ page import="jbar.login.dao.UsuarioDao" %>
 <%@ page import="jbar.login.model.Usuario" %>
 
-
 <!DOCTYPE html>
 <html lang="en">
 

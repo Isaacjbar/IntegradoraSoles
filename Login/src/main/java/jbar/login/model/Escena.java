@@ -1,15 +1,18 @@
 package jbar.login.model;
 
+import java.sql.Timestamp;
+
 public class Escena {
     private int id;
     private int historiaId;
     private String titulo;
     private String video;
-    private byte[] audio;
-    private byte[] imagen;
+    private String audio;
+    private String imagen;
     private String descripcion;
     private boolean esFinal;
     private String textoFinal;
+    private Timestamp fechaCreacion;
 
     // Getters and Setters
     public int getId() {
@@ -44,19 +47,19 @@ public class Escena {
         this.video = video;
     }
 
-    public byte[] getAudio() {
+    public String getAudio() {
         return audio;
     }
 
-    public void setAudio(byte[] audio) {
+    public void setAudio(String audio) {
         this.audio = audio;
     }
 
-    public byte[] getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
-    public void setImagen(byte[] imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 
@@ -82,5 +85,13 @@ public class Escena {
 
     public void setTextoFinal(String textoFinal) {
         this.textoFinal = textoFinal;
+    }
+
+    public Timestamp getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Timestamp fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 }

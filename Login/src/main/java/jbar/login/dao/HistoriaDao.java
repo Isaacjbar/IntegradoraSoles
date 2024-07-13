@@ -13,13 +13,14 @@ import java.util.List;
 public class HistoriaDao {
 
     public boolean insertHistoria(Historia historia) {
-        String sql = "INSERT INTO Historias (Titulo, AutorID) VALUES (?, ?)";
+        String sql = "INSERT INTO historia (titulo, autor_id, fecha_creacion) VALUES (?, ?, ?)";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setString(1, historia.getTitulo());
             statement.setInt(2, historia.getAutorId());
+            statement.setTimestamp(3, historia.getFechaCreacion());
 
             int rowsInserted = statement.executeUpdate();
             return rowsInserted > 0;
@@ -32,7 +33,7 @@ public class HistoriaDao {
 
     public Historia getHistoriaById(int id) {
         Historia historia = null;
-        String sql = "SELECT * FROM Historias WHERE ID = ?";
+        String sql = "SELECT * FROM historia WHERE id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -43,9 +44,10 @@ public class HistoriaDao {
 
             if (resultSet.next()) {
                 historia = new Historia();
-                historia.setId(resultSet.getInt("ID"));
-                historia.setTitulo(resultSet.getString("Titulo"));
-                historia.setAutorId(resultSet.getInt("AutorID"));
+                historia.setId(resultSet.getInt("id"));
+                historia.setTitulo(resultSet.getString("titulo"));
+                historia.setAutorId(resultSet.getInt("autor_id"));
+                historia.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
             }
 
         } catch (SQLException e) {
@@ -57,7 +59,7 @@ public class HistoriaDao {
 
     public List<Historia> getAllHistorias() {
         List<Historia> historias = new ArrayList<>();
-        String sql = "SELECT * FROM Historias";
+        String sql = "SELECT * FROM historia";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);
@@ -65,9 +67,10 @@ public class HistoriaDao {
 
             while (resultSet.next()) {
                 Historia historia = new Historia();
-                historia.setId(resultSet.getInt("ID"));
-                historia.setTitulo(resultSet.getString("Titulo"));
-                historia.setAutorId(resultSet.getInt("AutorID"));
+                historia.setId(resultSet.getInt("id"));
+                historia.setTitulo(resultSet.getString("titulo"));
+                historia.setAutorId(resultSet.getInt("autor_id"));
+                historia.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
                 historias.add(historia);
             }
 
@@ -79,14 +82,15 @@ public class HistoriaDao {
     }
 
     public boolean updateHistoria(Historia historia) {
-        String sql = "UPDATE Historias SET Titulo = ?, AutorID = ? WHERE ID = ?";
+        String sql = "UPDATE historia SET titulo = ?, autor_id = ?, fecha_creacion = ? WHERE id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setString(1, historia.getTitulo());
             statement.setInt(2, historia.getAutorId());
-            statement.setInt(3, historia.getId());
+            statement.setTimestamp(3, historia.getFechaCreacion());
+            statement.setInt(4, historia.getId());
 
             int rowsUpdated = statement.executeUpdate();
             return rowsUpdated > 0;
@@ -98,7 +102,7 @@ public class HistoriaDao {
     }
 
     public boolean deleteHistoria(int id) {
-        String sql = "DELETE FROM Historias WHERE ID = ?";
+        String sql = "DELETE FROM historia WHERE id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {

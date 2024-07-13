@@ -1,11 +1,14 @@
 package jbar.login.model;
 
+import java.sql.Timestamp;
+
 public class Historia {
     private int id;
     private String titulo;
     private int autorId;
+    private Timestamp fechaCreacion;
 
-    // Getters and Setters
+    // Getters y Setters
     public int getId() {
         return id;
     }
@@ -28,5 +31,13 @@ public class Historia {
 
     public void setAutorId(int autorId) {
         this.autorId = autorId;
+    }
+
+    public Timestamp getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Timestamp fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 }

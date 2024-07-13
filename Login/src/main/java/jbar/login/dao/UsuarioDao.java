@@ -14,7 +14,7 @@ public class UsuarioDao {
 
     public Usuario getUsuarioByCredenciales(String nombreUsuario, String contrasena) {
         Usuario usuario = null;
-        String sql = "SELECT * FROM Usuarios WHERE (Nombre = ? OR CorreoElectronico = ?) AND Contraseña = SHA2(?, 256)";
+        String sql = "SELECT * FROM usuario WHERE (nombre = ? OR correo_electronico = ?) AND contrasena = SHA2(?, 256)";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -27,14 +27,15 @@ public class UsuarioDao {
 
             if (resultSet.next()) {
                 usuario = new Usuario();
-                usuario.setId(resultSet.getInt("ID"));
-                usuario.setNombre(resultSet.getString("Nombre"));
-                usuario.setApellido(resultSet.getString("Apellido"));
-                usuario.setCorreoElectronico(resultSet.getString("CorreoElectronico"));
-                usuario.setContrasena(resultSet.getString("Contraseña"));
+                usuario.setId(resultSet.getInt("id"));
+                usuario.setNombre(resultSet.getString("nombre"));
+                usuario.setApellido(resultSet.getString("apellido"));
+                usuario.setCorreoElectronico(resultSet.getString("correo_electronico"));
+                usuario.setContrasena(resultSet.getString("contrasena"));
                 usuario.setEstado(resultSet.getBoolean("estado"));
                 usuario.setCodigo(resultSet.getString("codigo"));
-                usuario.setFechaRegistro(resultSet.getTimestamp("FechaRegistro"));
+                usuario.setFechaRegistro(resultSet.getTimestamp("fecha_registro"));
+                usuario.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
             }
 
         } catch (SQLException e) {
@@ -45,8 +46,8 @@ public class UsuarioDao {
     }
 
     public boolean insertUsuario(Usuario usuario) {
-        String sql = "INSERT INTO Usuarios (Nombre, Apellido, CorreoElectronico, Contraseña, estado, FechaRegistro) " +
-                "VALUES (?, ?, ?, SHA2(?, 256), ?, ?)";
+        String sql = "INSERT INTO usuario (nombre, apellido, correo_electronico, contrasena, estado, codigo, fecha_registro, fecha_creacion) " +
+                "VALUES (?, ?, ?, SHA2(?, 256), ?, ?, ?, ?)";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -56,7 +57,9 @@ public class UsuarioDao {
             statement.setString(3, usuario.getCorreoElectronico());
             statement.setString(4, usuario.getContrasena());
             statement.setBoolean(5, usuario.isEstado());
-            statement.setTimestamp(6, usuario.getFechaRegistro());
+            statement.setString(6, usuario.getCodigo());
+            statement.setTimestamp(7, usuario.getFechaRegistro());
+            statement.setTimestamp(8, usuario.getFechaCreacion());
 
             int rowsInserted = statement.executeUpdate();
             return rowsInserted > 0;
@@ -69,7 +72,7 @@ public class UsuarioDao {
 
     public Usuario getUsuarioById(int id) {
         Usuario usuario = null;
-        String sql = "SELECT * FROM Usuarios WHERE ID = ?";
+        String sql = "SELECT * FROM usuario WHERE id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -80,14 +83,15 @@ public class UsuarioDao {
 
             if (resultSet.next()) {
                 usuario = new Usuario();
-                usuario.setId(resultSet.getInt("ID"));
-                usuario.setNombre(resultSet.getString("Nombre"));
-                usuario.setApellido(resultSet.getString("Apellido"));
-                usuario.setCorreoElectronico(resultSet.getString("CorreoElectronico"));
-                usuario.setContrasena(resultSet.getString("Contraseña"));
+                usuario.setId(resultSet.getInt("id"));
+                usuario.setNombre(resultSet.getString("nombre"));
+                usuario.setApellido(resultSet.getString("apellido"));
+                usuario.setCorreoElectronico(resultSet.getString("correo_electronico"));
+                usuario.setContrasena(resultSet.getString("contrasena"));
                 usuario.setEstado(resultSet.getBoolean("estado"));
                 usuario.setCodigo(resultSet.getString("codigo"));
-                usuario.setFechaRegistro(resultSet.getTimestamp("FechaRegistro"));
+                usuario.setFechaRegistro(resultSet.getTimestamp("fecha_registro"));
+                usuario.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
             }
 
         } catch (SQLException e) {
@@ -99,7 +103,7 @@ public class UsuarioDao {
 
     public List<Usuario> getAllUsuarios() {
         List<Usuario> usuarios = new ArrayList<>();
-        String sql = "SELECT * FROM Usuarios";
+        String sql = "SELECT * FROM usuario";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);
@@ -107,14 +111,15 @@ public class UsuarioDao {
 
             while (resultSet.next()) {
                 Usuario usuario = new Usuario();
-                usuario.setId(resultSet.getInt("ID"));
-                usuario.setNombre(resultSet.getString("Nombre"));
-                usuario.setApellido(resultSet.getString("Apellido"));
-                usuario.setCorreoElectronico(resultSet.getString("CorreoElectronico"));
-                usuario.setContrasena(resultSet.getString("Contraseña"));
+                usuario.setId(resultSet.getInt("id"));
+                usuario.setNombre(resultSet.getString("nombre"));
+                usuario.setApellido(resultSet.getString("apellido"));
+                usuario.setCorreoElectronico(resultSet.getString("correo_electronico"));
+                usuario.setContrasena(resultSet.getString("contrasena"));
                 usuario.setEstado(resultSet.getBoolean("estado"));
                 usuario.setCodigo(resultSet.getString("codigo"));
-                usuario.setFechaRegistro(resultSet.getTimestamp("FechaRegistro"));
+                usuario.setFechaRegistro(resultSet.getTimestamp("fecha_registro"));
+                usuario.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
                 usuarios.add(usuario);
             }
 
@@ -126,7 +131,7 @@ public class UsuarioDao {
     }
 
     public boolean updateUsuario(Usuario usuario) {
-        String sql = "UPDATE Usuarios SET Nombre = ?, Apellido = ?, CorreoElectronico = ?, Contraseña = SHA2(?, 256), estado = ?, codigo = ? WHERE ID = ?";
+        String sql = "UPDATE usuario SET nombre = ?, apellido = ?, correo_electronico = ?, contrasena = SHA2(?, 256), estado = ?, codigo = ?, fecha_creacion = ? WHERE id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -137,7 +142,8 @@ public class UsuarioDao {
             statement.setString(4, usuario.getContrasena());
             statement.setBoolean(5, usuario.isEstado());
             statement.setString(6, usuario.getCodigo());
-            statement.setInt(7, usuario.getId());
+            statement.setTimestamp(7, usuario.getFechaCreacion());
+            statement.setInt(8, usuario.getId());
 
             int rowsUpdated = statement.executeUpdate();
             return rowsUpdated > 0;
@@ -149,7 +155,7 @@ public class UsuarioDao {
     }
 
     public boolean deleteUsuario(int id) {
-        String sql = "DELETE FROM Usuarios WHERE ID = ?";
+        String sql = "DELETE FROM usuario WHERE id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -164,108 +170,93 @@ public class UsuarioDao {
             return false;
         }
     }
+
     public boolean updateWithEmail(String email, String codigoRecuperacion){
         boolean flag = false;
-        String query = "update Usuarios set codigo = ? where CorreoElectronico = ?";
-        try{
+        String query = "UPDATE usuario SET codigo = ? WHERE correo_electronico = ?";
+        try {
             Connection con = DatabaseConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, codigoRecuperacion);
             ps.setString(2, email);
-            if(ps.executeUpdate()>0){
+            if (ps.executeUpdate() > 0) {
                 flag = true;
             }
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-
-        return flag;
-    }
-
-    public Usuario getOne(int id){
-        Usuario u = new Usuario();
-        // Los símbolos de ? son para evitar la inyección de código SQL
-        String query = "select * from Usuarios where id = ?";
-
-        try{
-            //Conectarse a la base de datos
-            Connection con = DatabaseConnection.getConnection();
-            //Prepara la consulta para ser ejecutada
-            PreparedStatement ps = con.prepareStatement(query);
-            //Definir los parámetros del query (los símbolos de interrogación)
-            ps.setInt(1,id);
-            //Ejecutar la consulta
-            ResultSet rs = ps.executeQuery();
-            //Obtener la información del ResultSet
-            if(rs.next()){
-                //El usuario si existe en la base de datos
-                u.setId(rs.getInt("id"));
-                u.setNombre(rs.getString("user_name"));
-                u.setContrasena(rs.getString("pass"));
-                u.setCorreoElectronico(rs.getString("email"));
-                u.setCodigo(rs.getString("cody"));
-                u.setEstado(rs.getBoolean("status"));
-            }
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-        return u;
-    }
-
-    public Boolean getOne(String correo){
-        Boolean flag = false;
-        // Los símbolos de ? son para evitar la inyección de código SQL
-        String query = "select * from Usuarios where CorreoElectronico = ?";
-
-        try{
-            //Conectarse a la base de datos
-            Connection con = DatabaseConnection.getConnection();
-            //Prepara la consulta para ser ejecutada
-            PreparedStatement ps = con.prepareStatement(query);
-            //Definir los parámetros del query (los símbolos de interrogación)
-            ps.setString(1,correo);
-            //Ejecutar la consulta
-            ResultSet rs = ps.executeQuery();
-            //Obtener la información del ResultSet
-            if(rs.next()){
-                flag = true;
-            }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return flag;
     }
-    public Boolean codeExist(String codigo){
-        Boolean flag = false;
-        // Los símbolos de ? son para evitar la inyección de código SQL
-        String query = "select * from Usuarios where codigo = ?";
 
-        try{
-            //Conectarse a la base de datos
-            Connection con = DatabaseConnection.getConnection();
-            //Prepara la consulta para ser ejecutada
-            PreparedStatement ps = con.prepareStatement(query);
-            //Definir los parámetros del query (los símbolos de interrogación)
-            ps.setString(1,codigo);
-            //Ejecutar la consulta
-            ResultSet rs = ps.executeQuery();
-            //Obtener la información del ResultSet
-            if(rs.next()){
-                flag = true;
-            }
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-        return flag;
-    }
-    public boolean updatePassword(String cody,String nuevaContra) {
-        boolean flag = false;
-        String query = "update Usuarios set contraseña = sha2(?, 256),codigo = null where codigo = ?";
+    public Usuario getOne(int id) {
+        Usuario usuario = new Usuario();
+        String query = "SELECT * FROM usuario WHERE id = ?";
+
         try {
             Connection con = DatabaseConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, nuevaContra);
-            ps.setString(2, cody);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                usuario.setId(rs.getInt("id"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setContrasena(rs.getString("contrasena"));
+                usuario.setCorreoElectronico(rs.getString("correo_electronico"));
+                usuario.setCodigo(rs.getString("codigo"));
+                usuario.setEstado(rs.getBoolean("estado"));
+                usuario.setFechaRegistro(rs.getTimestamp("fecha_registro"));
+                usuario.setFechaCreacion(rs.getTimestamp("fecha_creacion"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return usuario;
+    }
+
+    public Boolean getOne(String correo) {
+        Boolean flag = false;
+        String query = "SELECT * FROM usuario WHERE correo_electronico = ?";
+
+        try {
+            Connection con = DatabaseConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, correo);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                flag = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public Boolean codeExist(String codigo) {
+        Boolean flag = false;
+        String query = "SELECT * FROM usuario WHERE codigo = ?";
+
+        try {
+            Connection con = DatabaseConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, codigo);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                flag = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public boolean updatePassword(String codigo, String nuevaContrasena) {
+        boolean flag = false;
+        String query = "UPDATE usuario SET contrasena = SHA2(?, 256), codigo = null WHERE codigo = ?";
+        try {
+            Connection con = DatabaseConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, nuevaContrasena);
+            ps.setString(2, codigo);
             if (ps.executeUpdate() > 0) {
                 flag = true;
             }

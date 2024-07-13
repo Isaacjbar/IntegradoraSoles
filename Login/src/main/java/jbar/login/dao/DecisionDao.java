@@ -13,7 +13,7 @@ import java.util.List;
 public class DecisionDao {
 
     public boolean insertDecision(Decision decision) {
-        String sql = "INSERT INTO Decisiones (EscenaID, Descripcion, EscenaDestinoID) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO decision (escena_id, descripcion, escena_destino_id, fecha_creacion) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -21,6 +21,7 @@ public class DecisionDao {
             statement.setInt(1, decision.getEscenaId());
             statement.setString(2, decision.getDescripcion());
             statement.setInt(3, decision.getEscenaDestinoId());
+            statement.setTimestamp(4, decision.getFechaCreacion());
 
             int rowsInserted = statement.executeUpdate();
             return rowsInserted > 0;
@@ -33,7 +34,7 @@ public class DecisionDao {
 
     public Decision getDecisionById(int id) {
         Decision decision = null;
-        String sql = "SELECT * FROM Decisiones WHERE ID = ?";
+        String sql = "SELECT * FROM decision WHERE id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -44,10 +45,11 @@ public class DecisionDao {
 
             if (resultSet.next()) {
                 decision = new Decision();
-                decision.setId(resultSet.getInt("ID"));
-                decision.setEscenaId(resultSet.getInt("EscenaID"));
-                decision.setDescripcion(resultSet.getString("Descripcion"));
-                decision.setEscenaDestinoId(resultSet.getInt("EscenaDestinoID"));
+                decision.setId(resultSet.getInt("id"));
+                decision.setEscenaId(resultSet.getInt("escena_id"));
+                decision.setDescripcion(resultSet.getString("descripcion"));
+                decision.setEscenaDestinoId(resultSet.getInt("escena_destino_id"));
+                decision.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
             }
 
         } catch (SQLException e) {
@@ -59,7 +61,7 @@ public class DecisionDao {
 
     public List<Decision> getAllDecisiones() {
         List<Decision> decisiones = new ArrayList<>();
-        String sql = "SELECT * FROM Decisiones";
+        String sql = "SELECT * FROM decision";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);
@@ -67,10 +69,11 @@ public class DecisionDao {
 
             while (resultSet.next()) {
                 Decision decision = new Decision();
-                decision.setId(resultSet.getInt("ID"));
-                decision.setEscenaId(resultSet.getInt("EscenaID"));
-                decision.setDescripcion(resultSet.getString("Descripcion"));
-                decision.setEscenaDestinoId(resultSet.getInt("EscenaDestinoID"));
+                decision.setId(resultSet.getInt("id"));
+                decision.setEscenaId(resultSet.getInt("escena_id"));
+                decision.setDescripcion(resultSet.getString("descripcion"));
+                decision.setEscenaDestinoId(resultSet.getInt("escena_destino_id"));
+                decision.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
                 decisiones.add(decision);
             }
 
@@ -82,7 +85,7 @@ public class DecisionDao {
     }
 
     public boolean updateDecision(Decision decision) {
-        String sql = "UPDATE Decisiones SET EscenaID = ?, Descripcion = ?, EscenaDestinoID = ? WHERE ID = ?";
+        String sql = "UPDATE decision SET escena_id = ?, descripcion = ?, escena_destino_id = ?, fecha_creacion = ? WHERE id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -90,7 +93,8 @@ public class DecisionDao {
             statement.setInt(1, decision.getEscenaId());
             statement.setString(2, decision.getDescripcion());
             statement.setInt(3, decision.getEscenaDestinoId());
-            statement.setInt(4, decision.getId());
+            statement.setTimestamp(4, decision.getFechaCreacion());
+            statement.setInt(5, decision.getId());
 
             int rowsUpdated = statement.executeUpdate();
             return rowsUpdated > 0;
@@ -102,7 +106,7 @@ public class DecisionDao {
     }
 
     public boolean deleteDecision(int id) {
-        String sql = "DELETE FROM Decisiones WHERE ID = ?";
+        String sql = "DELETE FROM decision WHERE id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
