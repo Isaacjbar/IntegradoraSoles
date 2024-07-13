@@ -1,1 +1,0 @@
-const d=document,c=console,a=alert;

@@ -1,5 +1,13 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: IsaacJbar
+  Date: 12/7/2024
+  Time: 20:53
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,15 +47,14 @@
     <div class="src-info">
         <h4>Reestablecer contraseña</h4>
         <p>Por favor, ingrésa tu correo para reestablecer tu contraseña. Enviaremos un enlace de recuperación.</p>
-        <form action="">
-            <input class="form-control correo-input" type="text" name="" id="" placeholder="Ingrésa tu correo">
-            <input class="btn-positive enviar-correo-input" type="submit" name="" id="sendCode" value="Enviar código">
+        <form method="post" action="recupera">
+            <input class="form-control correo-input" type="text" name="correo" id="" placeholder="Ingrésa tu correo">
+            <input class="btn-positive enviar-correo-input" type="submit" name="" id="sendCode" value="Solicitar">
         </form>
     </div>
     <div class="src-img">
         <img src="img/reestablecerContra.png" alt="reestablecerContraseña">
     </div>
 </div>
-<script src="js/solicitudReestablecerContra.js"></script>
 </body>
 </html>

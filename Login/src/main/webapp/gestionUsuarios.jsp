@@ -102,6 +102,7 @@
 </footer>
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.js"></script>
+<script src="js/gestionUsuarios.js"></script>
 </body>
 
 </html>
