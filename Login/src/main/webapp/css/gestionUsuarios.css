@@ -36,6 +36,146 @@
 .cardsUserContainer{
     min-height: 400px;
     padding: 15px;
+}.usuarioCard{
+     border-radius: 10px;
+     width: 70%;
+     padding-top: 8px;
+     height: auto    ;
+     border: 2px solid #ccc;
+     box-shadow: 5px 7px 14px -1px rgba(133,133,133,0.75);
+     -webkit-box-shadow: 5px 7px 14px -1px rgba(133,133,133,0.75);
+     -moz-box-shadow: 5px 7px 14px -1px rgba(133,133,133,0.75);
+     margin: 30px auto;
+     border-left: 5px solid #078D73;
+ }
+
+.infoUsuario h6{
+    font-size: 14px;
+    font-weight: bold;
+}
+.infoUsuario li{
+    font-size: 12px;
+}
+
+.infoUsuario ul{
+    font-size: 14px;
+    list-style: none;
+    padding-left: 0;
+}
+
+
+.controlesUsuario{
+    height: 80%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin: auto;
+}
+.controlesUsuario button {
+    justify-self: end;
+}
+
+.cardsUserContainer{
+    min-height: 400px;
+    padding: 15px;
+}
+
+.btn-agregarUsuario{
+    margin: 0 auto;
+}
+
+.controlesUsuario >button {
+    width: 80px;
+    margin: 6px;
+    font-size: 13px;
+    max-height: 30px;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 590px) {
+    .controlesUsuario > button{
+        max-height: 40px;
+        max-width: 50px;
+    }
+}
+
+.confirmarBajaContainer{
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    height: auto !important;
+    background-color: none;
+    z-index: 8000;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(62, 62, 62, 0.605);
+}
+.confirmarBaja{
+    color: white;
+    position: fixed;
+    z-index: 9000;
+    background-image: linear-gradient(to right top, #0a6a91, #006f91, #007391, #007890, #0a7c8e);
+    width: 30%;
+    height: 200px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 15%;
+    margin-left: 35%;
+    text-align: center;
+}
+.confirmarBaja .close-btn {
+    margin-top: -20px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+.botonesConfirmarBaja{
+    /* background-color: green; */
+    margin: 10px;
+    margin-top: 20px;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+@media screen and (max-width: 1322px) {
+    .confirmarBaja{
+        width: 50%;
+        margin-left: 25%;
+    }
+    .botonesConfirmarBaja{
+        width: 80%;
+    }
+    .botonesConfirmarBaja{
+        width: 60%;
+    }
+}
+@media screen and (max-width: 820px) {
+    .confirmarBaja{
+        width: 60%;
+        margin-left: 20%;
+        margin-top: 20%;
+    }
+    .botonesConfirmarBaja{
+        width: 60%;
+    }
+    .botonesConfirmarBaja button{
+        width: 70px;
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 482px) {
+    .botonesConfirmarBaja{
+        width: 90%;
+    }
 }
 
 
