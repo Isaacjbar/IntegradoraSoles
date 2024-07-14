@@ -22,7 +22,6 @@ public class HistoriaServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Obtener el ID de la historia desde el parámetro de la solicitud
         String historiaIdStr = request.getParameter("id_his");
         if (historiaIdStr == null) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Falta el parámetro id_his");
@@ -37,18 +36,15 @@ public class HistoriaServlet extends HttpServlet {
             return;
         }
 
-        // Obtener la historia por su ID
         Historia historia = historiaDao.getHistoriaById(historiaId);
         if (historia == null) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "Historia no encontrada");
             return;
         }
 
-        // Obtener el ID de la escena desde el parámetro de la solicitud (si existe)
         String escenaIdStr = request.getParameter("id_esc");
         Escena escena;
         if (escenaIdStr == null) {
-            // Obtener la primera escena de la historia
             escena = escenaDao.getPrimeraEscenaPorHistoriaId(historiaId);
         } else {
             int escenaId;
@@ -66,15 +62,20 @@ public class HistoriaServlet extends HttpServlet {
             return;
         }
 
-        // Obtener las decisiones de la escena
         List<Decision> decisiones = decisionDao.getDecisionesByEscenaId(escena.getId());
 
-        // Establecer los atributos para la solicitud
+        String multimediaType = "none";
+        if (escena.getVideo() != null && !escena.getVideo().isEmpty()) {
+            multimediaType = "video";
+        } else if ((escena.getAudio() != null && !escena.getAudio().isEmpty()) || (escena.getImagen() != null && !escena.getImagen().isEmpty())) {
+            multimediaType = "audio_imagen";
+        }
+
         request.setAttribute("historia", historia);
         request.setAttribute("escena", escena);
         request.setAttribute("decisiones", decisiones);
+        request.setAttribute("multimediaType", multimediaType);
 
-        // Reenviar la solicitud al JSP
         request.getRequestDispatcher("/reproductorHistoria.jsp").forward(request, response);
     }
 }

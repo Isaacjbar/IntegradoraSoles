@@ -26,10 +26,13 @@ INSERT INTO historia (titulo, autor_id, fecha_creacion) VALUES ('Los Casi Algo',
 INSERT INTO escena (historia_id, titulo, descripcion, es_final, fecha_creacion)
 VALUES (1, 'La Relación Se Rompe', 'Recibes un mensaje de texto de esa persona especial. Te dice que necesitan hablar. Sabes que algo no está bien.', FALSE, CURRENT_TIMESTAMP);
 
+UPDATE escena SET video = "https://youtu.be/SINmOCeSayw?si=0Ke3YMRcw0dfNl9q" WHERE id = 1;
+
 -- Escena 2
 INSERT INTO escena (historia_id, titulo, descripcion, es_final, fecha_creacion)
 VALUES (1, 'La Conversación en Persona', 'Se encuentran en el parque donde solían pasear. Te dice que ya no siente lo mismo y que quiere terminar con esta relación indefinida.', FALSE, CURRENT_TIMESTAMP);
 
+UPDATE escena SET imagen = "https://c0.klipartz.com/pngpicture/375/580/gratis-png-emoji-emoticono-de-tristeza-emoticon-adios.png" WHERE id = 2;
 -- Escena 3
 INSERT INTO escena (historia_id, titulo, descripcion, es_final, fecha_creacion)
 VALUES (1, 'La Respuesta por Mensaje', 'Decides responder el mensaje. Te dice que ya no siente lo mismo y que quiere terminar con esta relación indefinida.', FALSE, CURRENT_TIMESTAMP);

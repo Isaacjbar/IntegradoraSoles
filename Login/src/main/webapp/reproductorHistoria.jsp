@@ -39,13 +39,39 @@
                     <h2 class="card-title"><%= ((Historia) request.getAttribute("historia")).getTitulo() %></h2>
                 </div>
                 <div class="card-body">
-                    <p class="card-text"><%= ((Escena) request.getAttribute("escena")).getDescripcion() %></p>
+                    <%
+                        String multimediaType = (String) request.getAttribute("multimediaType");
+                        Escena escena = (Escena) request.getAttribute("escena");
+                        String videoUrl = escena.getVideo();
+                        String videoEmbedUrl = "";
+                        if (videoUrl != null && videoUrl.contains("youtube.com/watch?v=")) {
+                            videoEmbedUrl = videoUrl.replace("watch?v=", "embed/");
+                        }
+                    %>
+                    <div class="embed-responsive mb-3 mx-auto">
+                        <% if ("video".equals(multimediaType) && !videoEmbedUrl.isEmpty()) { %>
+                        <iframe class="embed-responsive-item" src="<%= videoEmbedUrl %>" allowfullscreen></iframe>
+                        <% } else if ("audio_imagen".equals(multimediaType)) { %>
+                        <% if (escena.getImagen() != null && !escena.getImagen().isEmpty()) { %>
+                        <img src="<%= escena.getImagen() %>" class="img-fluid mb-2" alt="Escena Imagen">
+                        <% } %>
+                        <% if (escena.getAudio() != null && !escena.getAudio().isEmpty()) { %>
+                        <audio controls>
+                            <source src="<%= escena.getAudio() %>" type="audio/mpeg">
+                            Tu navegador no soporta la reproducción de audio.
+                        </audio>
+                        <% } %>
+                        <% } else { %>
+                        <img src="img/no_multimedia.png" class="img-fluid mb-2" alt="No hay recursos multimedia">
+                        <% } %>
+                    </div>
+                    <p class="card-text"><%= escena.getDescripcion() %></p>
                     <div class="d-flex justify-content-center">
                         <%
                             List<Decision> decisiones = (List<Decision>) request.getAttribute("decisiones");
                             Historia historia = (Historia) request.getAttribute("historia");
-                            for (Decision decision : decisiones) {
                         %>
+                        <% for (Decision decision : decisiones) { %>
                         <form action="historia" method="get" style="display: inline;">
                             <input type="hidden" name="id_his" value="<%= historia.getId() %>">
                             <input type="hidden" name="id_esc" value="<%= decision.getEscenaDestinoId() %>">
