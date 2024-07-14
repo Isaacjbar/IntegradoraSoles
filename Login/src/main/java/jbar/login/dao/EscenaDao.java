@@ -143,4 +143,34 @@ public class EscenaDao {
             return false;
         }
     }
+    public Escena getPrimeraEscenaPorHistoriaId(int historiaId) {
+        Escena escena = null;
+        String sql = "SELECT * FROM escena WHERE historia_id = ? ORDER BY id ASC LIMIT 1";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, historiaId);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                escena = new Escena();
+                escena.setId(resultSet.getInt("id"));
+                escena.setHistoriaId(resultSet.getInt("historia_id"));
+                escena.setTitulo(resultSet.getString("titulo"));
+                escena.setVideo(resultSet.getString("video"));
+                escena.setAudio(resultSet.getString("audio"));
+                escena.setImagen(resultSet.getString("imagen"));
+                escena.setDescripcion(resultSet.getString("descripcion"));
+                escena.setEsFinal(resultSet.getBoolean("es_final"));
+                escena.setTextoFinal(resultSet.getString("texto_final"));
+                escena.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return escena;
+    }
 }

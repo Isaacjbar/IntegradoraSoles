@@ -1,0 +1,20 @@
+/* Estilos personalizados para el reproductor de historias */
+.card-title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.embed-responsive {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-text {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    margin: 0 0.5rem;
+}

@@ -121,4 +121,30 @@ public class DecisionDao {
             return false;
         }
     }
+    public List<Decision> getDecisionesByEscenaId(int escenaId) {
+        List<Decision> decisiones = new ArrayList<>();
+        String sql = "SELECT * FROM decision WHERE escena_id = ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, escenaId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Decision decision = new Decision();
+                decision.setId(resultSet.getInt("id"));
+                decision.setEscenaId(resultSet.getInt("escena_id"));
+                decision.setDescripcion(resultSet.getString("descripcion"));
+                decision.setEscenaDestinoId(resultSet.getInt("escena_destino_id"));
+                decision.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
+                decisiones.add(decision);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return decisiones;
+    }
 }
