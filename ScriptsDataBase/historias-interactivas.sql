@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS historia (
 CREATE TABLE IF NOT EXISTS escena (
     id INT AUTO_INCREMENT PRIMARY KEY,
     historia_id INT NOT NULL,
-    titulo VARCHAR(40) NOT NULL,
+    titulo VARCHAR(60) NOT NULL,
     video VARCHAR(1000),
     audio VARCHAR(1000),
     imagen VARCHAR(1000),
