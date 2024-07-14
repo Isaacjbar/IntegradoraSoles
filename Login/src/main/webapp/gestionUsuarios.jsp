@@ -61,7 +61,7 @@
 
 <div class="container w-100 d-flex justify-content-center">
     <button class="btn-agregarUsuario btn btn-positive">
-        <a class="text-decoration-none text-white" href="registroDeCuenta.jsp">Agregar usuario</a>
+        <a class="text-decoration-none text-white" href="agregarUsuario.jsp">Agregar usuario</a>
     </button>
 </div>
 

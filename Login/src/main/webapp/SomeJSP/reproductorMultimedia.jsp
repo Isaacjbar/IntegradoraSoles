@@ -13,10 +13,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="css/stylesIndex.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="icon" href="img/Logo1.png">
+    <link rel="stylesheet" href="../bootstrap-5.2.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/stylesIndex.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="icon" href="../img/Logo1.png">
     <title>Subir Multimedia</title>
 </head>
 <body>
@@ -75,6 +75,6 @@
     </form>
 </div>
 
-<script src="bootstrap-5.2.3-dist/js/bootstrap.js"></script>
+<script src="../bootstrap-5.2.3-dist/js/bootstrap.js"></script>
 </body>
 </html>
