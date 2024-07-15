@@ -60,10 +60,13 @@
 <h1 class="title-1 fs-3">Gestión de Historias</h1>
 
 <div class="container mostRecent flex-column d-flex justify-content-center align-items-center">
-    <button id="createHistoryButton" class="btn btn-success btn-positive" onclick="window.location.href='createHistory.jsp'">
-        Crear nueva historia
-    </button>
+    <form action="CrearHistoriaServlet" method="post">
+        <button id="createHistoryButton" class="btn btn-success btn-positive">
+            Crear nueva historia
+        </button>
+    </form>
 </div>
+
 
 <hr class="my-4">
 

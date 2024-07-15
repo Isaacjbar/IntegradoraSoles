@@ -18,7 +18,7 @@ public class HistoriaDao {
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setString(1, historia.getTitulo());
+            statement.setString(1,"");
             statement.setInt(2, historia.getAutorId());
             statement.setTimestamp(3, historia.getFechaCreacion());
 
@@ -117,4 +117,24 @@ public class HistoriaDao {
             return false;
         }
     }
+
+    public int getLastHistoriaId() {
+        String sql = "SELECT MAX(id) AS max_id FROM historia";
+        int lastId = -1;
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            if (resultSet.next()) {
+                lastId = resultSet.getInt("max_id");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lastId;
+    }
+
 }

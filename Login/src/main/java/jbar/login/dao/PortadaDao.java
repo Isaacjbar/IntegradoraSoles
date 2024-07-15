@@ -13,19 +13,18 @@ import java.util.List;
 public class PortadaDao {
 
     public boolean insertPortada(Portada portada) {
-        String sql = "INSERT INTO portada (historia_id, titulo, video, audio, imagen, descripcion, fecha_creacion) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO portada (titulo, video, audio, imagen, descripcion, fecha_creacion) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setInt(1, portada.getHistoriaId());
-            statement.setString(2, portada.getTitulo());
-            statement.setString(3, portada.getVideo());
-            statement.setString(4, portada.getAudio());
-            statement.setString(5, portada.getImagen());
-            statement.setString(6, portada.getDescripcion());
-            statement.setTimestamp(7, portada.getFechaCreacion());
+            statement.setString(1, portada.getTitulo());
+            statement.setString(2, portada.getVideo());
+            statement.setString(3, portada.getAudio());
+            statement.setString(4, portada.getImagen());
+            statement.setString(5, portada.getDescripcion());
+            statement.setTimestamp(6, portada.getFechaCreacion());
 
             int rowsInserted = statement.executeUpdate();
             return rowsInserted > 0;
@@ -138,4 +137,48 @@ public class PortadaDao {
             return false;
         }
     }
+    public boolean insertPortadaWithImageOrAudio(Portada portada) {
+        String sql = "INSERT INTO portada (titulo, audio, imagen, descripcion, fecha_creacion, historia_id) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, portada.getTitulo());
+            statement.setString(2, portada.getAudio());
+            statement.setString(3, portada.getImagen());
+            statement.setString(4, portada.getDescripcion());
+            statement.setTimestamp(5, portada.getFechaCreacion());
+            statement.setInt(6, portada.getHistoriaId());
+
+            int rowsInserted = statement.executeUpdate();
+            return rowsInserted > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean insertPortadaWithVideo(Portada portada) {
+        String sql = "INSERT INTO portada (titulo, video, descripcion, fecha_creacion, historia_id) " +
+                "VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, portada.getTitulo());
+            statement.setString(2, portada.getVideo());
+            statement.setString(3, portada.getDescripcion());
+            statement.setTimestamp(4, portada.getFechaCreacion());
+            statement.setInt(5, portada.getHistoriaId());
+
+            int rowsInserted = statement.executeUpdate();
+            return rowsInserted > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }
