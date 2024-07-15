@@ -17,15 +17,20 @@ public class RegistroUsuarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nombre = request.getParameter("nombreUsuario");
+        System.out.println(nombre);
         String apellidos = request.getParameter("apellidosUsuario");
+        System.out.println(apellidos);
         String correo = request.getParameter("correoUsuario");
+        System.out.println(correo);
         String contrasena = request.getParameter("contraUsuario");
+        System.out.println(contrasena);
         String contrasenaRepetida = request.getParameter("contraRepetida");
 
         // Validar que las contraseñas coinciden
         if (!contrasena.equals(contrasenaRepetida)) {
             request.setAttribute("errorMessage", "Las contraseñas no coinciden");
-            request.getRequestDispatcher("registroDeCuenta.jsp").forward(request, response);
+            request.getRequestDispatcher("agregarUsuario.jsp").forward(request, response);
+            System.out.println("Las contraseñas no coinciden");
             return;
         }
 
@@ -43,9 +48,11 @@ public class RegistroUsuarioServlet extends HttpServlet {
 
         if (isRegistered) {
             response.sendRedirect("login.jsp");
+            System.out.println("Usuario registrado");
         } else {
+            System.out.println("Usuario no registrado");
             request.setAttribute("errorMessage", "Error al registrar el usuario. Inténtelo de nuevo.");
-            request.getRequestDispatcher("registroDeCuenta.jsp").forward(request, response);
+            request.getRequestDispatcher("agregarUsuario.jsp").forward(request, response);
         }
     }
 }
