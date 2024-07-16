@@ -54,7 +54,7 @@ public class AgregarPortadaServlet extends HttpServlet {
                 historia.setTitulo(titulo);
                 historiaDao.updateHistoria(historia);
             }
-            response.sendRedirect("welcome.jsp");
+            response.sendRedirect("gestionHistoria.jsp");
         } else {
             request.setAttribute("error", "Hubo un problema al insertar la portada.");
             request.getRequestDispatcher("error.jsp").forward(request, response);

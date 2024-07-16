@@ -60,7 +60,7 @@
 <br>
 
 <h1 class="title-1 fs-3">Crear portada</h1>
-
+<main>
 <div class="container">
     <form action="AgregarPortadaServlet" method="post" onsubmit="return validateForm()">
         <input type="hidden" name="historiaId" value="<%= request.getParameter("historiaId") %>">
@@ -87,7 +87,10 @@
         <button type="submit" class="btn btn-primary">Subir</button>
     </form>
 </div>
-
+</main>
+<footer class="d-flex flex-wrap justify-content-center align-items-center mt-4 border-top">
+    <p class="col-md-4 mb-0 text-body-secondary d-flex justify-content-center">&copy; 2024 Histority SA</p>
+</footer>
 <script src="bootstrap-5.2.3-dist/js/bootstrap.js"></script>
 </body>
 </html>
