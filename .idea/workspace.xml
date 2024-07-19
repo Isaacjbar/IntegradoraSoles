@@ -10,7 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="" />
+    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Correccion de menu" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -233,11 +233,33 @@
       <workItem from="1720295299103" duration="115000" />
       <workItem from="1720295430936" duration="15000" />
       <workItem from="1720296224880" duration="17000" />
-      <workItem from="1721347195853" duration="9049000" />
+      <workItem from="1721347195853" duration="9393000" />
     </task>
+    <task id="LOCAL-00001" summary="Correccion de menu">
+      <option name="closed" value="true" />
+      <created>1721362040095</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1721362040095</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Correccion de menu">
+      <option name="closed" value="true" />
+      <created>1721362080484</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1721362080484</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="git commit -m &quot;correcciones menu&quot;" />
+    <MESSAGE value="Correccion de menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correccion de menu" />
   </component>
 </project>
