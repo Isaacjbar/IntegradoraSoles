@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
+      <artifact name="Login:war" />
       <artifact name="Login:war exploded" />
     </artifacts-to-build>
   </component>
@@ -9,11 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/ReestablecerContra.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/ReestablecerContra.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/solicitudReestablecerContra.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/solicitudReestablecerContra.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -236,7 +233,7 @@
       <workItem from="1720295299103" duration="115000" />
       <workItem from="1720295430936" duration="15000" />
       <workItem from="1720296224880" duration="17000" />
-      <workItem from="1721347195853" duration="8543000" />
+      <workItem from="1721347195853" duration="9049000" />
     </task>
     <servers />
   </component>
