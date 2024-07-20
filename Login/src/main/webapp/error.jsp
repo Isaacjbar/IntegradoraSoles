@@ -14,6 +14,16 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
     <link rel="icon" href="img/Logo1.png">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .content {
+            flex: 1;
+        }
+    </style>
     <title>A</title>
 </head>
 
@@ -33,11 +43,15 @@
     </div>
 </nav>
 
-<main>
-    <h1>Ocurrió un error</h1>
-    <p><%= request.getAttribute("error") %></p>
-    <a href="welcome.jsp">Volver a la página principal</a>
-</main>
+<!-- Contenedor principal con la clase 'content' -->
+<div class="content">
+    <main>
+        <h1>Ocurrió un error</h1>
+        <p><%= request.getAttribute("error") %></p>
+        <a href="welcome.jsp">Volver a la página principal</a>
+    </main>
+</div>
+
 <footer class="d-flex flex-wrap justify-content-center align-items-center mt-4 border-top">
     <p class="col-md-4 mb-0 text-body-secondary d-flex justify-content-center">&copy; 2024 Histority SA</p>
 </footer>
@@ -46,4 +60,3 @@
 </body>
 
 </html>
-

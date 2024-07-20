@@ -92,5 +92,6 @@
     <p class="col-md-4 mb-0 text-body-secondary d-flex justify-content-center">&copy; 2024 Histority SA</p>
 </footer>
 <script src="bootstrap-5.2.3-dist/js/bootstrap.js"></script>
+
 </body>
 </html>
