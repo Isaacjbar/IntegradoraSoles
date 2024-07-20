@@ -12,6 +12,13 @@
   <component name="ChangeListManager">
     <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Correccion de menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/ReestablecerContra.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/ReestablecerContra.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/agregarPortada.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/agregarPortada.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/agregarUsuario.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/agregarUsuario.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/error.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/error.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/solicitudReestablecerContra.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/solicitudReestablecerContra.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,17 +70,17 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JavaScript Debug.welcome.jsp">
-    <configuration name="ReestablecerContra.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/Login_war_exploded/ReestablecerContra.jsp">
+  <component name="RunManager" selected="JavaScript Debug.login.jsp">
+    <configuration name="agregarPortada.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/Login_war_exploded/agregarPortada.jsp">
       <method v="2" />
     </configuration>
-    <configuration name="portadaHistoria.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/Login_war_exploded/portadaHistoria.jsp">
+    <configuration name="agregarUsuario.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/Login_war_exploded/agregarUsuario.jsp">
       <method v="2" />
     </configuration>
-    <configuration name="reproductorHistoria.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/Login_war_exploded/reproductorHistoria.jsp">
+    <configuration name="error.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/Login_war_exploded/error.jsp">
       <method v="2" />
     </configuration>
-    <configuration name="solicitudReestablecerContra.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/Login_war_exploded/solicitudReestablecerContra.jsp">
+    <configuration name="login.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/Login_war_exploded/login.jsp">
       <method v="2" />
     </configuration>
     <configuration name="welcome.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/Login_war_exploded/welcome.jsp">
@@ -172,20 +179,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JavaScript Debug.ReestablecerContra.jsp" />
-      <item itemvalue="JavaScript Debug.portadaHistoria.jsp" />
-      <item itemvalue="JavaScript Debug.reproductorHistoria.jsp" />
-      <item itemvalue="JavaScript Debug.solicitudReestablecerContra.jsp" />
+      <item itemvalue="JavaScript Debug.agregarPortada.jsp" />
+      <item itemvalue="JavaScript Debug.agregarUsuario.jsp" />
+      <item itemvalue="JavaScript Debug.error.jsp" />
+      <item itemvalue="JavaScript Debug.login.jsp" />
       <item itemvalue="JavaScript Debug.welcome.jsp" />
       <item itemvalue="Tomcat Server.Tomcat 10.1.11" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.login.jsp" />
+        <item itemvalue="JavaScript Debug.agregarUsuario.jsp" />
+        <item itemvalue="JavaScript Debug.agregarPortada.jsp" />
+        <item itemvalue="JavaScript Debug.error.jsp" />
         <item itemvalue="JavaScript Debug.welcome.jsp" />
-        <item itemvalue="JavaScript Debug.solicitudReestablecerContra.jsp" />
-        <item itemvalue="JavaScript Debug.reproductorHistoria.jsp" />
-        <item itemvalue="JavaScript Debug.ReestablecerContra.jsp" />
-        <item itemvalue="JavaScript Debug.portadaHistoria.jsp" />
       </list>
     </recent_temporary>
   </component>
@@ -210,8 +217,7 @@
       <workItem from="1720295430936" duration="15000" />
       <workItem from="1720296224880" duration="17000" />
       <workItem from="1721347195853" duration="9806000" />
-      <workItem from="1721420834399" duration="6572000" />
-      <workItem from="1721443501018" duration="443000" />
+      <workItem from="1721420834399" duration="6475000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />
