@@ -6,6 +6,8 @@ public class Historia {
     private int id;
     private String titulo;
     private int autorId;
+    private String multimedia;
+    private String descripcion;
     private Timestamp fechaCreacion;
 
     // Getters y Setters
@@ -32,6 +34,14 @@ public class Historia {
     public void setAutorId(int autorId) {
         this.autorId = autorId;
     }
+
+    public String getMultimedia() {return multimedia;}
+
+    public void setMultimedia(String multimedia) {this.multimedia = multimedia;}
+
+    public String getDescripcion() {return descripcion;}
+
+    public void setDescripcion(String descripcion) {this.descripcion = descripcion;}
 
     public Timestamp getFechaCreacion() {
         return fechaCreacion;

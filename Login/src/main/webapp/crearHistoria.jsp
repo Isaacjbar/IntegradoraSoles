@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="jbar.login.model.Usuario" %>
 <%@ page session="true" %>
-<%@ page import="jbar.login.dao.HistoriaDao" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,32 +60,23 @@
 
 <h1 class="title-1 fs-3">Crear portada</h1>
 <main>
-<div class="container">
-    <form action="AgregarPortadaServlet" method="post" onsubmit="return validateForm()">
-        <input type="hidden" name="historiaId" value="<%= request.getParameter("historiaId") %>">
-        <div class="mb-3">
-            <label for="titulo" class="form-label">Título</label>
-            <input type="text" class="form-control" id="titulo" name="titulo" required>
-        </div>
-        <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripción</label>
-            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
-        </div>
-        <div class="mb-3">
-            <label for="imagen" class="form-label">URL de Imagen</label>
-            <input type="text" class="form-control" id="imagen" name="imagen">
-        </div>
-        <div class="mb-3">
-            <label for="audio" class="form-label">URL de Audio</label>
-            <input type="text" class="form-control" id="audio" name="audio">
-        </div>
-        <div class="mb-3">
-            <label for="video" class="form-label">URL de Video</label>
-            <input type="text" class="form-control" id="video" name="video">
-        </div>
-        <button type="submit" class="btn btn-primary">Subir</button>
-    </form>
-</div>
+    <div class="container">
+        <form action="CrearHistoriaServlet" method="post" onsubmit="return validateForm()">
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" class="form-control" id="titulo" name="titulo" required>
+            </div>
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="multimedia" class="form-label">URL de Imagen</label>
+                <input type="text" class="form-control" id="multimedia" name="multimedia">
+            </div>
+            <button type="submit" class="btn btn-primary">Subir</button>
+        </form>
+    </div>
 </main>
 <footer class="d-flex flex-wrap justify-content-center align-items-center mt-4 border-top">
     <p class="col-md-4 mb-0 text-body-secondary d-flex justify-content-center">&copy; 2024 Histority SA</p>

@@ -1,9 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="jbar.login.model.Usuario" %>
 <%@ page import="jbar.login.model.Historia" %>
-<%@ page import="jbar.login.model.Portada" %>
 <%@ page import="jbar.login.dao.HistoriaDao" %>
-<%@ page import="jbar.login.dao.PortadaDao" %>
 <%@ page import="java.util.List" %>
 <%@ page session="true" %>
 <!DOCTYPE html>
@@ -15,7 +13,7 @@
     <link rel="stylesheet" href="css/stylesIndex.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="icon" href="img/Logo1.png">
-    <title>Gestionar Historias</title>
+    <title>Gestión de Historias</title>
     <style>
         .card:hover {
             cursor: pointer;
@@ -60,13 +58,12 @@
 <h1 class="title-1 fs-3">Gestión de Historias</h1>
 
 <div class="container mostRecent flex-column d-flex justify-content-center align-items-center">
-    <form action="CrearHistoriaServlet" method="post">
+    <form action="crearHistoria.jsp">
         <button id="createHistoryButton" class="btn btn-success btn-positive">
             Crear nueva historia
         </button>
     </form>
 </div>
-
 
 <hr class="my-4">
 
@@ -88,43 +85,32 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
                 <%
-                    PortadaDao portadaDao = new PortadaDao();
                     HistoriaDao historiaDao = new HistoriaDao();
-                    List<Portada> portadas = portadaDao.getAllPortadasByUsuarioId(usuario.getId());
+                    List<Historia> historias = historiaDao.getAllHistoriasByUsuarioId(usuario.getId());
 
-                    for (Portada portada : portadas) {
-                        Historia historia = historiaDao.getHistoriaById(portada.getHistoriaId());
-                        String multimediaType = "none";
-                        String videoUrl = portada.getVideo();
-                        String videoEmbedUrl = videoUrl;
-                        if (videoUrl != null && !videoUrl.isEmpty()) {
-                            multimediaType = "video";
-                        } else if ((portada.getAudio() != null && !portada.getAudio().isEmpty()) || (portada.getImagen() != null && !portada.getImagen().isEmpty())) {
-                            multimediaType = "audio_imagen";
-                        }
+                    for (Historia historia : historias) {
+                        String multimedia = historia.getMultimedia();
                 %>
                 <div class="col">
-                    <div class="card shadow-sm card-normal" onclick="window.open('historia?id_por=<%= portada.getId() %>', '_blank')">
+                    <div class="card shadow-sm card-normal" onclick="window.open('historia?id_his=<%= historia.getId() %>', '_blank')">
                         <div class="embed-responsive mb-3 mx-auto">
-                            <% if ("video".equals(multimediaType) && !videoEmbedUrl.isEmpty()) { %>
-                            <iframe class="embed-responsive-item" src="<%= videoEmbedUrl %>" allowfullscreen></iframe>
-                            <% } else if ("audio_imagen".equals(multimediaType)) { %>
-                            <% if (portada.getImagen() != null && !portada.getImagen().isEmpty()) { %>
-                            <img src="<%= portada.getImagen() %>" class="embed-responsive-item" alt="Portada Imagen">
-                            <% } %>
-                            <% if (portada.getAudio() != null && !portada.getAudio().isEmpty()) { %>
+                            <% if (multimedia != null && !multimedia.isEmpty()) {
+                                if (multimedia.endsWith(".mp4") || multimedia.contains("youtube")) { %>
+                            <iframe class="embed-responsive-item" src="<%= multimedia %>" allowfullscreen></iframe>
+                            <% } else if (multimedia.endsWith(".mp3")) { %>
                             <audio controls>
-                                <source src="<%= portada.getAudio() %>" type="audio/mpeg">
+                                <source src="<%= multimedia %>" type="audio/mpeg">
                                 Tu navegador no soporta la reproducción de audio.
                             </audio>
-                            <% } %>
-                            <% } else { %>
+                            <% } else if (multimedia.endsWith(".jpg") || multimedia.endsWith(".png") || multimedia.endsWith(".gif")) { %>
+                            <img src="<%= multimedia %>" class="embed-responsive-item" alt="Multimedia Imagen">
+                            <% } } else { %>
                             <img src="img/4.png" class="embed-responsive-item" alt="No hay recursos multimedia">
                             <% } %>
                         </div>
                         <div class="card-body">
-                            <h5 class="card_title"><%= portada.getTitulo() %></h5>
-                            <p class="card-text"><%= portada.getDescripcion() %></p>
+                            <h5 class="card_title"><%= historia.getTitulo() %></h5>
+                            <p class="card-text"><%= historia.getDescripcion() %></p>
                             <div class="d-flex justify-content-between flex-column text-center flex-lg-row align-items-center">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary btn-editar">Editar</button>
@@ -146,9 +132,5 @@
 </footer>
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.js"></script>
-<%--pie de pagina cambio--%>
-<footer class="d-flex flex-wrap justify-content-center align-items-center mt-4 border-top">
-    <p class="col-md-4 mb-0 text-body-secondary d-flex justify-content-center">&copy; 2024 Histority SA</p>
-</footer>
 </body>
 </html>

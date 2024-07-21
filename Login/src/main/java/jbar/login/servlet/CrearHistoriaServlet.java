@@ -25,16 +25,22 @@ public class CrearHistoriaServlet extends HttpServlet {
             return;
         }
 
+        String titulo = request.getParameter("titulo");
+        String descripcion = request.getParameter("descripcion");
+        String multimedia = request.getParameter("multimedia");
+
         Historia historia = new Historia();
+        historia.setTitulo(titulo);
         historia.setAutorId(usuario.getId());
+        historia.setDescripcion(descripcion);
+        historia.setMultimedia(multimedia);
         historia.setFechaCreacion(Timestamp.from(Instant.now()));
 
         HistoriaDao historiaDao = new HistoriaDao();
         boolean isInserted = historiaDao.insertHistoria(historia);
 
         if (isInserted) {
-            int historiaId = historiaDao.getLastHistoriaId();
-            response.sendRedirect("agregarPortada.jsp?historiaId=" + historiaId);
+            response.sendRedirect("gestionHistoria.jsp");
         } else {
             request.setAttribute("error", "Hubo un problema al crear la historia.");
             request.getRequestDispatcher("error.jsp").forward(request, response);

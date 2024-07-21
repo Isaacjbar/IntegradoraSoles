@@ -3,24 +3,23 @@ package jbar.login.dao;
 import jbar.login.database.DatabaseConnection;
 import jbar.login.model.Historia;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HistoriaDao {
 
     public boolean insertHistoria(Historia historia) {
-        String sql = "INSERT INTO historia (titulo, autor_id, fecha_creacion) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO historia (titulo, autor_id, multimedia, descripcion, fecha_creacion) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setString(1,"");
+            statement.setString(1, historia.getTitulo());
             statement.setInt(2, historia.getAutorId());
-            statement.setTimestamp(3, historia.getFechaCreacion());
+            statement.setString(3, historia.getMultimedia());
+            statement.setString(4, historia.getDescripcion());
+            statement.setTimestamp(5, historia.getFechaCreacion());
 
             int rowsInserted = statement.executeUpdate();
             return rowsInserted > 0;
@@ -47,6 +46,8 @@ public class HistoriaDao {
                 historia.setId(resultSet.getInt("id"));
                 historia.setTitulo(resultSet.getString("titulo"));
                 historia.setAutorId(resultSet.getInt("autor_id"));
+                historia.setMultimedia(resultSet.getString("multimedia"));
+                historia.setDescripcion(resultSet.getString("descripcion"));
                 historia.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
             }
 
@@ -70,6 +71,8 @@ public class HistoriaDao {
                 historia.setId(resultSet.getInt("id"));
                 historia.setTitulo(resultSet.getString("titulo"));
                 historia.setAutorId(resultSet.getInt("autor_id"));
+                historia.setMultimedia(resultSet.getString("multimedia"));
+                historia.setDescripcion(resultSet.getString("descripcion"));
                 historia.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
                 historias.add(historia);
             }
@@ -82,15 +85,17 @@ public class HistoriaDao {
     }
 
     public boolean updateHistoria(Historia historia) {
-        String sql = "UPDATE historia SET titulo = ?, autor_id = ?, fecha_creacion = ? WHERE id = ?";
+        String sql = "UPDATE historia SET titulo = ?, autor_id = ?, multimedia = ?, descripcion = ?, fecha_creacion = ? WHERE id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setString(1, historia.getTitulo());
             statement.setInt(2, historia.getAutorId());
-            statement.setTimestamp(3, historia.getFechaCreacion());
-            statement.setInt(4, historia.getId());
+            statement.setString(3, historia.getMultimedia());
+            statement.setString(4, historia.getDescripcion());
+            statement.setTimestamp(5, historia.getFechaCreacion());
+            statement.setInt(6, historia.getId());
 
             int rowsUpdated = statement.executeUpdate();
             return rowsUpdated > 0;
@@ -136,5 +141,31 @@ public class HistoriaDao {
 
         return lastId;
     }
+    public List<Historia> getAllHistoriasByUsuarioId(int usuarioId) {
+        List<Historia> historias = new ArrayList<>();
+        String sql = "SELECT * FROM historia WHERE autor_id = ?";
 
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, usuarioId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Historia historia = new Historia();
+                historia.setId(resultSet.getInt("id"));
+                historia.setTitulo(resultSet.getString("titulo"));
+                historia.setAutorId(resultSet.getInt("autor_id"));
+                historia.setMultimedia(resultSet.getString("multimedia"));
+                historia.setDescripcion(resultSet.getString("descripcion"));
+                historia.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
+                historias.add(historia);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return historias;
+    }
 }

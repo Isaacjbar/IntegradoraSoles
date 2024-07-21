@@ -17,6 +17,8 @@ CREATE TABLE IF NOT EXISTS historia (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     autor_id INT NOT NULL,
+	multimedia VARCHAR(1000),
+    descripcion VARCHAR(1000),
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (autor_id) REFERENCES usuario(id)
 );
@@ -53,47 +55,20 @@ CREATE TABLE IF NOT EXISTS estado_publicacion (
     FOREIGN KEY (historia_id) REFERENCES historia(id)
 );
 
-CREATE TABLE IF NOT EXISTS portada (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    historia_id INT NOT NULL,
-    titulo VARCHAR(60) NOT NULL,
-    video VARCHAR(1000),
-    audio VARCHAR(1000),
-    imagen VARCHAR(1000),
-    descripcion VARCHAR(1000),
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (historia_id) REFERENCES historia(id)
-);
-
 -- INSERSIONES --
 USE historiaInteractiva;
 
 -- Insertar datos en la tabla usuario
 INSERT INTO usuario (nombre, apellido, correo_electronico, contrasena, estado, codigo) VALUES
-('Isaac', 'Jimenez', '20233tn182@utez.edu.mx', SHA2('pedropedro', 256), 1, 'codigo1'),
-('María', 'Gómez', 'maria.gomez@example.com', SHA2('password2', 256), 1, 'codigo2'),
-('Carlos', 'López', 'carlos.lopez@example.com', SHA2('password3', 256), 1, 'codigo3'),
-('Ana', 'Martínez', 'ana.martinez@example.com', SHA2('password4', 256), 1, 'codigo4'),
-('Luis', 'García', 'luis.gusuarioarcia@example.com', SHA2('password5', 256), 1, 'codigo5'),
-('Elena', 'Rodríguez', 'elena.rodriguez@example.com', SHA2('password6', 256), 1, 'codigo6'),
-('Pedro', 'Fernández', 'pedro.fernandez@example.com', SHA2('password7', 256), 1, 'codigo7'),
-('Sofía', 'Torres', 'sofia.torres@example.com', SHA2('password8', 256), 1, 'codigo8'),
-('Jorge', 'Sánchez', 'jorge.sanchez@example.com', SHA2('password9', 256), 1, 'codigo9'),
-('Marta', 'Ramírez', 'marta.ramirez@example.com', SHA2('password10', 256), 1, 'codigo10'),
-('Alberto', 'Flores', 'alberto.flores@example.com', SHA2('password11', 256), 1, 'codigo11'),
-('Lucía', 'Hernández', 'lucia.hernandez@example.com', SHA2('password12', 256), 1, 'codigo12'),
-('David', 'Jiménez', 'david.jimenez@example.com', SHA2('password13', 256), 1, 'codigo13'),
-('Paula', 'Díaz', 'paula.diaz@example.com', SHA2('password14', 256), 1, 'codigo14'),
-('Manuel', 'Vargas', 'manuel.vargas@example.com', SHA2('password15', 256), 1, 'codigo15');
+('Isaac', 'Jimenez', '20233tn182@utez.edu.mxusuario', SHA2('pedropedro', 256), 1, 'codigo1'),
+('María', 'Gómez', 'maria.gomez@example.com', SHA2('password2', 256), 1, 'codigo2');
 
--- Historia
-INSERT INTO historia (titulo, autor_id, fecha_creacion) VALUES ('Los Casi Algo', 1, CURRENT_TIMESTAMP);
-
--- Portada
-INSERT INTO portada (historia_id, titulo, descripcion, fecha_creacion) 
-VALUES (1,'Los casi algo','No se, no tengo internet, ayuda please',CURRENT_TIMESTAMP);
-UPDATE portada SET imagen = null WHERE id = 1;
-UPDATE portada SET video = "https://www.youtube.com/embed/bo9Z_pgByQY?si=j4iJqNIP-nvtmqR0" WHERE id = 1;
+-- Historias (Ya con datos de portada)
+INSERT INTO historia (titulo, autor_id, multimedia, descripcion) 
+VALUES ('Los Casi Algo', 1, 'https://www.youtube.com/embed/bo9Z_pgByQY?si=j4iJqNIP-nvtmqR0', 'No eres tu, soy yo'),
+('El Bosque Embrujado', 1, 'https://www.youtube.com/embed/bo9Z_pgByQY', 'Una historia de terror en un bosque oscuro.'),
+('El Misterio del Detective', 1,'https://c0.klipartz.com/pngpicture/375/580/gratis-png-emoji-emoticono-de-tristeza-emoticon-adios.png','Un asesinato por resolver.'),
+('El Naufragio', 1, 'https://st2.depositphotos.com/3418487/7119/i/450/depositphotos_71199187-stock-photo-shipwrecks.jpg','Una tragedia en alta mar.');
 
 -- Escena 1
 INSERT INTO escena (historia_id, titulo, descripcion, es_final, fecha_creacion)
@@ -317,24 +292,6 @@ INSERT INTO decision (escena_id, descripcion, escena_destino_id, fecha_creacion)
 -- Escena 24 Decisiones
 INSERT INTO decision (escena_id, descripcion, escena_destino_id, fecha_creacion) VALUES (24, 'Aplicar lo aprendido', 25, CURRENT_TIMESTAMP);
 INSERT INTO decision (escena_id, descripcion, escena_destino_id, fecha_creacion) VALUES (24, 'Ayudar a otros', 35, CURRENT_TIMESTAMP);
-
--- MAS HISTORIAS
-INSERT INTO historia (titulo, autor_id) VALUES
-('El Bosque Embrujado', 1),
-('El Misterio del Detective', 1),
-('El Naufragio', 1);
--- PORTADAS
-INSERT INTO portada (historia_id, titulo, video, audio, imagen, descripcion) VALUES
-((SELECT id FROM historia WHERE titulo='El Bosque Embrujado'), 'El Bosque Embrujado', 'https://www.youtube.com/embed/bo9Z_pgByQY', '', 'img/forest.jpg', 'Una historia de terror en un bosque oscuro.'),
-((SELECT id FROM historia WHERE titulo='El Misterio del Detective'), 'El Misterio del Detective', '', '', 'img/detective.jpg', 'Un asesinato por resolver.'),
-((SELECT id FROM historia WHERE titulo='El Naufragio'), 'El Naufragio', '', 'audio/naufragio.mp3', 'img/shipwreck.jpg', 'Una tragedia en alta mar.');
--- Actualizacion de portadas
-UPDATE portada SET video = 'https://www.youtube.com/embed/Sz7eZAKJ4PU?si=WO9-nuG68wS2RNTk' where id = 2;
-UPDATE portada SET imagen = 'https://w7.pngwing.com/pngs/787/919/png-transparent-private-investigator-detective-mystery-shopping-service-computer-forensics-mysteries-miscellaneous-hat-black.png' where id = 3;
-UPDATE portada SET imagen = 'https://static.vecteezy.com/system/resources/previews/029/846/726/non_2x/eerie-shipwreck-resting-on-the-ocean-floor-surrounded-by-marine-life-free-photo.jpg' where id = 4;
-
-UPDATE portada SET imagen = 'https://pbs.twimg.com/media/F_SBgKqWMAA35nP.jpg' where id = 1;
-UPDATE portada SET descripcion = '¿Fue tu culpa?' where id = 1;
 
 -- EL BOSQUE EMBRUJADO
 -- Escenas
