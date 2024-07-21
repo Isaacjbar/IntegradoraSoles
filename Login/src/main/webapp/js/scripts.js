@@ -3,6 +3,43 @@ function init() {
 
     var currentNode;  // Variable para guardar el nodo actual
 
+
+    //Apartado para cambiar dinamicamente los inputs del form desplegable
+    const $selector = document.getElementById("tipo-multimedia");
+    const $hidden1 = document.getElementById("inputHidden1");
+    const $hidden2 = document.getElementById("inputHidden2");
+    const $labelHidden1 = document.getElementById("labelHidden1");
+    const $labelHidden2 = document.getElementById("labelHidden2");
+    $selector.addEventListener("change",(e)=>{
+        let tipoMultimedia = e.target.value;
+        $labelHidden1.innerText="";
+        $hidden1.type = "hidden";
+        $labelHidden2.innerText="";
+        $hidden2.type = "hidden";
+        if(tipoMultimedia == "Imagen"){
+            $labelHidden1.innerText="Sube tu imagen";
+            $hidden1.type = "file";
+            $hidden1.accept = "image/*";
+        }else if (tipoMultimedia == "Imagen y audio"){
+            $labelHidden1.innerText="Sube tu imagen";
+            $hidden1.type = "file";
+            $hidden1.accept = "image/*";
+            $labelHidden2.innerText="Sube tu audio";
+            $hidden2.type = "file";
+            $hidden2.accept = "audio/*";
+        }else if (tipoMultimedia == "Video"){
+            $labelHidden1.innerText="Sube tu video";
+            $hidden1.type = "text";
+            $hidden1.placeholder = "Ingresa la url del video";
+        }else if (tipoMultimedia == "Audio"){
+            $labelHidden1.innerText="Sube tu audio";
+            $hidden1.type = "file";
+            $hidden1.accept = "audio/*";
+        }
+    });
+    //_________________________________________________________________________
+
+
     // función para añadir dos nodos hijos
     function addChildNodes(e, obj) {
         var node = obj.part.adornedPart;  // el nodo al que se le hace clic

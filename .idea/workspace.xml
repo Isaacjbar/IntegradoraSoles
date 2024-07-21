@@ -10,13 +10,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Correccion de menu" />
+    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Correccion de menu">
+      <change afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/dao/EscenaDaoPrueba.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/model/EscenaPrueba.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/CrearEscenaServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/dao/EscenaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/dao/EscenaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/HistoriaServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/HistoriaServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/gestionHistoria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/gestionHistoria.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/js/scripts.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
@@ -50,18 +73,21 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Tomcat Server.ReestablecerContra.jsp.executor": "Run",
     "Tomcat Server.Tomcat 10.1.11.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "pruebasErick",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Delgado Velazquez/Downloads/integradora soles/IntegradoraSoles",
+    "last_opened_file_path": "C:/ERICK/añadidoRespaldo/INTEGRADORA/Repositorios/IntegradoraActual/IntegradoraSoles",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JavaScript Debug.ReestablecerContra.jsp">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.11">
     <configuration name="ReestablecerContra.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/Login_war_exploded/ReestablecerContra.jsp">
       <method v="2" />
     </configuration>
@@ -70,7 +96,13 @@
     </configuration>
     <configuration name="ReestablecerContra.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 10.1.11" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/ReestablecerContra.jsp" />
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
+        <artifact name="Login:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Login_war" />
+          </settings>
+        </artifact>
         <artifact name="Login:war exploded">
           <settings>
             <option name="CONTEXT_PATH" value="/Login_war_exploded" />
@@ -85,6 +117,54 @@
       <predefined_log_file id="Tomcat Manager" />
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="58125" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
@@ -103,21 +183,23 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
+          <artifact name="Login:war" />
           <artifact name="Login:war exploded" />
         </option>
       </method>
     </configuration>
-    <configuration name="Tomcat 10.1.11" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.11" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="$PROJECT_DIR$/../../../../../Program Files/Java/jdk-21" nameIsGenerated="true">
+    <configuration name="Tomcat 10.1.11" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.11" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="$PROJECT_DIR$/../../../../../../Program Files/Java/jdk-17.0.10" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Login_war/gestionHistoria.jsp" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="Login:war exploded">
-          <settings>
-            <option name="CONTEXT_PATH" value="/Login_war_exploded" />
-          </settings>
-        </artifact>
         <artifact name="Login:war">
           <settings>
             <option name="CONTEXT_PATH" value="/Login_war" />
+          </settings>
+        </artifact>
+        <artifact name="Login:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Login_war_exploded" />
           </settings>
         </artifact>
       </deployment>
@@ -207,17 +289,17 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Tomcat Server.ReestablecerContra.jsp" />
         <item itemvalue="JavaScript Debug.ReestablecerContra.jsp" />
         <item itemvalue="JavaScript Debug.solicitudReestablecerContra.jsp" />
-        <item itemvalue="Tomcat Server.ReestablecerContra.jsp" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
       </set>
     </attachedChunks>
   </component>
@@ -234,6 +316,9 @@
       <workItem from="1720295430936" duration="15000" />
       <workItem from="1720296224880" duration="17000" />
       <workItem from="1721347195853" duration="9393000" />
+      <workItem from="1721420985858" duration="22017000" />
+      <workItem from="1721496823938" duration="3710000" />
+      <workItem from="1721506344921" duration="5784000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />

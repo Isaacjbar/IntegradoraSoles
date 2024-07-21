@@ -11,10 +11,16 @@ import jbar.login.model.Portada;
 
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+
+import java.io.File;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 @WebServlet("/historia")
 public class HistoriaServlet extends HttpServlet {
@@ -99,7 +105,6 @@ public class HistoriaServlet extends HttpServlet {
             request.getRequestDispatcher("/reproductorHistoria.jsp").forward(request, response);
         }
     }
-
     private String getMultimediaType(Object obj) {
         String videoUrl = (obj instanceof Portada) ? ((Portada) obj).getVideo() : ((Escena) obj).getVideo();
         if (videoUrl != null && !videoUrl.isEmpty()) {
