@@ -22,9 +22,9 @@
     <div id="myFormDiv">
         <form id="agregarUsuarioForm" class="d-flex flex-column p-4">
             <h1 class="title-1 fs-5">Modificar Escena</h1>
-            <label for="nombreUsuario">Nombre </label>
+            <label for="nodeName">Nombre </label>
             <input class="form-control" type="text" name="nombreUsuario" id="nodeName" placeholder="Nombre">
-            <label for="descripcionNodo">Descripción</label>
+            <label for="nodeDesc">Descripción</label>
             <textarea class="form-control" name="descripcionNodo" id="nodeDesc" placeholder="Descripción"></textarea>
             <div class="d-flex justify-content-between mt-3">
                 <button type="button" class="btn btn-primary" onclick="saveForm()">Guardar</button>
