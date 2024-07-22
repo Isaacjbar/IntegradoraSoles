@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/gestionUsuarios.css">
     <link rel="icon" href="img/Logo1.png">
     <title>Gestión de usuarios</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body id="body">
@@ -96,7 +97,50 @@
 </footer>
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.js"></script>
-<script src="js/gestionUsuarios.js"></script>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const success = urlParams.get('success');
+    const error = urlParams.get('error');
+
+    if (success) {
+        let message = '';
+        let imgUrl = '';
+        if (success === 'activate') {
+            message = 'Usuario activado exitosamente';
+            imgUrl = "img/activar.png";
+        } else if (success === 'deactivate') {
+            message = 'Usuario desactivado exitosamente';
+            imgUrl = "img/desactivar.png";
+        }
+        Swal.fire({
+            title: message,
+            imageUrl: imgUrl,
+            imageWidth: "150px",
+            confirmButtonText: "Aceptar",
+            timer: 5000,
+            confirmButtonColor: "#078D73"
+        });
+    } else if (error) {
+        let message = '';
+        if (error === 'activate') {
+            message = 'Error al activar el usuario. Inténtelo de nuevo.';
+        } else if (error === 'deactivate') {
+            message = 'Error al desactivar el usuario. Inténtelo de nuevo.';
+        } else if (error === 'notfound') {
+            message = 'Usuario no encontrado.';
+        } else if (error === 'noid') {
+            message = 'ID de usuario no proporcionado.';
+        }
+        Swal.fire({
+            title: "Error",
+            text: message,
+            icon: "error",
+            confirmButtonText: "Aceptar",
+            timer: 5000,
+            confirmButtonColor: "#ff0000"
+        });
+    }
+</script>
 </body>
 
 </html>
