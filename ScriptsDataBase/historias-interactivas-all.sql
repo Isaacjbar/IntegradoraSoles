@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS usuario (
     contrasena VARCHAR(255) NOT NULL,
     estado BOOLEAN NOT NULL,
     codigo VARCHAR(100),
+    categoria varchar(100),
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -59,9 +60,9 @@ CREATE TABLE IF NOT EXISTS estado_publicacion (
 USE historiaInteractiva;
 
 -- Insertar datos en la tabla usuario
-INSERT INTO usuario (nombre, apellido, correo_electronico, contrasena, estado, codigo) VALUES
-('Isaac', 'Jimenez', '20233tn182@utez.edu.mxusuario', SHA2('pedropedro', 256), 1, 'codigo1'),
-('María', 'Gómez', 'maria.gomez@example.com', SHA2('password2', 256), 1, 'codigo2');
+INSERT INTO usuario (nombre, apellido, correo_electronico, contrasena, estado, codigo, categoria) VALUES
+('Isaac', 'Jimenez', '20233tn182@utez.edu.mx', SHA2('pedropedro', 256), 1, 'codigo1','administrador'),
+('María', 'Gómez', 'maria.gomez@example.com', SHA2('password2', 256), 1, 'codigo2','editor');
 
 -- Historias (Ya con datos de portada)
 INSERT INTO historia (titulo, autor_id, multimedia, descripcion) 
