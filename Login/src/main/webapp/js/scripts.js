@@ -38,6 +38,7 @@ function init() {
 
     // función para guardar los datos del formulario
     function saveForm() {
+        document.getElementById('agregarUsuarioForm').submit();
         var nodeName = document.getElementById('nodeName').value;
         var nodeDesc = document.getElementById('nodeDesc').value;
         var diagram = currentNode.diagram;
@@ -155,12 +156,28 @@ function init() {
             }
         );
 
-    // define un modelo de árbol simple
-    var model = $(go.TreeModel);
-    model.nodeDataArray = [
-        { key: "1", name: "A", description: "Proyecto integrador" }
-    ];
-    myDiagram.model = model;
+    myDiagram.linkTemplate =
+        $(go.Link,
+            $(go.Shape),
+            $(go.Shape, { toArrow: "Standard" }),
+            $(go.TextBlock,
+                { segmentOffset: new go.Point(0, -10), font: "12px Arial", stroke: "black" },
+                new go.Binding("text", "text"))
+        );
+
+    // Cargar los datos del servidor
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "gestionEscenaServlet?accion=cargarEscenas&historiaId=" + historiaId, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            var nodeDataArray = response.nodeDataArray;
+            var linkDataArray = response.linkDataArray;
+            var model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+            myDiagram.model = model;
+        }
+    };
+    xhr.send();
 
     // Exponer las funciones saveForm y cancelForm globalmente
     window.saveForm = saveForm;

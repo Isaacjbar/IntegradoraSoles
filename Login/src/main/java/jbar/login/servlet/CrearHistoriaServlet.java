@@ -40,7 +40,8 @@ public class CrearHistoriaServlet extends HttpServlet {
         boolean isInserted = historiaDao.insertHistoria(historia);
 
         if (isInserted) {
-            response.sendRedirect("gestionHistoria.jsp");
+            int historiaId = historiaDao.getLastHistoriaId();
+            response.sendRedirect("gestionHistoria.jsp?id=" + historiaId);
         } else {
             request.setAttribute("error", "Hubo un problema al crear la historia.");
             request.getRequestDispatcher("error.jsp").forward(request, response);

@@ -173,4 +173,79 @@ public class EscenaDao {
 
         return escena;
     }
+
+    public boolean updateEscenaSinM(Escena escena) {
+        String sql = "UPDATE escena SET historia_id = ?, titulo = ?, " +
+                "descripcion = ?, es_final = ?, texto_final = ?, fecha_creacion = ? WHERE id = ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, escena.getHistoriaId());
+            statement.setString(2, escena.getTitulo());
+            statement.setString(6, escena.getDescripcion());
+            statement.setBoolean(7, escena.isEsFinal());
+            statement.setString(8, escena.getTextoFinal());
+            statement.setTimestamp(9, escena.getFechaCreacion());
+            statement.setInt(10, escena.getId());
+
+            int rowsUpdated = statement.executeUpdate();
+            return rowsUpdated > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean insertEscenaSinM(Escena escena) {
+        String sql = "INSERT INTO escena (historia_id, titulo, descripcion, es_final, texto_final, fecha_creacion) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, escena.getHistoriaId());
+            statement.setString(2, escena.getTitulo());
+            statement.setString(3, escena.getDescripcion());
+            statement.setBoolean(4, escena.isEsFinal());
+            statement.setString(5, escena.getTextoFinal());
+            statement.setTimestamp(6, escena.getFechaCreacion());
+
+            int rowsInserted = statement.executeUpdate();
+            return rowsInserted > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public List<Escena> getEscenasByHistoriaId(int historiaId) {
+        List<Escena> escenas = new ArrayList<>();
+        String sql = "SELECT * FROM escena WHERE historia_id = ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, historiaId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Escena escena = new Escena();
+                escena.setId(resultSet.getInt("id"));
+                escena.setHistoriaId(resultSet.getInt("historia_id"));
+                escena.setTitulo(resultSet.getString("titulo"));
+                escena.setDescripcion(resultSet.getString("descripcion"));
+                escena.setEsFinal(resultSet.getBoolean("es_final"));
+                escena.setTextoFinal(resultSet.getString("texto_final"));
+                escena.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
+                escenas.add(escena);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return escenas;
+    }
 }

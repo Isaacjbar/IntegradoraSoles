@@ -79,3 +79,9 @@ body {
     background-color: #5a6268;
     border-color: #5a6268;
 }
+.decision-text {
+    color: black;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+}
+
