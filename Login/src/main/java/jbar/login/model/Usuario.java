@@ -10,6 +10,7 @@ public class Usuario {
     private String contrasena;
     private boolean estado;
     private String codigo;
+    private String categoria;
     private Timestamp fechaRegistro;
     private Timestamp fechaCreacion;
 
@@ -69,6 +70,9 @@ public class Usuario {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
+
+    public String getCategoria() { return categoria;}
+    public void setCategoria(String categoria) { this.categoria = categoria;}
 
     public Timestamp getFechaRegistro() {
         return fechaRegistro;

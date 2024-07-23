@@ -21,6 +21,7 @@ public class RegistroUsuarioServlet extends HttpServlet {
         String correo = request.getParameter("correoUsuario");
         String contrasena = request.getParameter("contraUsuario");
         String contrasenaRepetida = request.getParameter("contraRepetida");
+        String categoria = request.getParameter("categoriaUsuario");
 
         // Validar que las contraseñas coinciden
         if (!contrasena.equals(contrasenaRepetida)) {
@@ -44,7 +45,9 @@ public class RegistroUsuarioServlet extends HttpServlet {
         usuario.setCorreoElectronico(correo);
         usuario.setContrasena(contrasena);
         usuario.setEstado(true);
+        usuario.setCategoria(categoria);
         usuario.setFechaRegistro(new Timestamp(System.currentTimeMillis()));
+        usuario.setFechaCreacion(new Timestamp(System.currentTimeMillis()));
 
         // Insertar el usuario en la base de datos
         boolean isRegistered = usuarioDao.insertUsuario(usuario);

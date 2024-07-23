@@ -34,6 +34,7 @@ public class UsuarioDao {
                 usuario.setContrasena(resultSet.getString("contrasena"));
                 usuario.setEstado(resultSet.getBoolean("estado"));
                 usuario.setCodigo(resultSet.getString("codigo"));
+                usuario.setCategoria(resultSet.getString("categoria"));
                 usuario.setFechaRegistro(resultSet.getTimestamp("fecha_registro"));
                 usuario.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
             }
@@ -46,8 +47,8 @@ public class UsuarioDao {
     }
 
     public boolean insertUsuario(Usuario usuario) {
-        String sql = "INSERT INTO usuario (nombre, apellido, correo_electronico, contrasena, estado, codigo, fecha_registro, fecha_creacion) " +
-                "VALUES (?, ?, ?, SHA2(?, 256), ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuario (nombre, apellido, correo_electronico, contrasena, estado, codigo, categoria, fecha_registro, fecha_creacion) " +
+                "VALUES (?, ?, ?, SHA2(?, 256), ?, ?, ?, ?, ?)";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -58,8 +59,9 @@ public class UsuarioDao {
             statement.setString(4, usuario.getContrasena());
             statement.setBoolean(5, usuario.isEstado());
             statement.setString(6, usuario.getCodigo());
-            statement.setTimestamp(7, usuario.getFechaRegistro());
-            statement.setTimestamp(8, usuario.getFechaCreacion());
+            statement.setString(7, usuario.getCategoria());
+            statement.setTimestamp(8, usuario.getFechaRegistro());
+            statement.setTimestamp(9, usuario.getFechaCreacion());
 
             int rowsInserted = statement.executeUpdate();
             return rowsInserted > 0;
@@ -90,6 +92,7 @@ public class UsuarioDao {
                 usuario.setContrasena(resultSet.getString("contrasena"));
                 usuario.setEstado(resultSet.getBoolean("estado"));
                 usuario.setCodigo(resultSet.getString("codigo"));
+                usuario.setCategoria(resultSet.getString("categoria"));
                 usuario.setFechaRegistro(resultSet.getTimestamp("fecha_registro"));
                 usuario.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
             }
@@ -118,6 +121,7 @@ public class UsuarioDao {
                 usuario.setContrasena(resultSet.getString("contrasena"));
                 usuario.setEstado(resultSet.getBoolean("estado"));
                 usuario.setCodigo(resultSet.getString("codigo"));
+                usuario.setCategoria(resultSet.getString("categoria"));
                 usuario.setFechaRegistro(resultSet.getTimestamp("fecha_registro"));
                 usuario.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
                 usuarios.add(usuario);
@@ -131,7 +135,7 @@ public class UsuarioDao {
     }
 
     public boolean updateUsuario(Usuario usuario) {
-        String sql = "UPDATE usuario SET nombre = ?, apellido = ?, correo_electronico = ?, contrasena = SHA2(?, 256), estado = ?, codigo = ?, fecha_creacion = ? WHERE id = ?";
+        String sql = "UPDATE usuario SET nombre = ?, apellido = ?, correo_electronico = ?, contrasena = SHA2(?, 256), estado = ?, codigo = ?, categoria = ?, fecha_creacion = ? WHERE id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -142,8 +146,9 @@ public class UsuarioDao {
             statement.setString(4, usuario.getContrasena());
             statement.setBoolean(5, usuario.isEstado());
             statement.setString(6, usuario.getCodigo());
-            statement.setTimestamp(7, usuario.getFechaCreacion());
-            statement.setInt(8, usuario.getId());
+            statement.setString(7, usuario.getCategoria());
+            statement.setTimestamp(8, usuario.getFechaCreacion());
+            statement.setInt(9, usuario.getId());
 
             int rowsUpdated = statement.executeUpdate();
             return rowsUpdated > 0;
@@ -206,6 +211,7 @@ public class UsuarioDao {
                 usuario.setEstado(rs.getBoolean("estado"));
                 usuario.setFechaRegistro(rs.getTimestamp("fecha_registro"));
                 usuario.setFechaCreacion(rs.getTimestamp("fecha_creacion"));
+                usuario.setCategoria(rs.getString("categoria"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -265,12 +271,13 @@ public class UsuarioDao {
         }
         return flag;
     }
+
     public Usuario getUsuarioByCorreo(String correo) {
         Usuario usuario = null;
         String sql = "SELECT * FROM usuario WHERE correo_electronico = ?";
 
         try (Connection con = DatabaseConnection.getConnection();
-         PreparedStatement stmt = con.prepareStatement(sql)) {
+             PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, correo);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
@@ -281,6 +288,7 @@ public class UsuarioDao {
                     usuario.setCorreoElectronico(rs.getString("correo_electronico"));
                     usuario.setContrasena(rs.getString("contrasena"));
                     usuario.setEstado(rs.getBoolean("estado"));
+                    usuario.setCategoria(rs.getString("categoria"));
                     usuario.setFechaRegistro(rs.getTimestamp("fecha_registro"));
                 }
             }
