@@ -32,6 +32,7 @@
     String errorMessage = (String) request.getAttribute("errorMessage");
     String successMessage = (String) request.getAttribute("successMessage");
     String repeatMessage = (String) request.getAttribute("repeatMessage");
+    String repeatEmailMessage = (String) request.getAttribute("repeatEmailMessage");
 %>
 
 <% if (errorMessage != null) { %>
@@ -58,6 +59,18 @@
     });
 </script>
 <% } %>
+<% if (repeatEmailMessage != null) { %>
+<script>
+    Swal.fire({
+        title: "Correo ya registrado!",
+        text: "<%= repeatEmailMessage %>",
+        icon: "warning",
+        confirmButtonText: "Aceptar",
+        timer: 6000,
+        confirmButtonColor: "#0A7091"
+    });
+</script>
+<% } %>
 
 <% if (successMessage != null) { %>
 <script>
@@ -68,6 +81,8 @@
         confirmButtonText: "Aceptar",
         timer: 6000,
         confirmButtonColor: "#078D73"
+    }).then(function() {
+        window.location.href = "login.jsp";
     });
 </script>
 <% } %>

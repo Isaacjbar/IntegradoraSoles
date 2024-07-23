@@ -11,11 +11,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Alertas en activar y desactivar cuenta (gestion usuarios)">
-      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/img/activar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/img/desactivar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/correoEnviado.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/correoEnviado.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/img/badpass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/img/envio.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/gestionUsuarios.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/gestionUsuarios.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/js/gestionUsuarios.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/dao/UsuarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/dao/UsuarioDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/RecuperacionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/RecuperacionServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/RegistroUsuarioServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/RegistroUsuarioServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/ResetPasswordServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/ResetPasswordServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/ReestablecerContra.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/ReestablecerContra.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/agregarUsuario.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/agregarUsuario.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/solicitudReestablecerContra.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/solicitudReestablecerContra.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +35,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="Jsp File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -59,33 +70,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JavaScript Debug.ReestablecerContra.jsp.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.agregarPortada.jsp.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.agregarUsuario.jsp.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.error.jsp.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.gestionHistoria.jsp.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.gestionUsuarios.jsp.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.login.jsp.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.portadaHistoria.jsp.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.reproductorHistoria.jsp.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.solicitudReestablecerContra.jsp.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.welcome.jsp.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.ReestablecerContra.jsp.executor&quot;: &quot;Run&quot;,
-    &quot;Tomcat Server.Tomcat 10.1.11.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/eeeri/Downloads/trabajarAlertas/IntegradoraSoles/Login/src/main/webapp/img&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.ReestablecerContra.jsp.executor": "Run",
+    "JavaScript Debug.agregarPortada.jsp.executor": "Run",
+    "JavaScript Debug.agregarUsuario.jsp.executor": "Run",
+    "JavaScript Debug.error.jsp.executor": "Run",
+    "JavaScript Debug.gestionHistoria.jsp.executor": "Run",
+    "JavaScript Debug.gestionUsuarios.jsp.executor": "Run",
+    "JavaScript Debug.login.jsp.executor": "Run",
+    "JavaScript Debug.portadaHistoria.jsp.executor": "Run",
+    "JavaScript Debug.reproductorHistoria.jsp.executor": "Run",
+    "JavaScript Debug.solicitudReestablecerContra.jsp.executor": "Run",
+    "JavaScript Debug.welcome.jsp.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Tomcat Server.ReestablecerContra.jsp.executor": "Run",
+    "Tomcat Server.Tomcat 10.1.11.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/eeeri/Downloads/trabajarAlertas/IntegradoraSoles/Login/src/main/webapp/img",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\eeeri\Downloads\trabajarAlertas\IntegradoraSoles\Login\src\main\webapp\img" />
@@ -108,7 +120,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Tomcat 10.1.11" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.11" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="$PROJECT_DIR$/../../../../../Program Files/Java/jdk-17.0.10" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Login_war/gestionUsuarios.jsp" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Login_war/login.jsp" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="Login:war">
@@ -243,7 +255,7 @@
       <workItem from="1721522816896" duration="12726000" />
       <workItem from="1721582066090" duration="1404000" />
       <workItem from="1721593119612" duration="6112000" />
-      <workItem from="1721676568847" duration="810000" />
+      <workItem from="1721676568847" duration="12597000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />
@@ -277,7 +289,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721539242206</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Alertas en activar y desactivar cuenta (gestion usuarios)">
+      <option name="closed" value="true" />
+      <created>1721677902451</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1721677902451</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

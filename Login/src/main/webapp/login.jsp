@@ -21,6 +21,7 @@
             flex: 1;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <!-- Navbar -->
@@ -53,8 +54,22 @@
         </p>
     </form>
     <%
-        if (request.getAttribute("errorMessage") != null) {
-            System.out.println("<div class='alert alert-danger'>" + request.getAttribute("errorMessage") + "</div>");
+        if (session.getAttribute("errorMessage") != null) {
+            String errorMessage = (String) session.getAttribute("errorMessage");
+            session.removeAttribute("errorMessage");
+    %>
+    <script>
+        Swal.fire({
+            title: "Error",
+            text: "<%= errorMessage %>",
+            imageUrl: 'img/badpass.png',
+            imageWidth: "150px",
+            confirmButtonText: "Aceptar",
+            timer: 5000,
+            confirmButtonColor: "#ff0000"
+        });
+    </script>
+    <%
         }
     %>
 </div>

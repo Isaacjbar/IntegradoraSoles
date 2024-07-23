@@ -265,4 +265,30 @@ public class UsuarioDao {
         }
         return flag;
     }
+    public Usuario getUsuarioByCorreo(String correo) {
+        Usuario usuario = null;
+        String sql = "SELECT * FROM usuario WHERE correo_electronico = ?";
+
+        try (Connection con = DatabaseConnection.getConnection();
+         PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, correo);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    usuario = new Usuario();
+                    usuario.setId(rs.getInt("id"));
+                    usuario.setNombre(rs.getString("nombre"));
+                    usuario.setApellido(rs.getString("apellido"));
+                    usuario.setCorreoElectronico(rs.getString("correo_electronico"));
+                    usuario.setContrasena(rs.getString("contrasena"));
+                    usuario.setEstado(rs.getBoolean("estado"));
+                    usuario.setFechaRegistro(rs.getTimestamp("fecha_registro"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return usuario;
+    }
+
 }

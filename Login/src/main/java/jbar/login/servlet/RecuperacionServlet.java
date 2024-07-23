@@ -18,7 +18,7 @@ public class RecuperacionServlet extends HttpServlet {
         String correo = req.getParameter("correo");
         UsuarioDao dao = new UsuarioDao();
         Boolean existe = dao.getOne(correo);
-        if (existe==true) {
+        if (existe) {
             System.out.println("El usuario existe");
             // Sí existe el correo en la BD
             // 2) Generar el código único para el usuario e insertarlo en la BD (Clase)
@@ -35,32 +35,32 @@ public class RecuperacionServlet extends HttpServlet {
                         "<a href='http://localhost:8080/Login_war_exploded/recupera?codigo="
                                 + cody + "'>Restablecer contraseña</a>"
                 );
+                resp.sendRedirect("correoEnviado.jsp");
+                return;
             } catch (Exception e) {
                 e.printStackTrace();
-                req.getSession().setAttribute("mensaje", "Error al enviar el correo");
-                resp.sendRedirect("index.jsp");
+                req.getSession().setAttribute("errorMessage", "Error al enviar el correo.");
+                resp.sendRedirect("solicitudReestablecerContra.jsp");
                 return;
             }
 
         } else {
             // No existe
-            req.getSession().setAttribute("mensaje", "El correo no está registrado");
-            resp.sendRedirect("index.jsp");
+            req.getSession().setAttribute("errorMessage", "El correo ingresado no está registrado.");
+            resp.sendRedirect("solicitudReestablecerContra.jsp");
         }
-
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String codyLink = req.getParameter("codigo");
-        String codyBD ="";
         UsuarioDao dao = new UsuarioDao();
         Boolean codigoExiste = dao.codeExist(codyLink);
         if (codigoExiste) {
-            System.out.println("El codgo existe");
+            System.out.println("El código existe");
             resp.sendRedirect("ReestablecerContra.jsp?cody=" + codyLink);
-        }else {
-            System.out.println("El codgo no existe");
+        } else {
+            System.out.println("El código no existe");
         }
     }
 }

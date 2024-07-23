@@ -7,7 +7,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Timestamp;
 
 @WebServlet("/RegistroUsuarioServlet")
@@ -26,6 +25,14 @@ public class RegistroUsuarioServlet extends HttpServlet {
         // Validar que las contraseñas coinciden
         if (!contrasena.equals(contrasenaRepetida)) {
             request.setAttribute("repeatMessage", "Asegúrate de escribir bien la confirmación de tu contraseña.");
+            request.getRequestDispatcher("agregarUsuario.jsp").forward(request, response);
+            return;
+        }
+
+        // Verificar si el correo ya está registrado
+        Usuario existingUser = usuarioDao.getUsuarioByCorreo(correo);
+        if (existingUser != null) {
+            request.setAttribute("repeatEmailMessage", "El correo ya está registrado. Intenta con otro correo.");
             request.getRequestDispatcher("agregarUsuario.jsp").forward(request, response);
             return;
         }
