@@ -113,12 +113,13 @@
                             <p class="card-text"><%= historia.getDescripcion() %></p>
                             <div class="d-flex justify-content-between flex-column text-center flex-lg-row align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-editar">Editar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-editar" onclick="window.location.href='gestionHistoria.jsp?id_his=<%= historia.getId() %>'">Editar</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary btn-publicar">Publicar</button>
                                 </div>
                                 <small class="text-body-secondary"><span class="ultima-mod">Últm. mod:</span> <%= historia.getFechaCreacion() %></small>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <% } %>

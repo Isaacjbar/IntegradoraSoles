@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import com.google.gson.Gson;
 
 @WebServlet("/gestionEscenaServlet")
 public class gestionEscenaServlet extends HttpServlet {
@@ -65,13 +66,20 @@ public class gestionEscenaServlet extends HttpServlet {
             escena.setFechaCreacion(fechaCreacion);
 
             boolean resultado;
-            if (idParam != null && !idParam.equals("0") && escenaDao.getEscenaById(Integer.parseInt(idParam)) != null) {
-                // Si el ID no es 0 y la escena existe, actualizamos la escena
-                escena.setId(Integer.parseInt(idParam));
-                System.out.println("Actualizando escena: " + idParam);
-                resultado = escenaDao.updateEscenaSinM(escena);
+            if (idParam != null && !idParam.equals("0")) {
+                int id = Integer.parseInt(idParam);
+                escena.setId(id);
+                if (escenaDao.getEscenaById(id) != null) {
+                    // Si el ID no es 0 y la escena existe, actualizamos la escena
+                    System.out.println("Actualizando escena: " + id);
+                    escena.setId(id);
+                    resultado = escenaDao.updateEscenaSinM(escena);
+                } else {
+                    // Si el ID es 0 o la escena no existe, insertamos una nueva escena
+                    System.out.println("Insertando nueva escena");
+                    resultado = escenaDao.insertEscenaSinM(escena);
+                }
             } else {
-                // Si el ID es 0 o la escena no existe, insertamos una nueva escena
                 System.out.println("Insertando nueva escena");
                 resultado = escenaDao.insertEscenaSinM(escena);
             }
@@ -90,10 +98,12 @@ public class gestionEscenaServlet extends HttpServlet {
             response.setContentType("text/html");
             response.getWriter().println("Error al guardar la escena: " + e.getMessage());
         } finally {
-            // Redirigir siempre a gestionHistoria.jsp
-            response.sendRedirect("gestionHistoria.jsp");
+            // Redirigir siempre a la misma historia
+            String historiaIdParam = request.getParameter("historiaId");
+            response.sendRedirect("gestionHistoria.jsp?id_his=" + historiaIdParam);
         }
     }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String accion = request.getParameter("accion");
         if ("cargarEscenas".equals(accion)) {
@@ -131,6 +141,11 @@ public class gestionEscenaServlet extends HttpServlet {
 
             response.setContentType("application/json");
             response.getWriter().write(new Gson().toJson(responseData));
+
+            // Agregar log de los datos enviados al cliente
+            Gson gson = new Gson();
+            System.out.println("cargarEscenas - nodeDataArray: " + gson.toJson(nodeDataArray));
+            System.out.println("cargarEscenas - linkDataArray: " + gson.toJson(linkDataArray));
         }
     }
 }

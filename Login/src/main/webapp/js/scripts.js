@@ -31,22 +31,50 @@ function init() {
     function showForm(e, obj) {
         currentNode = obj.part.adornedPart;  // el nodo al que se le hace clic
         document.getElementById('myOverlay').style.display = 'flex';
+        document.getElementById('key').value = currentNode.data.key; // Establece el ID del nodo
         document.getElementById('nodeName').value = currentNode.data.name;
         document.getElementById('nodeDesc').value = currentNode.data.description || '';
         myDiagram.div.style.pointerEvents = 'none'; // Disable interactions with the diagram
+
+        // Agregar logs de depuración
+        console.log("showForm - currentNode data:", currentNode.data);
+        console.log("showForm - node ID set to:", currentNode.data.key);
     }
 
     // función para guardar los datos del formulario
     function saveForm() {
-        document.getElementById('agregarUsuarioForm').submit();
+        var nodeId = document.getElementById('key').value;
         var nodeName = document.getElementById('nodeName').value;
         var nodeDesc = document.getElementById('nodeDesc').value;
         var diagram = currentNode.diagram;
-        diagram.startTransaction("save form");
-        diagram.model.setDataProperty(currentNode.data, "name", nodeName);
-        diagram.model.setDataProperty(currentNode.data, "description", nodeDesc);
-        diagram.commitTransaction("save form");
-        hideForm();
+
+        // Agregar logs de depuración
+        console.log("saveForm - nodeId:", nodeId);
+        console.log("saveForm - nodeName:", nodeName);
+        console.log("saveForm - nodeDesc:", nodeDesc);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "gestionEscenaServlet", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                diagram.startTransaction("save form");
+                diagram.model.setDataProperty(currentNode.data, "name", nodeName);
+                diagram.model.setDataProperty(currentNode.data, "description", nodeDesc);
+                diagram.commitTransaction("save form");
+                hideForm();
+            }
+        };
+
+        var data = "id=" + encodeURIComponent(nodeId) +
+            "&historiaId=" + encodeURIComponent(historiaId) +
+            "&titulo=" + encodeURIComponent(nodeName) +
+            "&descripcion=" + encodeURIComponent(nodeDesc);
+
+        // Agregar logs de depuración
+        console.log("saveForm - data sent:", data);
+
+        xhr.send(data);
     }
 
     // función para cancelar el formulario
@@ -175,6 +203,11 @@ function init() {
             var linkDataArray = response.linkDataArray;
             var model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
             myDiagram.model = model;
+
+            // Log de los datos cargados
+            console.log("Diagram data loaded:");
+            console.log("Node Data Array:", nodeDataArray);
+            console.log("Link Data Array:", linkDataArray);
         }
     };
     xhr.send();

@@ -25,7 +25,8 @@
     <div id="myFormDiv">
         <form id="agregarUsuarioForm" class="d-flex flex-column p-4" action="gestionEscenaServlet" method="post">
             <h1 class="title-1 fs-5">Modificar Escena</h1>
-            <input type="hidden" id="id" name="id" value="0"> <!-- Valor por defecto de 0 para nuevas escenas -->
+            <label for="key">ID de Escena</label>
+            <input class="form-control" type="text" name="id" id="key" readonly> <!-- Bloqueado y visible -->
             <input type="hidden" id="historiaId" name="historiaId" value="<%= historiaId %>" required>
             <label for="nodeName">Nombre </label>
             <input class="form-control" type="text" name="titulo" id="nodeName" placeholder="Nombre" required>

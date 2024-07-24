@@ -183,11 +183,11 @@ public class EscenaDao {
 
             statement.setInt(1, escena.getHistoriaId());
             statement.setString(2, escena.getTitulo());
-            statement.setString(6, escena.getDescripcion());
-            statement.setBoolean(7, escena.isEsFinal());
-            statement.setString(8, escena.getTextoFinal());
-            statement.setTimestamp(9, escena.getFechaCreacion());
-            statement.setInt(10, escena.getId());
+            statement.setString(3, escena.getDescripcion());
+            statement.setBoolean(4, escena.isEsFinal());
+            statement.setString(5, escena.getTextoFinal());
+            statement.setTimestamp(6, escena.getFechaCreacion());
+            statement.setInt(7, escena.getId());
 
             int rowsUpdated = statement.executeUpdate();
             return rowsUpdated > 0;
