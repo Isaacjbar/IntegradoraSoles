@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="icon" href="img/Logo1.png">
     <title>Gestión de Historias</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         .card:hover {
             cursor: pointer;
@@ -21,6 +22,7 @@
             transition: transform 0.2s ease-in-out;
         }
     </style>
+    <script src="js/welcome.js"></script>
 </head>
 <body>
 <!-- Navbar -->
@@ -92,7 +94,7 @@
                         String multimedia = historia.getMultimedia();
                 %>
                 <div class="col">
-                    <div class="card shadow-sm card-normal" onclick="window.open('historia?id_his=<%= historia.getId() %>', '_blank')">
+                    <div class="card shadow-sm card-normal" data-id="<%= historia.getId() %>">
                         <div class="embed-responsive mb-3 mx-auto">
                             <% if (multimedia != null && !multimedia.isEmpty()) {
                                 if (multimedia.endsWith(".mp4") || multimedia.contains("youtube")) { %>
@@ -114,13 +116,13 @@
                             <div class="d-flex justify-content-between flex-column text-center align-items-center items-card-container">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary btn-editar" onclick="window.location.href='gestionHistoria.jsp?id_his=<%= historia.getId() %>'">Editar</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Copiar enlace</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-copiar" onclick="copiarEnlace('<%= historia.getId() %>')">Copiar enlace</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary btn-publicar">Publicar</button>
                                 </div>
                                 <small class="text-body-secondary"><span class="ultima-mod">Últm. mod:</span> <%= historia.getFechaCreacion() %></small>
+                                <div><strong>Estado: </strong><span>Publicada</span></div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <% } %>

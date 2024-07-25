@@ -11,21 +11,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Alertas en activar y desactivar cuenta (gestion usuarios)">
-      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/templates/footer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/publicacionServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/historiaNoDisponible.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/historiaNoDisponible.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/img/copiar-link.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/img/noencontrada.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/js/welcome.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/ReestablecerContra.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/ReestablecerContra.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/agregarUsuario.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/agregarUsuario.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/correoEnviado.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/correoEnviado.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/crearHistoria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/crearHistoria.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/error.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/error.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/gestionUsuarios.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/gestionUsuarios.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/reproductorHistoria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/reproductorHistoria.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/solicitudReestablecerContra.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/solicitudReestablecerContra.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +29,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="CSS File" />
         <option value="Jsp File" />
+        <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -93,7 +86,7 @@
     "Tomcat Server.Tomcat 10.1.11.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/eeeri/Downloads/Publicar despublicar/IntegradoraSoles",
+    "last_opened_file_path": "C:/Users/eeeri/Downloads/Publicar despublicar/IntegradoraSoles/Login/src/main/webapp/img",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -105,6 +98,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\eeeri\Downloads\Publicar despublicar\IntegradoraSoles\Login\src\main\webapp\img" />
       <recent name="C:\Users\eeeri\Downloads\trabajarAlertas\IntegradoraSoles\Login\src\main\webapp\img" />
     </key>
   </component>
@@ -262,6 +256,7 @@
       <workItem from="1721593119612" duration="6112000" />
       <workItem from="1721676568847" duration="12597000" />
       <workItem from="1721877381977" duration="4911000" />
+      <workItem from="1721935948170" duration="6553000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />

@@ -1,0 +1,47 @@
+.historiaNoDisponible{
+    max-width: 500px;
+    width: 35%;
+    margin: auto;
+    margin-top: 10px;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 5px 7px 14px -1px rgba(133,133,133,0.75);
+    -webkit-box-shadow: 5px 7px 14px -1px rgba(133,133,133,0.75);
+    -moz-box-shadow: 5px 7px 14px -1px rgba(133,133,133,0.75);
+    text-align: justify;
+}
+.historiaNoDisponible h2{
+    text-align: center;
+    margin: 10px auto;
+}
+
+.historiaNoDisponible img{
+    max-width: 150px;
+    display: block;
+    width: 30%;
+    margin-bottom: 1em;
+}
+
+@media screen and (max-width: 1050px) {
+    .historiaNoDisponible{
+        width: 60%;
+    }
+}
+@media screen and (max-width: 500px) {
+    .historiaNoDisponible{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 360px) {
+    .historiaNoDisponible{
+        font-size: 12px;
+        padding: 15px;
+    }
+    .historiaNoDisponible h2{
+        font-size: 15px;
+    }
+}
