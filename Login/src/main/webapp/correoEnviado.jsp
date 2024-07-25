@@ -36,9 +36,6 @@
     <h2>Correo enviado!</h2>
     <p>Hemos enviado un enlace a tu correo para reestablecer la contraseña, por favor revisa tu bandeja de entrada para acceder a él.</p>
 </div>
-
-<footer class="d-flex flex-wrap justify-content-center align-items-center mt-4 border-top">
-    <p class="col-md-4 mb-0 text-body-secondary d-flex justify-content-center">&copy; 2024 Histority SA</p>
-</footer>
+<jsp:include page="templates/footer.jsp" />
 </body>
 </html>

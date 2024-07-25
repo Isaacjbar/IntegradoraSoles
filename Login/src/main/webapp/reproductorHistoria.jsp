@@ -81,6 +81,6 @@
     </div>
 </div>
 
-<script src="bootstrap-5.2.3-dist/js/bootstrap.js"></script>
+<jsp:include page="templates/footer.jsp" />
 </body>
 </html>

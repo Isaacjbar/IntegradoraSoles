@@ -103,12 +103,6 @@
     <input class="form-control" type="text" name="categoriaUsuario" id="input_categoria" placeholder="Categoría" required>
     <input class="btn btn-positive text-white hoverscale" type="submit" name="RegistrarUsuario" id="submit_registrar_usuario" value="Agregar">
 </form>
-
-
-<script src="bootstrap-5.2.3-dist/js/bootstrap.js"></script>
-<%--pie de pagina cambio--%>
-<footer class="d-flex flex-wrap justify-content-center align-items-center mt-4 border-top">
-    <p class="col-md-4 mb-0 text-body-secondary d-flex justify-content-center">&copy; 2024 Histority SA</p>
-</footer>
+<jsp:include page="templates/footer.jsp" />
 </body>
 </html>

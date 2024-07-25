@@ -9,7 +9,13 @@
     -webkit-box-shadow: 13px 11px 9px -11px rgba(0,0,0,0.75);
     -moz-box-shadow: 13px 11px 9px -11px rgba(0,0,0,0.75);
     /* border-left: 4px solid var(--blue2); */
-    padding: 10px 5px;
+    padding: 16px 5px;
+}
+
+
+.btn-group{
+    width: 90%;
+    margin: 15px auto;
 }
 
 h5{
@@ -24,36 +30,13 @@ h5{
     object-fit: contain;
     height: 200px;
 }
-
-
-
-.mostRecent{
-    width: 60%;
-    margin: 20px auto;
-    font-size: 13px;
-    }
-.mostRecent__card{
-        width: 90%;
-        padding: 15px;
-        min-width: 300px;
-        max-width: 1460px;
+.items-card-container small{
+    margin: 10px auto;
 }
 
-.mostRecent__card small{
-    padding: 10px;
-    margin: 10px;
-}
+
 
 @media screen and (max-width: 928px) {
-    .mostRecent__card{
-        flex-direction: column-reverse !important;
-    }
-    .mostRecent__card small{
-        width: 100% !important;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-    }
     .card_title{
         text-align: center !important;
     }
@@ -68,11 +51,7 @@ h5{
     }
 }
 
-
 @media screen and (max-width: 500px){
-    .most-recent{
-        width: 100%;
-    }   
     .app-name-text{
         font-size: 15px;
         margin-left: 10px;
@@ -108,14 +87,15 @@ footer{
 }
 
 .ultima-mod{
-    background-color: var(--blue1);
+    background-color: #0B6490;
     opacity: .8;
     color: white;
     padding: 4px;
+    margin: 10px auto;
 }
 
 .btn-publicar{
-    transform: all 300ms;
+    transition: all 300ms;
 }
 .btn-publicar:hover{
     background-color: var(--green1);

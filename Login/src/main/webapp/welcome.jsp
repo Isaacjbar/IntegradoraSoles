@@ -111,9 +111,10 @@
                         <div class="card-body">
                             <h5 class="card_title"><%= historia.getTitulo() %></h5>
                             <p class="card-text"><%= historia.getDescripcion() %></p>
-                            <div class="d-flex justify-content-between flex-column text-center flex-lg-row align-items-center">
+                            <div class="d-flex justify-content-between flex-column text-center align-items-center items-card-container">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary btn-editar" onclick="window.location.href='gestionHistoria.jsp?id_his=<%= historia.getId() %>'">Editar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Copiar enlace</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary btn-publicar">Publicar</button>
                                 </div>
                                 <small class="text-body-secondary"><span class="ultima-mod">Últm. mod:</span> <%= historia.getFechaCreacion() %></small>
@@ -127,11 +128,6 @@
         </div>
     </div>
 </main>
-
-<footer class="d-flex flex-wrap justify-content-center align-items-center mt-4 border-top">
-    <p class="col-md-4 mb-0 text-body-secondary d-flex justify-content-center">&copy; 2024 Histority SA</p>
-</footer>
-
-<script src="bootstrap-5.2.3-dist/js/bootstrap.js"></script>
+<jsp:include page="templates/footer.jsp" />
 </body>
 </html>
