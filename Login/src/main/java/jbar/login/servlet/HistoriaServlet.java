@@ -6,6 +6,7 @@ import jbar.login.dao.HistoriaDao;
 import jbar.login.model.Decision;
 import jbar.login.model.Escena;
 import jbar.login.model.Historia;
+import jbar.login.model.Usuario;
 
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -42,6 +43,16 @@ public class HistoriaServlet extends HttpServlet {
             return;
         }
 
+        // Verificar si el usuario ha iniciado sesión
+        HttpSession session = request.getSession(false);
+        Usuario usuario = (Usuario) (session != null ? session.getAttribute("usuario") : null);
+
+        // Si el usuario no ha iniciado sesión y la historia está archivada, redirigir a la página de historia no disponible
+        if (usuario == null && "archivada".equals(historia.getEstado())) {
+            response.sendRedirect("historiaNoDisponible.jsp");
+            return;
+        }
+
         String escenaIdStr = request.getParameter("id_esc");
         Escena escena;
         if (escenaIdStr == null) {
@@ -71,12 +82,7 @@ public class HistoriaServlet extends HttpServlet {
         request.setAttribute("decisiones", decisiones);
         request.setAttribute("multimediaType", multimediaType);
 
-        String estado = historia.getEstado();
-        if(estado.equals("publicada")){
-            request.getRequestDispatcher("/reproductorHistoria.jsp").forward(request, response);
-        }else{
-            request.getRequestDispatcher("/historiaNoDisponible.jsp").forward(request, response);
-        }
+        request.getRequestDispatcher("/reproductorHistoria.jsp").forward(request, response);
     }
 
     private String getMultimediaType(Escena escena) {

@@ -4,6 +4,15 @@
 <%@ page import="jbar.login.dao.HistoriaDao" %>
 <%@ page import="java.util.List" %>
 <%@ page session="true" %>
+<%@ page import="jbar.login.model.Usuario" %>
+<%
+    Usuario usuario = (Usuario) session.getAttribute("usuario");
+    if (usuario == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +54,6 @@
             <p class="text-white d-flex align-items-center justify-content-around">
                 <span class="textUser text-white  d-sm-block">
                     <%
-                        Usuario usuario = (Usuario) session.getAttribute("usuario");
                         if (usuario != null) {
                     %>
                     Hola, <%= usuario.getNombre() %> <%= usuario.getApellido() %>
