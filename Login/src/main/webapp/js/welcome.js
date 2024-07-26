@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.card-normal').forEach(card => {
         card.addEventListener('click', function(event) {

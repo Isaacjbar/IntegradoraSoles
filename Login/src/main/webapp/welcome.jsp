@@ -23,6 +23,11 @@
         }
     </style>
     <script src="js/scripts.js"></script>
+    <%
+        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
+    %>
 </head>
 <body>
 <!-- Navbar -->
@@ -114,7 +119,7 @@
                         <div class="card-body">
                             <h5 class="card_title"><%= historia.getTitulo() %></h5>
                             <p class="card-text"><%= historia.getDescripcion() %></p>
-                            <div class="d-flex flex-column  items-card-container">
+                            <div class="d-flex flex-column items-card-container">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary btn-editar" onclick="window.location.href='gestionHistoria.jsp?id_his=<%= historia.getId() %>'">Editar</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary btn-copiar" onclick="copiarEnlace('<%= historia.getId() %>')">Copiar enlace</button>
@@ -160,13 +165,8 @@
         confirmButtonText: "Ok",
         confirmButtonColor: "#0B6490"
     }).then(() => {
-        // Eliminar los parámetros de la URL
-        if (history.replaceState) {
-            const url = new URL(window.location);
-            url.searchParams.delete("status");
-            url.searchParams.delete("accion");
-            history.replaceState(null, null, url.toString());
-        }
+        // Limpiar los parámetros de la URL después de mostrar la alerta
+        window.history.replaceState({}, document.title, window.location.pathname);
     });
 </script>
 <%
@@ -180,14 +180,11 @@
         confirmButtonText: "Ok",
         confirmButtonColor: "#DC3545"
     }).then(() => {
-        // Eliminar los parámetros de la URL
-        if (history.replaceState) {
-            const url = new URL(window.location);
-            url.searchParams.delete("status");
-            url.searchParams.delete("accion");
-            history.replaceState(null, null, url.toString());
-        }
-        location.reload();
+        // Limpiar los parámetros de la URL después de mostrar la alerta
+        window.history.replaceState({}, document.title, window.location.pathname);
+        setTimeout(() => {
+            location.reload();
+        }, 100);
     });
 </script>
 <%

@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS historia (
 	multimedia VARCHAR(1000),
     descripcion VARCHAR(1000),
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    estado VARCHAR(50) default 'archivada',
     FOREIGN KEY (autor_id) REFERENCES usuario(id)
 );
 
@@ -47,15 +48,6 @@ CREATE TABLE IF NOT EXISTS decision (
     FOREIGN KEY (escena_id) REFERENCES escena(id),
     FOREIGN KEY (escena_destino_id) REFERENCES escena(id)
 );
-
-CREATE TABLE IF NOT EXISTS estado_publicacion (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    historia_id INT NOT NULL,
-    estado VARCHAR(20) NOT NULL,
-    fecha_cambio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (historia_id) REFERENCES historia(id)
-);
-
 -- INSERSIONES --
 USE historiaInteractiva;
 

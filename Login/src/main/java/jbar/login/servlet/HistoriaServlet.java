@@ -71,7 +71,12 @@ public class HistoriaServlet extends HttpServlet {
         request.setAttribute("decisiones", decisiones);
         request.setAttribute("multimediaType", multimediaType);
 
-        request.getRequestDispatcher("/reproductorHistoria.jsp").forward(request, response);
+        String estado = historia.getEstado();
+        if(estado.equals("publicada")){
+            request.getRequestDispatcher("/reproductorHistoria.jsp").forward(request, response);
+        }else{
+            request.getRequestDispatcher("/historiaNoDisponible.jsp").forward(request, response);
+        }
     }
 
     private String getMultimediaType(Escena escena) {
