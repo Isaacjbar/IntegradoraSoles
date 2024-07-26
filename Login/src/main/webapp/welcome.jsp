@@ -10,8 +10,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="css/stylesIndex.css">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/stylesIndex.css">
     <link rel="icon" href="img/Logo1.png">
     <title>Gestión de Historias</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -22,7 +22,7 @@
             transition: transform 0.2s ease-in-out;
         }
     </style>
-    <script src="js/welcome.js"></script>
+    <script src="js/scripts.js"></script>
 </head>
 <body>
 <!-- Navbar -->
@@ -92,6 +92,7 @@
 
                     for (Historia historia : historias) {
                         String multimedia = historia.getMultimedia();
+                        String estado = historia.getEstado();
                 %>
                 <div class="col">
                     <div class="card shadow-sm card-normal" data-id="<%= historia.getId() %>">
@@ -113,14 +114,20 @@
                         <div class="card-body">
                             <h5 class="card_title"><%= historia.getTitulo() %></h5>
                             <p class="card-text"><%= historia.getDescripcion() %></p>
-                            <div class="d-flex justify-content-between flex-column text-center align-items-center items-card-container">
+                            <div class="d-flex flex-column  items-card-container">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary btn-editar" onclick="window.location.href='gestionHistoria.jsp?id_his=<%= historia.getId() %>'">Editar</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary btn-copiar" onclick="copiarEnlace('<%= historia.getId() %>')">Copiar enlace</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-publicar">Publicar</button>
+                                    <form method="post" action="estadoPublicacion" style="display: inline;">
+                                        <input type="hidden" name="id" value="<%= historia.getId() %>">
+                                        <input type="hidden" name="accion" value="<%= "publicada".equals(estado) ? "archivar" : "publicar" %>">
+                                        <button type="submit" class="btn btn-sm btn-outline-secondary <%= "publicada".equals(estado) ? "btn-archivar" : "btn-publicar" %>" data-id="<%= historia.getId() %>" data-accion="<%= "publicada".equals(estado) ? "archivar" : "publicar" %>">
+                                            <%= "publicada".equals(estado) ? "Archivar" : "Publicar" %>
+                                        </button>
+                                    </form>
                                 </div>
                                 <small class="text-body-secondary"><span class="ultima-mod">Últm. mod:</span> <%= historia.getFechaCreacion() %></small>
-                                <div><strong>Estado: </strong><span>Publicada</span></div>
+                                <div><strong>Estado: </strong><span class="<%= "publicada".equals(estado) ? "estado-publicada" : "estado-archivada" %>"><%= historia.getEstado() %></span></div>
                             </div>
                         </div>
                     </div>
@@ -131,5 +138,61 @@
     </div>
 </main>
 <jsp:include page="templates/footer.jsp" />
+<%
+    String status = request.getParameter("status");
+    String accion = request.getParameter("accion");
+    if ("success".equals(status)) {
+        String mensaje;
+        String imgUrl;
+        if("publicar".equals(accion)){
+            mensaje = "La historia ha sido publicada ";
+            imgUrl = "img/publicar.png";
+        }else{
+            mensaje = "La historia ha sido archivada";
+            imgUrl = "img/archivar.png";
+        }
+%>
+<script>
+    Swal.fire({
+        title: "<%= mensaje %>",
+        imageUrl: "<%=imgUrl%>",
+        imageWidth: "150px",
+        confirmButtonText: "Ok",
+        confirmButtonColor: "#0B6490"
+    }).then(() => {
+        // Eliminar los parámetros de la URL
+        if (history.replaceState) {
+            const url = new URL(window.location);
+            url.searchParams.delete("status");
+            url.searchParams.delete("accion");
+            history.replaceState(null, null, url.toString());
+        }
+    });
+</script>
+<%
+} else if ("error".equals(status)) {
+%>
+<script>
+    Swal.fire({
+        title: "Error",
+        text: "Hubo un error al cambiar el estado de la publicación",
+        icon: "error",
+        confirmButtonText: "Ok",
+        confirmButtonColor: "#DC3545"
+    }).then(() => {
+        // Eliminar los parámetros de la URL
+        if (history.replaceState) {
+            const url = new URL(window.location);
+            url.searchParams.delete("status");
+            url.searchParams.delete("accion");
+            history.replaceState(null, null, url.toString());
+        }
+        location.reload();
+    });
+</script>
+<%
+    }
+%>
+<script src="js/welcome.js"></script>
 </body>
 </html>

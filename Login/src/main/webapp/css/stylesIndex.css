@@ -31,7 +31,7 @@ h5{
     height: 200px;
 }
 .items-card-container small{
-    margin: 10px auto;
+    margin: 2em 0;
 }
 
 
@@ -92,6 +92,7 @@ footer{
     color: white;
     padding: 4px;
     margin: 10px auto;
+    border-radius: 5px;
 }
 
 .btn-publicar{
@@ -120,4 +121,51 @@ footer{
         width: 70%;
     }
 }
+/* Estilo para el botón Archivar con hover rojo */
+/* Estilo para el botón Archivar con hover rojo */
+.btn-group .btn-archivar {
+    background-color: transparent !important;
+    color: #6C757D !important;
+    border-color: #6C757D !important;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
 
+.btn-group .btn-archivar:hover {
+    background-color: #DC3545 !important;
+    border-color: #DC3545 !important;
+    color: #fff !important;
+}
+
+/* Estilo para el botón Publicar con hover default de Bootstrap */
+.btn-group .btn-publicar {
+    background-color: transparent !important;
+    color: #6C757D !important;
+    border-color: #6C757D !important;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-group .btn-publicar:hover {
+    background-color: #068D73 !important;
+    border-color: #068D73 !important;
+    color: #fff !important;
+}
+
+/* Estilo para el estado de la historia */
+.items-card-container .estado-publicada {
+    background-color: #068D73 !important;
+    color: #fff !important;
+    padding: 0.2em 0.5em;
+    border-radius: 0.2em;
+}
+
+.items-card-container .estado-archivada {
+    background-color: #DC3545 !important;
+    color: #fff !important;
+    padding: 0.2em 0.5em;
+    border-radius: 0.2em;
+}
+.btn-copiar:hover{
+    background-color: #0B6490 !important;
+}

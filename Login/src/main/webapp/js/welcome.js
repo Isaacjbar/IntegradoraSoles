@@ -1,3 +1,52 @@
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.card-normal').forEach(card => {
+        card.addEventListener('click', function(event) {
+            const target = event.target;
+            // Asegurarnos de que el clic no es en un botón o formulario
+            if (!target.classList.contains('btn') && !target.closest('form')) {
+                const id = card.dataset.id;
+                window.location.href = 'historia?id_his=' + id;
+            }
+        });
+    });
+
+    document.querySelectorAll('.btn-publicar').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const id = this.dataset.id;
+            const accion = this.dataset.accion;
+            const boton = this;
+
+            const form = document.createElement('form');
+            form.method = 'post';
+            form.action = 'estadoPublicacion';
+
+            const inputId = document.createElement('input');
+            inputId.type = 'hidden';
+            inputId.name = 'id';
+            inputId.value = id;
+            form.appendChild(inputId);
+
+            const inputAccion = document.createElement('input');
+            inputAccion.type = 'hidden';
+            inputAccion.name = 'accion';
+            inputAccion.value = accion;
+            form.appendChild(inputAccion);
+
+            document.body.appendChild(form);
+            form.submit();
+
+            const nuevoEstado = accion === 'publicar' ? 'publicada' : 'archivada';
+            const nuevaAccion = accion === 'publicar' ? 'archivar' : 'publicar';
+            const nuevoTexto = accion === 'publicar' ? 'Archivar' : 'Publicar';
+
+            boton.dataset.accion = nuevaAccion;
+            boton.innerText = nuevoTexto;
+            form.remove();
+        });
+    });
+});
+
 function copiarEnlace(id) {
     const enlace = window.location.origin + '/historia?id_his=' + id;
     Swal.fire({
@@ -32,13 +81,3 @@ function copiarEnlace(id) {
         }
     });
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.card-normal').forEach(card => {
-        card.addEventListener('click', (event) => {
-            if (!event.target.classList.contains('btn-editar') && !event.target.classList.contains('btn-copiar') && !event.target.classList.contains('btn-publicar')) {
-                window.location.href = 'historia?id_his=' + card.dataset.id;
-            }
-        });
-    });
-});

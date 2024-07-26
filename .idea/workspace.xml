@@ -10,14 +10,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Alertas en activar y desactivar cuenta (gestion usuarios)">
-      <change afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/publicacionServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/historiaNoDisponible.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/historiaNoDisponible.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/img/copiar-link.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/img/noencontrada.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/js/welcome.js" afterDir="false" />
+    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Copiar enlace, correcciones y vista de historia no disponible">
+      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/img/archivar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/img/publicar.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/dao/HistoriaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/dao/HistoriaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/model/Historia.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/model/Historia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/publicacionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/publicacionServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/js/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/js/welcome.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,34 +69,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.ReestablecerContra.jsp.executor": "Run",
-    "JavaScript Debug.agregarPortada.jsp.executor": "Run",
-    "JavaScript Debug.agregarUsuario.jsp.executor": "Run",
-    "JavaScript Debug.error.jsp.executor": "Run",
-    "JavaScript Debug.gestionHistoria.jsp.executor": "Run",
-    "JavaScript Debug.gestionUsuarios.jsp.executor": "Run",
-    "JavaScript Debug.login.jsp.executor": "Run",
-    "JavaScript Debug.portadaHistoria.jsp.executor": "Run",
-    "JavaScript Debug.reproductorHistoria.jsp.executor": "Run",
-    "JavaScript Debug.solicitudReestablecerContra.jsp.executor": "Run",
-    "JavaScript Debug.welcome.jsp.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat Server.ReestablecerContra.jsp.executor": "Run",
-    "Tomcat Server.Tomcat 10.1.11.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/eeeri/Downloads/Publicar despublicar/IntegradoraSoles/Login/src/main/webapp/img",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.ReestablecerContra.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.agregarPortada.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.agregarUsuario.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.error.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.gestionHistoria.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.gestionUsuarios.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.login.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.portadaHistoria.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.reproductorHistoria.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.solicitudReestablecerContra.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.welcome.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.ReestablecerContra.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.11.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/eeeri/Downloads/Publicar despublicar/IntegradoraSoles/Login/src/main/webapp/img&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\eeeri\Downloads\Publicar despublicar\IntegradoraSoles\Login\src\main\webapp\img" />
@@ -256,7 +257,7 @@
       <workItem from="1721593119612" duration="6112000" />
       <workItem from="1721676568847" duration="12597000" />
       <workItem from="1721877381977" duration="4911000" />
-      <workItem from="1721935948170" duration="6553000" />
+      <workItem from="1721935948170" duration="18273000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />
@@ -298,7 +299,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721677902451</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Copiar enlace, correcciones y vista de historia no disponible">
+      <option name="closed" value="true" />
+      <created>1721942956315</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1721942956316</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,6 +321,7 @@
     <MESSAGE value="Correccion de menu" />
     <MESSAGE value="Alertas en agregar usuario y correccion footer" />
     <MESSAGE value="Alertas en activar y desactivar cuenta (gestion usuarios)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alertas en activar y desactivar cuenta (gestion usuarios)" />
+    <MESSAGE value="Copiar enlace, correcciones y vista de historia no disponible" />
+    <option name="LAST_COMMIT_MESSAGE" value="Copiar enlace, correcciones y vista de historia no disponible" />
   </component>
 </project>

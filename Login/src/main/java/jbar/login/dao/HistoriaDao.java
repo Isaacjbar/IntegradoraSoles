@@ -49,6 +49,7 @@ public class HistoriaDao {
                 historia.setMultimedia(resultSet.getString("multimedia"));
                 historia.setDescripcion(resultSet.getString("descripcion"));
                 historia.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
+                historia.setEstado(resultSet.getString("estado"));
             }
 
         } catch (SQLException e) {
@@ -74,6 +75,7 @@ public class HistoriaDao {
                 historia.setMultimedia(resultSet.getString("multimedia"));
                 historia.setDescripcion(resultSet.getString("descripcion"));
                 historia.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
+                historia.setEstado(resultSet.getString("estado"));
                 historias.add(historia);
             }
 
@@ -96,6 +98,24 @@ public class HistoriaDao {
             statement.setString(4, historia.getDescripcion());
             statement.setTimestamp(5, historia.getFechaCreacion());
             statement.setInt(6, historia.getId());
+
+            int rowsUpdated = statement.executeUpdate();
+            return rowsUpdated > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean updateHistoriaEstado(int id, String estado) {
+        String sql = "UPDATE historia SET estado = ? WHERE id = ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, estado);
+            statement.setInt(2, id);
 
             int rowsUpdated = statement.executeUpdate();
             return rowsUpdated > 0;
@@ -141,6 +161,7 @@ public class HistoriaDao {
 
         return lastId;
     }
+
     public List<Historia> getAllHistoriasByUsuarioId(int usuarioId) {
         List<Historia> historias = new ArrayList<>();
         String sql = "SELECT * FROM historia WHERE autor_id = ?";
@@ -159,6 +180,7 @@ public class HistoriaDao {
                 historia.setMultimedia(resultSet.getString("multimedia"));
                 historia.setDescripcion(resultSet.getString("descripcion"));
                 historia.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
+                historia.setEstado(resultSet.getString("estado"));
                 historias.add(historia);
             }
 

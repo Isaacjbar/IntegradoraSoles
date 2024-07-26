@@ -8,6 +8,7 @@ public class Historia {
     private int autorId;
     private String multimedia;
     private String descripcion;
+    private String estado;
     private Timestamp fechaCreacion;
 
     // Getters y Setters
@@ -50,4 +51,9 @@ public class Historia {
     public void setFechaCreacion(Timestamp fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
+
+    public String getEstado() { return estado; }
+
+    public void setEstado(String estado) { this.estado = estado; }
+
 }
