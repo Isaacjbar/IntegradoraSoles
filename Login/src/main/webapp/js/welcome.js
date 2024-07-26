@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.card-normal').forEach(card => {
         card.addEventListener('click', function(event) {
@@ -6,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Asegurarnos de que el clic no es en un botón o formulario
             if (!target.classList.contains('btn') && !target.closest('form')) {
                 const id = card.dataset.id;
-                window.location.href = 'historia?id_his=' + id;
+                window.location.href = window.location.origin + '/Login_war/historia?id_his=' + id;
             }
         });
     });
@@ -49,9 +48,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function copiarEnlace(id) {
-    const enlace = window.location.origin + '/historia?id_his=' + id;
+    const enlace = window.location.origin + '/Login_war/historia?id_his=' + id;
     Swal.fire({
-        title: 'Copiar enlace',
+        title: 'Copiar enlaceee',
         html: '<input type="text" id="enlaceInput" class="swal2-input" value="' + enlace + '" readonly style="width: 80%;">',
         showCancelButton: true,
         confirmButtonText: 'Copiar',
