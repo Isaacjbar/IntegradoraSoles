@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function copiarEnlace(id) {
     const enlace = window.location.origin + '/Login_war/historia?id_his=' + id;
     Swal.fire({
-        title: 'Copiar enlaceee',
+        title: 'Copiar enlace',
         html: '<input type="text" id="enlaceInput" class="swal2-input" value="' + enlace + '" readonly style="width: 80%;">',
         showCancelButton: true,
         confirmButtonText: 'Copiar',
