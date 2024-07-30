@@ -35,18 +35,24 @@ public class gestionEscenaServlet extends HttpServlet {
             String historiaIdParam = request.getParameter("historiaId");
             String titulo = request.getParameter("titulo");
             String descripcion = request.getParameter("descripcion");
+            String imagen = request.getParameter("imagen");
+            String audio = request.getParameter("audio");
+            String video = request.getParameter("video");
 
             // Ajuste de parametro esFinal y textoFinal
             boolean esFinal = "1".equals(request.getParameter("esFinal"));
             String textoFinal = request.getParameter("textoFinal");
 
             // Agregar logs para los parámetros recibidos
-            System.out.println("id: " + idParam);
-            System.out.println("historiaId: " + historiaIdParam);
+            System.out.println("idParam: " + idParam);
+            System.out.println("historiaIdParam: " + historiaIdParam);
             System.out.println("titulo: " + titulo);
             System.out.println("descripcion: " + descripcion);
             System.out.println("esFinal: " + esFinal);
             System.out.println("textoFinal: " + textoFinal);
+            System.out.println("imagen: " + imagen);
+            System.out.println("audio: " + audio);
+            System.out.println("video: " + video);
 
             // Verificar si los parámetros son nulos
             if (historiaIdParam == null) {
@@ -64,6 +70,9 @@ public class gestionEscenaServlet extends HttpServlet {
             escena.setEsFinal(esFinal);
             escena.setTextoFinal(textoFinal);
             escena.setFechaCreacion(fechaCreacion);
+            escena.setImagen(imagen);
+            escena.setAudio(audio);
+            escena.setVideo(video);
 
             boolean resultado;
             if (idParam != null && !idParam.equals("0")) {
@@ -73,15 +82,15 @@ public class gestionEscenaServlet extends HttpServlet {
                     // Si el ID no es 0 y la escena existe, actualizamos la escena
                     System.out.println("Actualizando escena: " + id);
                     escena.setId(id);
-                    resultado = escenaDao.updateEscenaSinM(escena);
+                    resultado = escenaDao.updateEscena(escena);
                 } else {
                     // Si el ID es 0 o la escena no existe, insertamos una nueva escena
                     System.out.println("Insertando nueva escena");
-                    resultado = escenaDao.insertEscenaSinM(escena);
+                    resultado = escenaDao.insertEscena(escena);
                 }
             } else {
                 System.out.println("Insertando nueva escena");
-                resultado = escenaDao.insertEscenaSinM(escena);
+                resultado = escenaDao.insertEscena(escena);
             }
 
             response.setContentType("text/html");
@@ -123,6 +132,9 @@ public class gestionEscenaServlet extends HttpServlet {
                 nodeData.put("key", escena.getId());
                 nodeData.put("name", escena.getTitulo());
                 nodeData.put("description", escena.getDescripcion());
+                nodeData.put("image", escena.getImagen());
+                nodeData.put("audio", escena.getAudio());
+                nodeData.put("video", escena.getVideo());
                 nodeDataArray.add(nodeData);
             }
 
