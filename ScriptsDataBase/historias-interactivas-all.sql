@@ -58,8 +58,8 @@ INSERT INTO usuario (nombre, apellido, correo_electronico, contrasena, estado, c
 
 -- Historias (Ya con datos de portada)
 INSERT INTO historia (titulo, autor_id, multimedia, descripcion) 
-VALUES ('Los Casi Algo', 1, 'https://www.youtube.com/embed/bo9Z_pgByQY?si=j4iJqNIP-nvtmqR0', 'No eres tu, soy yo'),
-('El Bosque Embrujado', 1, 'https://www.youtube.com/embed/bo9Z_pgByQY', 'Una historia de terror en un bosque oscuro.'),
+VALUES ('Los Casi Algo', 1, 'https://images.ctfassets.net/o65uf8qogksw/5EmziMufd0XHWqlGhKsB8o/e78246920eb651e3e2dda74b0dd56feb/por-que-duelen-tanto-los-casi-algo-int-articulo-1.jpg', 'No eres tu, soy yo'),
+('El Bosque Embrujado', 1, 'https://png.pngtree.com/background/20231101/original/pngtree-spooky-landscape-of-a-haunted-forest-3d-illustration-for-halloween-picture-image_5833695.jpg', 'Una historia de terror en un bosque oscuro.'),
 ('El Misterio del Detective', 1,'https://c0.klipartz.com/pngpicture/375/580/gratis-png-emoji-emoticono-de-tristeza-emoticon-adios.png','Un asesinato por resolver.'),
 ('El Naufragio', 1, 'https://st2.depositphotos.com/3418487/7119/i/450/depositphotos_71199187-stock-photo-shipwrecks.jpg','Una tragedia en alta mar.');
 

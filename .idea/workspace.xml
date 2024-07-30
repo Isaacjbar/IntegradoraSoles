@@ -10,10 +10,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Algunas correcciones del front">
+    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Responsive primera revision terminada">
+      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/crearHistoria.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/crearHistoria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/crearHistoria.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScriptsDataBase/historias-interactivas-all.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ScriptsDataBase/historias-interactivas-all.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +26,8 @@
       <list>
         <option value="JavaScript File" />
         <option value="Jsp File" />
-        <option value="CSS File" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -258,7 +258,7 @@
       <workItem from="1722022495748" duration="475000" />
       <workItem from="1722272452398" duration="5503000" />
       <workItem from="1722297009203" duration="2917000" />
-      <workItem from="1722299966269" duration="5143000" />
+      <workItem from="1722299966269" duration="6937000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />
@@ -364,7 +364,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722299657233</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Responsive primera revision terminada">
+      <option name="closed" value="true" />
+      <created>1722305162914</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1722305162914</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,6 +393,7 @@
     <MESSAGE value="Correcciones en enlace y estado" />
     <MESSAGE value="Ultimos cambios" />
     <MESSAGE value="Algunas correcciones del front" />
-    <option name="LAST_COMMIT_MESSAGE" value="Algunas correcciones del front" />
+    <MESSAGE value="Responsive primera revision terminada" />
+    <option name="LAST_COMMIT_MESSAGE" value="Responsive primera revision terminada" />
   </component>
 </project>

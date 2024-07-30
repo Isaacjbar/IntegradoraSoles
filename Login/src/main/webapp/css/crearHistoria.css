@@ -1,0 +1,10 @@
+#form-portada{
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+.textarea-portada{
+    min-height: 120px !important;
+    height: auto;
+    max-height: none !important;
+}

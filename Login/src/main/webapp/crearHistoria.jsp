@@ -7,10 +7,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="css/stylesIndex.css">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/crearHistoria.css">
     <link rel="icon" href="img/Logo1.png">
     <title>Subir Multimedia</title>
+    <style>
+        /* Estilo para hacer que el textarea no sea redimensionable */
+        textarea {
+            resize: none;
+        }
+    </style>
     <script>
         function validateForm() {
             const imagen = document.getElementById('imagen').value;
@@ -61,20 +67,20 @@
 <h1 class="title-1 fs-3">Crear portada</h1>
 <main>
     <div class="container">
-        <form action="CrearHistoriaServlet" method="post" onsubmit="return validateForm()">
+        <form id="form-portada" action="CrearHistoriaServlet" method="post" onsubmit="return validateForm()">
             <div class="mb-3">
                 <label for="titulo" class="form-label">Título</label>
                 <input type="text" class="form-control" id="titulo" name="titulo" required>
             </div>
             <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción</label>
-                <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+                <textarea  class="form-control textarea-portada" id="descripcion" name="descripcion" rows="3" maxlength="210" required></textarea>
             </div>
             <div class="mb-3">
-                <label for="multimedia" class="form-label">URL de Imagen</label>
-                <input type="text" class="form-control" id="multimedia" name="multimedia">
+                <label for="multimedia" class="form-label">Imagen de previsualización</label>
+                <input type="file" class="form-control" id="multimedia" name="multimedia" accept="image/*">
             </div>
-            <button type="submit" class="btn btn-primary">Subir</button>
+            <button type="submit" class="btn btn-primary btn-positive btn-portada">Siguiente</button>
         </form>
     </div>
 </main>
