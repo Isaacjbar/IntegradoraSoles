@@ -113,6 +113,38 @@ public class gestionEscenaServlet extends HttpServlet {
         }
     }
 
+    private void addChildNodes(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String parentId = request.getParameter("parentId");
+        String historiaId = request.getParameter("historiaId");
+        String[] childKeys = request.getParameter("childKeys").split(",");
+
+        Timestamp fechaCreacion = new Timestamp(System.currentTimeMillis());
+
+        for (String key : childKeys) {
+            // Crear nueva escena
+            Escena nuevaEscena = new Escena();
+            nuevaEscena.setTitulo("Nueva Escena " + key);
+            nuevaEscena.setDescripcion("Descripción por defecto");
+            nuevaEscena.setFechaCreacion(fechaCreacion);
+            nuevaEscena.setHistoriaId(Integer.parseInt(historiaId));
+
+            // Guardar en la base de datos
+            escenaDao.insertEscenaDefecto(nuevaEscena);
+
+            // Crear nueva decisión
+            Decision nuevaDecision = new Decision();
+            nuevaDecision.setEscenaId(Integer.parseInt(parentId));
+            nuevaDecision.setEscenaDestinoId(nuevaEscena.getId());
+            nuevaDecision.setDescripcion("Decisión " + key);
+
+            // Guardar en la base de datos
+            decisionDao.insertDecisionDefecto(nuevaDecision);
+        }
+
+        response.setContentType("text/html");
+        response.getWriter().println("Escenas hijas y decisiones guardadas exitosamente.");
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String accion = request.getParameter("accion");
         if ("cargarEscenas".equals(accion)) {

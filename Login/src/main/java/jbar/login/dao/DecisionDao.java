@@ -32,6 +32,27 @@ public class DecisionDao {
         }
     }
 
+    public boolean insertDecisionDefecto(Decision decision) {
+        String sql = "INSERT INTO decision (escena_id, escena_destino_id, descripcion, fecha_creacion) VALUES (?, ?, ?, ?)";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, decision.getEscenaId());
+            statement.setInt(2, decision.getEscenaDestinoId());
+            statement.setString(3, decision.getDescripcion());
+            statement.setTimestamp(4, decision.getFechaCreacion());
+
+            int rowsInserted = statement.executeUpdate();
+            return rowsInserted > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
     public Decision getDecisionById(int id) {
         Decision decision = null;
         String sql = "SELECT * FROM decision WHERE id = ?";
