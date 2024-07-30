@@ -1,6 +1,4 @@
 @import url('global.css');
-
-/* ESTILOS DEL INDEX */
 .card {
     margin: 1em .5em;
     transition: all 300ms;
@@ -10,8 +8,8 @@
     -moz-box-shadow: 13px 11px 9px -11px rgba(0,0,0,0.75);
     /* border-left: 4px solid var(--blue2); */
     padding: 16px 5px;
+    min-height: 510px !important;
 }
-
 
 .btn-group{
     width: 90%;
@@ -22,10 +20,6 @@ h5{
     color: var(--blue1);
   }
 
-.card:hover{
-    transform: scale(1.03);
-}
-
 .img_d_card{
     object-fit: contain;
     height: 200px;
@@ -34,14 +28,9 @@ h5{
     margin: 2em 0;
 }
 
-
-
 @media screen and (max-width: 928px) {
     .card_title{
         text-align: center !important;
-    }
-    .card-text{
-        text-align: justify;
     }
     .btn-group{
         margin: 15px auto;
@@ -121,6 +110,11 @@ footer{
         width: 70%;
     }
 }
+@media screen and (max-width: 576px) {
+  .btn-publicar{
+      height: 51.6px !important;
+  }
+}
 /* Estilo para el botón Archivar con hover rojo */
 /* Estilo para el botón Archivar con hover rojo */
 .btn-group .btn-archivar {
@@ -169,3 +163,7 @@ footer{
 .btn-copiar:hover{
     background-color: #0B6490 !important;
 }
+#btn-pub-despub{
+    height: 100% !important;
+}
+

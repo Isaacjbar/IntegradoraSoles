@@ -22,15 +22,38 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/stylesIndex.css">
     <link rel="icon" href="img/Logo1.png">
-    <title>Gestión de Historias</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<%--    El siguiente style es para darle prioridad a estos estilos por encima del bootstrap--%>
     <style>
         .card:hover {
-            cursor: pointer;
-            transform: scale(1.05);
-            transition: transform 0.2s ease-in-out;
+            cursor: pointer !important;
+            transform: scale(1.05) !important;
+            transition: transform 0.2s ease-in-out !important;
+        }
+        .card-text{
+            text-align: justify;
+            height: 110px !important;
+            margin-bottom: 5px;
+        }
+        .card_title{
+            height: 50px;
+        }
+        .img_d_card{
+            width: 90%;
+            margin: 0 auto;
+            display: block;
+            object-fit: contain;
+        }
+        #btn-pub-despub{
+            height: 100%;
+        }
+        @media screen and (max-width: 433px) {
+            .card-text{
+                height: 150px !important;
+            }
         }
     </style>
+    <title>Gestión de Historias</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/scripts.js"></script>
     <%
         response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
@@ -97,8 +120,8 @@
 
 <main>
     <div class="album py-3 bg-body-tertiary">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+        <div id="contenedorPrincipalCard" class="container">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
                 <%
                     HistoriaDao historiaDao = new HistoriaDao();
                     List<Historia> historias = historiaDao.getAllHistoriasByUsuarioId(usuario.getId());
@@ -110,19 +133,7 @@
                 <div class="col">
                     <div class="card shadow-sm card-normal" data-id="<%= historia.getId() %>">
                         <div class="embed-responsive mb-3 mx-auto">
-                            <% if (multimedia != null && !multimedia.isEmpty()) {
-                                if (multimedia.endsWith(".mp4") || multimedia.contains("youtube")) { %>
-                            <iframe class="embed-responsive-item" src="<%= multimedia %>" allowfullscreen></iframe>
-                            <% } else if (multimedia.endsWith(".mp3")) { %>
-                            <audio controls>
-                                <source src="<%= multimedia %>" type="audio/mpeg">
-                                Tu navegador no soporta la reproducción de audio.
-                            </audio>
-                            <% } else if (multimedia.endsWith(".jpg") || multimedia.endsWith(".png") || multimedia.endsWith(".gif")) { %>
-                            <img src="<%= multimedia %>" class="embed-responsive-item" alt="Multimedia Imagen">
-                            <% } } else { %>
-                            <img src="img/4.png" class="embed-responsive-item" alt="No hay recursos multimedia">
-                            <% } %>
+                            <img src="<%= multimedia %>" class="embed-responsive-item img_d_card" alt="previsualizaciónHistoria">
                         </div>
                         <div class="card-body">
                             <h5 class="card_title"><%= historia.getTitulo() %></h5>
@@ -134,7 +145,7 @@
                                     <form method="post" action="estadoPublicacion" style="display: inline;">
                                         <input type="hidden" name="id" value="<%= historia.getId() %>">
                                         <input type="hidden" name="accion" value="<%= "publicada".equals(estado) ? "archivar" : "publicar" %>">
-                                        <button type="submit" class="btn btn-sm btn-outline-secondary <%= "publicada".equals(estado) ? "btn-archivar" : "btn-publicar" %>" data-id="<%= historia.getId() %>" data-accion="<%= "publicada".equals(estado) ? "archivar" : "publicar" %>">
+                                        <button id="btn-pub-despub" type="submit" class="btn btn-sm btn-outline-secondary <%= "publicada".equals(estado) ? "btn-archivar" : "btn-publicar" %>" data-id="<%= historia.getId() %>" data-accion="<%= "publicada".equals(estado) ? "archivar" : "publicar" %>">
                                             <%= "publicada".equals(estado) ? "Archivar" : "Publicar" %>
                                         </button>
                                     </form>
