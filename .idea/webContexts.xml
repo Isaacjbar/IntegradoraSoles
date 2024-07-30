@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/Login/src/main/webapp/agregarPortada.jsp" value="file://$PROJECT_DIR$/Login/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/Login/src/main/webapp/agregarUsuario.jsp" value="file://$PROJECT_DIR$/Login/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" value="file://$PROJECT_DIR$/Login/src/main/webapp" />
       </map>
     </option>
   </component>

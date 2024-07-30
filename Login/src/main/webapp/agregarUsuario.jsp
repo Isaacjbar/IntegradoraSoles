@@ -89,13 +89,13 @@
 
 <form id="agregarUsuarioForm" class="d-flex flex-column p-4" action="RegistroUsuarioServlet" method="post">
     <h1 class="title-1 fs-5">Agregue un nuevo usuario</h1>
-    <label for="input_nombre">Ingrése el nombre</label>
+    <label for="input_nombre">Ingrese el nombre</label>
     <input class="form-control" type="text" name="nombreUsuario" id="input_nombre" placeholder="Nombre(s)" required>
-    <label for="input_apellidos">Ingrése los apellidos</label>
+    <label for="input_apellidos">Ingrese los apellidos</label>
     <input class="form-control" type="text" name="apellidosUsuario" id="input_apellidos" placeholder="Apellidos" required>
-    <label for="input_correo">Ingrése el email</label>
+    <label for="input_correo">Ingrese el email</label>
     <input class="form-control" type="email" name="correoUsuario" id="input_correo" placeholder="Email" required>
-    <label for="input_contra">Ingrése la contraseña</label>
+    <label for="input_contra">Ingrese la contraseña</label>
     <input class="form-control" type="password" name="contraUsuario" id="input_contra" placeholder="Contraseña" required>
     <label for="input_contraRepetida">Repita la contraseña</label>
     <input class="form-control" type="password" name="contraRepetida" id="input_contraRepetida"  placeholder="Repita su contraseña" required>

@@ -43,7 +43,7 @@
 <!-- Barra de búsqueda -->
 <div class="searchBar1 container w-50">
     <form class="d-flex flex-md-row align-items-center  justify-content-between searchBar1__form" role="search">
-        <input class="searchBar1-input form-control me-2 " type="search" placeholder="Búsque una historia por titulo"
+        <input class="searchBar1-input form-control me-2 " type="search" placeholder="Busque una usuario por nombre"
                aria-label="Search">
         <button class="btn btn-search">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
