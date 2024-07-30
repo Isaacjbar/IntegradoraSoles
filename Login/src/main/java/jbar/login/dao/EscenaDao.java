@@ -3,10 +3,7 @@ package jbar.login.dao;
 import jbar.login.database.DatabaseConnection;
 import jbar.login.model.Escena;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +33,34 @@ public class EscenaDao {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public boolean insertEscenaDefecto(Escena escena) {
+        String sql = "INSERT INTO escena (historia_id, titulo, descripcion, fecha_creacion) " +
+                "VALUES (?, ?, ?, ?)";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            statement.setInt(1, escena.getHistoriaId());
+            statement.setString(2, escena.getTitulo());
+            statement.setString(3, escena.getDescripcion());
+            statement.setTimestamp(4, escena.getFechaCreacion());
+
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        escena.setId(generatedKeys.getInt(1));
+                    }
+                }
+                return true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public Escena getEscenaById(int id) {

@@ -3,7 +3,6 @@ function init() {
 
     var currentNode;  // Variable para guardar el nodo actual
 
-    // función para añadir dos nodos hijos
     function addChildNodes(e, obj) {
         var node = obj.part.adornedPart;  // el nodo al que se le hace clic
         var diagram = node.diagram;
@@ -16,17 +15,50 @@ function init() {
         myDiagram.commandHandler.deleteSelection = function() {};
 
         if (children < 2) {
-            for (var i = 0; i < 2; i++) {
-                var newKey = diagram.model.nodeDataArray.length + 1;
-                var newNodeData = { key: newKey, parent: node.data.key, name: newKey };
-                diagram.model.addNodeData(newNodeData);
+            var parentId = node.data.key;
+            var historiaId = node.data.historiaId;
+
+            if (!historiaId) {
+                // Obtener historiaId de la URL si no está presente en los datos del nodo
+                var urlParams = new URLSearchParams(window.location.search);
+                historiaId = urlParams.get('id_his');
             }
+
+            console.log("Parent ID:", parentId); // Depuración
+            console.log("Historia ID:", historiaId); // Depuración
+
+            // Enviar las nuevas escenas y decisiones al nuevo servlet para guardarlas en la base de datos
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "AddChildNodesServlet", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Procesar la respuesta del servidor
+                    var response = JSON.parse(xhr.responseText);
+                    response.newNodes.forEach(function(nodeData) {
+                        diagram.model.addNodeData(nodeData);
+                        var linkData = { from: parentId, to: nodeData.key, text: "Decisión " + nodeData.key };
+                        diagram.model.addLinkData(linkData);
+                    });
+                }
+            };
+
+            var data = "action=addChildNodes&parentId=" + encodeURIComponent(parentId) +
+                "&historiaId=" + encodeURIComponent(historiaId);
+
+            console.log("Sending data: " + data); // Agregar log de depuración
+
+            xhr.send(data);
         } else {
             alert("No puede añadir más de dos nodos hijos");
         }
 
         diagram.commitTransaction("add children");
     }
+
+
+
 
     function showForm(e, obj) {
         currentNode = obj.part.adornedPart;  // el nodo al que se le hace clic
