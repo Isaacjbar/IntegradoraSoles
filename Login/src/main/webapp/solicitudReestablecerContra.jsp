@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body id="body">
-<jsp:include page="templates/navSinSesion.jsp" />
+<jsp:include page="templates/navSinSesion.jsp"/>
 <%
     String errorMessage = (String) session.getAttribute("errorMessage");
     if (errorMessage != null) {
