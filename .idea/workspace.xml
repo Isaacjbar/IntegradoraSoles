@@ -10,16 +10,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Ultimos cambios">
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Algunas correcciones del front">
       <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/ReestablecerContra.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/ReestablecerContra.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/agregarUsuario.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/agregarUsuario.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/css/inicioSesionCreador.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/inicioSesionCreador.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/gestionUsuarios.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/gestionUsuarios.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +254,7 @@
       <workItem from="1722022149163" duration="304000" />
       <workItem from="1722022495748" duration="475000" />
       <workItem from="1722272452398" duration="5503000" />
-      <workItem from="1722297009203" duration="2498000" />
+      <workItem from="1722297009203" duration="2602000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />
@@ -352,7 +344,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722280973325</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Algunas correcciones del front">
+      <option name="closed" value="true" />
+      <created>1722299559048</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1722299559048</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,6 +372,7 @@
     <MESSAGE value="El creador puede ver la historia" />
     <MESSAGE value="Correcciones en enlace y estado" />
     <MESSAGE value="Ultimos cambios" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ultimos cambios" />
+    <MESSAGE value="Algunas correcciones del front" />
+    <option name="LAST_COMMIT_MESSAGE" value="Algunas correcciones del front" />
   </component>
 </project>
