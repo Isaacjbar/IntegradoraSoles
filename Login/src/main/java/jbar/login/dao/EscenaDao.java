@@ -222,30 +222,28 @@ public class EscenaDao {
     }
     public List<Escena> getEscenasByHistoriaId(int historiaId) {
         List<Escena> escenas = new ArrayList<>();
-        String sql = "SELECT * FROM escena WHERE historia_id = ?";
+        String sql = "SELECT id, titulo, descripcion, imagen, audio, video FROM Escena WHERE historia_id = ?";
 
-        try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, historiaId);
+            ResultSet rs = stmt.executeQuery();
 
-            statement.setInt(1, historiaId);
-            ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
+            while (rs.next()) {
                 Escena escena = new Escena();
-                escena.setId(resultSet.getInt("id"));
-                escena.setHistoriaId(resultSet.getInt("historia_id"));
-                escena.setTitulo(resultSet.getString("titulo"));
-                escena.setDescripcion(resultSet.getString("descripcion"));
-                escena.setEsFinal(resultSet.getBoolean("es_final"));
-                escena.setTextoFinal(resultSet.getString("texto_final"));
-                escena.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
+                escena.setId(rs.getInt("id"));
+                escena.setTitulo(rs.getString("titulo"));
+                escena.setDescripcion(rs.getString("descripcion"));
+                escena.setImagen(rs.getString("imagen"));
+                escena.setAudio(rs.getString("audio"));
+                escena.setVideo(rs.getString("video"));
                 escenas.add(escena);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return escenas;
     }
+
 }
