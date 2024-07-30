@@ -113,7 +113,7 @@
 <% } %>
 
 <form id="agregarUsuarioForm" class="d-flex flex-column p-4" action="RegistroUsuarioServlet" method="post">
-    <h1 class="title-1 fs-5">Agregue un nuevo usuario</h1>
+    <h1 class="title-1 fs-5">Registro de cuenta</h1>
     <label for="input_nombre">Ingrese el nombre</label>
     <input class="form-control" type="text" name="nombreUsuario" id="input_nombre" placeholder="Nombre(s)" required>
     <label for="input_apellidos">Ingrese los apellidos</label>
