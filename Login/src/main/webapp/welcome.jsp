@@ -5,7 +5,6 @@
 <%@ page import="java.util.List" %>
 <%@ page session="true" %>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +13,7 @@
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/stylesIndex.css">
-    <link rel="icon" href="img/Logo1.png">|
+    <link rel="icon" href="img/Logo1.png">
     <style>
         .card:hover {
             cursor: pointer !important;
@@ -87,6 +86,14 @@
                 </span>
             </p>
         </a>
+        <%
+            if ("administrador".equals(usuario.getCategoria())) {
+        %>
+        <a class="nav-links" href="gestionUsuarios.jsp">Gestión de usuarios</a>
+        <%
+            }
+        %>
+        <a class="nav-links" href="logout">Cerrar sesión</a>
     </div>
 </nav>
 <br>

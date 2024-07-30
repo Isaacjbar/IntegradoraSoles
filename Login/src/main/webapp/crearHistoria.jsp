@@ -67,7 +67,7 @@
 <h1 class="title-1 fs-3">Crear portada</h1>
 <main>
     <div class="container">
-        <form id="form-portada" action="CrearHistoriaServlet" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">>
+        <form id="form-portada" action="CrearHistoriaServlet" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="titulo" class="form-label">Título</label>
                 <input type="text" class="form-control" id="titulo" name="titulo" required>
