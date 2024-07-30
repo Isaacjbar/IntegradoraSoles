@@ -4,14 +4,7 @@
 <%@ page import="jbar.login.dao.HistoriaDao" %>
 <%@ page import="java.util.List" %>
 <%@ page session="true" %>
-<%@ page import="jbar.login.model.Usuario" %>
-<%
-    Usuario usuario = (Usuario) session.getAttribute("usuario");
-    if (usuario == null) {
-        response.sendRedirect("login.jsp");
-        return;
-    }
-%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +15,6 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/stylesIndex.css">
     <link rel="icon" href="img/Logo1.png">
-<%--    El siguiente style es para darle prioridad a estos estilos por encima del bootstrap--%>
     <style>
         .card:hover {
             cursor: pointer !important;
@@ -62,14 +54,20 @@
     %>
 </head>
 <body>
+<%
+    Usuario usuario = (Usuario) session.getAttribute("usuario");
+    if (usuario == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
 <!-- Navbar -->
 <nav id="navbar1" class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container d-flex align-items-center">
-        <a id="logo" href="/" class="navbar-brand d-flex align-items-center h-100">
+        <a id="logo" href="${pageContext.request.contextPath}/welcome.jsp" class="navbar-brand d-flex align-items-center h-100">
             <svg style="margin-right: .4em; border:2px solid white; border-radius:50%; padding: 2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                  class="bi bi-signpost-split-fill" viewBox="0 0 16 16">
-                <path
-                        d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5z" />
+                <path d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5z"></path>
             </svg>
             <strong class="app-name-text fs-6">Histority</strong>
         </a>
@@ -112,7 +110,7 @@
         <input class="searchBar1-input form-control me-2" type="search" placeholder="Busque una historia por titulo" aria-label="Search">
         <button class="btn btn-search">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search search-icon" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
             </svg>
         </button>
     </form>

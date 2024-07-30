@@ -43,6 +43,11 @@ public class HistoriaServlet extends HttpServlet {
             return;
         }
 
+        // Desactivar caché para evitar problemas de caché en diferentes entornos
+        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
+
         // Verificar si el usuario ha iniciado sesión
         HttpSession session = request.getSession(false);
         Usuario usuario = (Usuario) (session != null ? session.getAttribute("usuario") : null);

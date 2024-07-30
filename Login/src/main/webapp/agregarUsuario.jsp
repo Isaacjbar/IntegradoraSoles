@@ -1,3 +1,4 @@
+<%@ page import="jbar.login.model.Usuario" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="es">
@@ -14,19 +15,43 @@
 
 <body>
 <!-- Navbar -->
+<%
+    Usuario usuario = (Usuario) session.getAttribute("usuario");
+    if (usuario == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
+<!-- Navbar -->
 <nav id="navbar1" class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container d-flex align-items-center">
-        <a id="logo" href="/" class="navbar-brand d-flex align-items-center h-100">
-            <svg style="margin-right: .4em; border:2px solid white; border-radius:50%
-                ; padding: 2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+        <a id="logo" href="/Login_war/welcome.jsp" class="navbar-brand d-flex align-items-center h-100">
+            <svg style="margin-right: .4em; border:2px solid white; border-radius:50%; padding: 2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                  class="bi bi-signpost-split-fill" viewBox="0 0 16 16">
                 <path
                         d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5z" />
             </svg>
             <strong class="app-name-text fs-6">Histority</strong>
         </a>
+        <a class="userSession text-decoration-none" href="">
+            <p class="text-white d-flex align-items-center justify-content-around">
+                <span class="textUser text-white  d-sm-block">
+                    <%
+                        if (usuario != null) {
+                    %>
+                    Hola, <%= usuario.getNombre() %> <%= usuario.getApellido() %>
+                    <%
+                        } else {
+                            response.sendRedirect("login.jsp");
+                            return;
+                        }
+                    %>
+                </span>
+            </p>
+        </a>
     </div>
 </nav>
+<br>
 
 <%
     String errorMessage = (String) request.getAttribute("errorMessage");

@@ -16,7 +16,7 @@
   <title>Historia no disponible</title>
 </head>
 <body>
-
+<jsp:include page="templates/navSinSesion.jsp" />
 <div class="historiaNoDisponible">
   <img src="img/noencontrada.png" alt="Historia no disponible">
   <h2>Historia no disponible...</h2>

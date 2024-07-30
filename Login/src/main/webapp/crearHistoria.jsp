@@ -74,7 +74,7 @@
             </div>
             <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción</label>
-                <textarea  class="form-control textarea-portada" id="descripcion" name="descripcion" rows="3" maxlength="210" required></textarea>
+                <textarea placeholder="Longitud máxima: 210 caracteres"  class="form-control textarea-portada" id="descripcion" name="descripcion" rows="3" maxlength="210" required></textarea>
             </div>
             <div class="mb-3">
                 <label for="multimedia" class="form-label">Imagen de previsualización</label>
