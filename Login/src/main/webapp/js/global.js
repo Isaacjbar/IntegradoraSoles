@@ -1,4 +1,4 @@
-
+document.addEventListener('DOMContentLoaded', (event) => {
     const userIcon = document.getElementById('user-icon');
     const userInfoContainer = document.getElementById('user-info-container');
     const closeInfoContainer = document.getElementById('close-info-container');
@@ -21,3 +21,4 @@
             userInfoContainer.style.display = 'none';
         }
     });
+});

@@ -10,7 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Ult mod 31">
+    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Correccion links y menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/js/global.js" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/js/global.js" afterDir="false" />
@@ -266,7 +266,7 @@
       <workItem from="1722373431871" duration="2503000" />
       <workItem from="1722386654248" duration="8671000" />
       <workItem from="1722443755973" duration="260000" />
-      <workItem from="1722445288866" duration="1026000" />
+      <workItem from="1722445288866" duration="1695000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />
@@ -404,7 +404,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722445609163</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Correccion links y menu">
+      <option name="closed" value="true" />
+      <created>1722446352005</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1722446352005</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,6 +437,7 @@
     <MESSAGE value="Ultima mod. 30 julio" />
     <MESSAGE value="Preparación para subir imagenes" />
     <MESSAGE value="Ult mod 31" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ult mod 31" />
+    <MESSAGE value="Correccion links y menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correccion links y menu" />
   </component>
 </project>
