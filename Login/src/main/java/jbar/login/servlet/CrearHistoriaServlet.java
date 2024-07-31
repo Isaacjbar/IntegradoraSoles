@@ -1,7 +1,9 @@
 package jbar.login.servlet;
 
 import jbar.login.dao.HistoriaDao;
+import jbar.login.dao.EscenaDao;
 import jbar.login.model.Historia;
+import jbar.login.model.Escena;
 import jbar.login.model.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -86,7 +88,20 @@ public class CrearHistoriaServlet extends HttpServlet {
 
         if (isInserted) {
             int historiaId = historiaDao.getLastHistoriaId();
-            response.sendRedirect("gestionHistoria.jsp?id=" + historiaId);
+            System.out.println("Historia creada con ID: " + historiaId);
+
+            // Crear la escena principal
+            EscenaDao escenaDao = new EscenaDao();
+            Escena escenaPrincipal = new Escena();
+            escenaPrincipal.setTitulo("Escena Principal");
+            escenaPrincipal.setDescripcion("");
+            escenaPrincipal.setFechaCreacion(Timestamp.from(Instant.now()));
+            escenaPrincipal.setHistoriaId(historiaId);
+
+            boolean isEscenaInserted = escenaDao.insertEscenaDef(escenaPrincipal);
+            System.out.println("Escena principal creada con éxito: " + isEscenaInserted);
+
+            response.sendRedirect("gestionHistoria.jsp?id_his=" + historiaId);
         } else {
             request.setAttribute("error", "Hubo un problema al crear la historia.");
             request.getRequestDispatcher("error.jsp").forward(request, response);
