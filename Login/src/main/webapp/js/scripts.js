@@ -3,6 +3,46 @@ function init() {
 
     var currentNode;  // Variable para guardar el nodo actual
 
+    function getAllChildNodes(node) {
+        var childNodes = [];
+        node.findTreeChildrenNodes().each(function(child) {
+            childNodes.push(child.data.key);
+            childNodes = childNodes.concat(getAllChildNodes(child));
+        });
+        return childNodes;
+    }
+
+    function deleteSubTree(e, obj) {
+        var node = obj.part.adornedPart;  // el nodo al que se le hace clic
+        var diagram = node.diagram;
+        diagram.startTransaction("delete sub tree");
+
+        // Obtener todos los nodos hijos recursivamente
+        var childNodes = getAllChildNodes(node);
+
+        // Enviar la solicitud al servlet para eliminar las ramificaciones
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "DeleteSubTreeServlet", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Procesar la respuesta del servidor
+                console.log("Subtree deleted successfully:", xhr.responseText);
+                childNodes.forEach(function(childKey) {
+                    diagram.model.removeNodeData(diagram.model.findNodeDataForKey(childKey));
+                });
+            }
+        };
+
+        var data = "nodeId=" + encodeURIComponent(node.data.key) +
+            "&childNodes=" + encodeURIComponent(JSON.stringify(childNodes));
+        console.log("Sending data to delete subtree: " + data);
+        xhr.send(data);
+
+        diagram.commitTransaction("delete sub tree");
+    }
+
     function addChildNodes(e, obj) {
         var node = obj.part.adornedPart;  // el nodo al que se le hace clic
         var diagram = node.diagram;
@@ -56,9 +96,6 @@ function init() {
 
         diagram.commitTransaction("add children");
     }
-
-
-
 
     function showForm(e, obj) {
         currentNode = obj.part.adornedPart;  // el nodo al que se le hace clic
@@ -143,41 +180,6 @@ function init() {
         myDiagram.div.style.pointerEvents = 'auto'; // Re-enable interactions with the diagram
     }
 
-    // Función para eliminar un subárbol
-    function deleteSubTree(node) {
-        const nodesToDelete = [];
-        const linksToDelete = [];
-
-        node.findTreeParts().each(part => {
-            if (part instanceof go.Node) {
-                nodesToDelete.push(part);
-            } else if (part instanceof go.Link) {
-                linksToDelete.push(part);
-            }
-        });
-
-        myDiagram.startTransaction("deleteSubTree");
-        linksToDelete.forEach(link => myDiagram.remove(link));
-        nodesToDelete.forEach(n => myDiagram.remove(n));
-        myDiagram.commitTransaction("deleteSubTree");
-    }
-
-    // Función para borrar un nodo y su subárbol
-    function deleteNodeAndSubTree(node) {
-        var childNodes = node.findTreeChildrenNodes();
-
-        // Mostrar advertencia si el nodo tiene hijos
-        if (childNodes.count > 0) {
-            var confirmation = confirm("Este nodo tiene nodos conectados. Si elimina este nodo, todos los nodos conectados también se eliminarán. ¿Quiere continuar?");
-            if (!confirmation) return;
-        }
-
-        // Eliminar el nodo y su subárbol
-        var diagram = node.diagram;
-        diagram.startTransaction("delete node");
-        deleteSubTree(node);
-        diagram.commitTransaction("delete node");
-    }
 
     // define una plantilla de nodo simple con un menú contextual
     myDiagram = $(go.Diagram, "myDiagramDiv",  // debe coincidir con el ID del div en HTML
@@ -249,19 +251,14 @@ function init() {
                 contextMenu:  // define un menú contextual para el nodo
                     $("ContextMenu",
                         $("ContextMenuButton",
-                            $(go.TextBlock, "Añadir escenas"),
-                            { click: addChildNodes }),
-                        $("ContextMenuButton",
                             $(go.TextBlock, "Formulario"),
                             { click: showForm }),
                         $("ContextMenuButton",
-                            $(go.TextBlock, "Eliminar Nodo"),
-                            {
-                                click: function(e, obj) {
-                                    var node = obj.part.adornedPart;
-                                    deleteNodeAndSubTree(node); // Llamar a la función de borrado
-                                }
-                            })
+                            $(go.TextBlock, "Eliminar ramas"),
+                            { click: deleteSubTree }),  // Llamar a la función deleteSubTree correctamente
+                        $("ContextMenuButton",
+                            $(go.TextBlock, "Añadir escenas"),
+                            { click: addChildNodes })
                     )
             }
         );
@@ -274,22 +271,6 @@ function init() {
                 { segmentOffset: new go.Point(0, -10), font: "12px Arial", stroke: "black" },
                 new go.Binding("text", "text"))
         );
-
-    // Función para mostrar video de YouTube
-    function showYouTubeVideo() {
-        const youtubeLink = document.getElementById("youtubeLink").value;
-        const youtubePlayer = document.getElementById("youtubePlayer");
-
-        if (youtubeLink) {
-            let videoId = youtubeLink.split('v=')[1];
-            const ampersandPosition = videoId.indexOf('&');
-            if (ampersandPosition !== -1) {
-                videoId = videoId.substring(0, ampersandPosition);
-            }
-            youtubePlayer.src = `https://www.youtube.com/embed/${videoId}`;
-            youtubePlayer.style.display = "block";
-        }
-    }
 
     // Cargar los datos del servidor
     var xhr = new XMLHttpRequest();

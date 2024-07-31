@@ -168,4 +168,34 @@ public class DecisionDao {
 
         return decisiones;
     }
+
+    public List<Integer> getDecisionesByEscenaId2(int escenaId) {
+        List<Integer> decisionIds = new ArrayList<>();
+        String sql = "SELECT id FROM decision WHERE escena_id = ? OR escena_destino_id = ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, escenaId);
+            statement.setInt(2, escenaId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                decisionIds.add(resultSet.getInt("id"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return decisionIds;
+    }
+    public boolean deleteDecisionesPorEscena(int escenaId) {
+        List<Integer> decisionIds = getDecisionesByEscenaId2(escenaId);
+        boolean result = true;
+        for (int decisionId : decisionIds) {
+            result &= deleteDecision(decisionId);
+        }
+        return result;
+    }
 }

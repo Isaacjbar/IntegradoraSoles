@@ -152,22 +152,6 @@ public class EscenaDao {
         }
     }
 
-    public boolean deleteEscena(int id) {
-        String sql = "DELETE FROM escena WHERE id = ?";
-
-        try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-
-            statement.setInt(1, id);
-
-            int rowsDeleted = statement.executeUpdate();
-            return rowsDeleted > 0;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
     public Escena getPrimeraEscenaPorHistoriaId(int historiaId) {
         Escena escena = null;
         String sql = "SELECT * FROM escena WHERE historia_id = ? ORDER BY id ASC LIMIT 1";
@@ -269,6 +253,43 @@ public class EscenaDao {
         }
 
         return escenas;
+    }
+    public List<Integer> getChildNodes(int parentId) {
+        List<Integer> childNodeIds = new ArrayList<>();
+        String sql = "SELECT id FROM escena WHERE historia_id = ?"; // Cambia 'historia_id' por la columna correcta
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, parentId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                childNodeIds.add(resultSet.getInt("id"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return childNodeIds;
+    }
+
+    public boolean deleteEscena(int id) {
+        String sql = "DELETE FROM escena WHERE id = ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, id);
+
+            int rowsDeleted = statement.executeUpdate();
+            return rowsDeleted > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 }
