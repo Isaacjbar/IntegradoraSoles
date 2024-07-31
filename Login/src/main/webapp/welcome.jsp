@@ -11,38 +11,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/stylesIndex.css">
     <link rel="icon" href="img/Logo1.png">
-    <style>
-        .card:hover {
-            cursor: pointer !important;
-            transform: scale(1.05) !important;
-            transition: transform 0.2s ease-in-out !important;
-        }
-        .card-text{
-            text-align: justify;
-            height: 110px !important;
-            margin-bottom: 5px;
-        }
-        .card_title{
-            height: 50px;
-        }
-        .img_d_card{
-            width: 90%;
-            margin: 0 auto;
-            display: block;
-            object-fit: contain;
-        }
-        #btn-pub-despub{
-            height: 100%;
-        }
-        @media screen and (max-width: 433px) {
-            .card-text{
-                height: 150px !important;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/global.css">
+
     <title>Gestión de Historias</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/scripts.js"></script>
@@ -70,32 +42,49 @@
             </svg>
             <strong class="app-name-text fs-6">Histority</strong>
         </a>
-        <a class="userSession text-decoration-none" href="">
-            <p class="text-white d-flex align-items-center justify-content-around">
-                <span class="textUser text-white  d-sm-block">
-                    <%
-                        if (usuario != null) {
-                    %>
-                    Hola, <%= usuario.getNombre() %> <%= usuario.getApellido() %>
-                    <%
-                        } else {
-                            response.sendRedirect("login.jsp");
-                            return;
-                        }
-                    %>
-                </span>
-            </p>
-        </a>
-        <%
-            if ("administrador".equals(usuario.getCategoria())) {
-        %>
-        <a class="nav-links" href="gestionUsuarios.jsp">Gestión de usuarios</a>
-        <%
-            }
-        %>
-        <a class="nav-links" href="logout">Cerrar sesión</a>
+        <svg id="user-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16" style="cursor:pointer;">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"></path>
+        </svg>
     </div>
 </nav>
+<div class="user-info-container" id="user-info-container" style="display: none;">
+    <button id="close-info-container">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"></path>
+        </svg>
+    </button>
+    <svg id="user-icon-dynamic" xmlns="http://www.w3.org/2000/svg" width="65" height="65" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
+        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"></path>
+    </svg>
+    <p class="text-white d-flex align-items-center justify-content-around">
+        <span class="textUser text-white d-sm-block">
+            Hola, <%= usuario.getNombre() %> <%= usuario.getApellido() %>
+        </span>
+    </p>
+    <%
+        if ("administrador".equals(usuario.getCategoria())) {
+    %>
+    <a class="user-info-link-container" href="gestionUsuarios.jsp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-vcard" viewBox="0 0 16 16">
+            <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5"></path>
+            <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96q.04-.245.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 1 1 12z"></path>
+        </svg>
+        <p>Gestión de usuarios</p>
+    </a>
+    <%
+        }
+    %>
+    <a class="user-info-link-container" href="logout">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"></path>
+            <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"></path>
+        </svg>
+        <p>Cerrar sesión</p>
+    </a>
+</div>
+
 <br>
 
 <h1 class="title-1 fs-3">Gestión de Historias</h1>
@@ -173,10 +162,10 @@
     if ("success".equals(status)) {
         String mensaje;
         String imgUrl;
-        if("publicar".equals(accion)){
+        if ("publicar".equals(accion)) {
             mensaje = "La historia ha sido publicada ";
             imgUrl = "img/publicar.png";
-        }else{
+        } else {
             mensaje = "La historia ha sido archivada";
             imgUrl = "img/archivar.png";
         }
@@ -184,7 +173,7 @@
 <script>
     Swal.fire({
         title: "<%= mensaje %>",
-        imageUrl: "<%=imgUrl%>",
+        imageUrl: "<%= imgUrl %>",
         imageWidth: "150px",
         confirmButtonText: "Ok",
         confirmButtonColor: "#0B6490"
@@ -214,6 +203,153 @@
 <%
     }
 %>
-<script src="js/welcome.js"></script>
+<script src="js/global.js"></script>
+<style>
+    .card:hover {
+        cursor: pointer !important;
+        transform: scale(1.05) !important;
+        transition: transform 0.2s ease-in-out !important;
+    }
+    .card-text {
+        text-align: justify;
+        height: 110px !important;
+        margin-bottom: 5px;
+    }
+    .card_title {
+        height: 50px;
+    }
+    .img_d_card {
+        width: 90%;
+        margin: 0 auto;
+        display: block;
+        object-fit: contain;
+    }
+    #btn-pub-despub {
+        height: 100%;
+    }
+    @media screen and (max-width: 433px) {
+        .card-text {
+            height: 150px !important;
+        }
+    }
+    .user-info-container {
+        display: none;
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        background-color: #343a40;
+        padding: 15px;
+        border-radius: 5px;
+        z-index: 1000;
+        position: sticky;
+    }
+    .user-info-container .user-info-link-container {
+        display: flex;
+        align-items: center;
+        color: white;
+        margin: 10px 0;
+    }
+    .user-info-container .user-info-link-container svg {
+        margin-right: 10px;
+    }
+    .user-info-container p {
+        margin: 0;
+    }
+    /* Implementación de menu dinámico */
+    #user-icon {
+        color: white;
+        transition: all 200ms ease;
+        cursor: pointer;
+        z-index: 9000;
+    }
+    #user-icon path {
+        z-index: 4;
+    }
+    #user-icon:hover {
+        transform: scale(1.13);
+    }
+    #user-icon:active {
+        transform: scale(1.02);
+    }
+    .user-info-container {
+        position: absolute;
+        right: 1%;
+        top: 50px;
+        background-color: #013c5a;
+        z-index: 9000;
+        width: 300px;
+        border-radius: 10px;
+        padding: 30px 10px;
+        padding-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center !important;
+        opacity: .9;
+    }
+    .user-info-container * {
+        z-index: 9001;
+    }
+    .user-info-container > p {
+        padding: 10px;
+        border-bottom: 2px solid white;
+        width: 90%;
+    }
+    #user-icon-dynamic {
+        color: white;
+        margin: 20px auto;
+    }
+    #close-info-container {
+        position: absolute;
+        right: 3%;
+        top: 3%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+        background: none;
+        border: none;
+        transition: all 300ms;
+        margin: 0 auto;
+    }
+    #close-info-container svg {
+        transition: all 300ms !important;
+        color: white !important;
+        z-index: 100 !important;
+    }
+    .user-info-link-container {
+        flex-direction: row;
+        transition: all 300ms;
+        z-index: 700;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        width: 100% !important;
+        display: flex;
+        justify-content: center !important;
+        text-align: center;
+        justify-content: center;
+        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 2px;
+    }
+    .user-info-link-container svg {
+        color: white;
+        margin-right: 8px;
+    }
+    .user-info-link-container p {
+        margin-bottom: 0;
+    }
+    .user-info-link-container:hover {
+        background-color: white;
+        color: #013c5a;
+    }
+    .user-info-link-container:hover svg {
+        color: #013c5a;
+    }
+</style>
 </body>
 </html>
