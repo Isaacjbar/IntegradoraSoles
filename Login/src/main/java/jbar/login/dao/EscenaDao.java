@@ -206,29 +206,6 @@ public class EscenaDao {
             return false;
         }
     }
-
-    public boolean insertEscenaSinM(Escena escena) {
-        String sql = "INSERT INTO escena (historia_id, titulo, descripcion, es_final, texto_final, fecha_creacion) " +
-                "VALUES (?, ?, ?, ?, ?, ?)";
-
-        try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-
-            statement.setInt(1, escena.getHistoriaId());
-            statement.setString(2, escena.getTitulo());
-            statement.setString(3, escena.getDescripcion());
-            statement.setBoolean(4, escena.isEsFinal());
-            statement.setString(5, escena.getTextoFinal());
-            statement.setTimestamp(6, escena.getFechaCreacion());
-
-            int rowsInserted = statement.executeUpdate();
-            return rowsInserted > 0;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
     public List<Escena> getEscenasByHistoriaId(int historiaId) {
         List<Escena> escenas = new ArrayList<>();
         String sql = "SELECT id, titulo, descripcion, imagen, audio, video FROM Escena WHERE historia_id = ?";
@@ -291,5 +268,23 @@ public class EscenaDao {
             return false;
         }
     }
+    public boolean insertEscenaDef(Escena escena) {
+        String sql = "INSERT INTO escena (historia_id, titulo, descripcion, fecha_creacion) VALUES (?, ?, ?, ?)";
 
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, escena.getHistoriaId());
+            statement.setString(2, escena.getTitulo());
+            statement.setString(3, escena.getDescripcion());
+            statement.setTimestamp(4, escena.getFechaCreacion());
+
+            int rowsInserted = statement.executeUpdate();
+            return rowsInserted > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
