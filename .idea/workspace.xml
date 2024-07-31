@@ -11,12 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Preparación para subir imagenes">
-      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/js/global.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/js/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/js/welcome.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +81,7 @@
     &quot;Tomcat Server.Tomcat 10.1.11.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/eeeri/Downloads/Publicar despublicar/IntegradoraSoles/Login/src/main/webapp/img&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/eeeri/Downloads/tareaLunes/carga_y_descarga&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -267,6 +263,8 @@
       <workItem from="1722362902266" duration="5630000" />
       <workItem from="1722373431871" duration="2503000" />
       <workItem from="1722386654248" duration="8671000" />
+      <workItem from="1722443755973" duration="260000" />
+      <workItem from="1722445288866" duration="281000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />

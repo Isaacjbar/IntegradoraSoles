@@ -203,7 +203,6 @@
 <%
     }
 %>
-<script src="js/global.js"></script>
 <style>
     .card:hover {
         cursor: pointer !important;
@@ -351,5 +350,7 @@
         color: #013c5a;
     }
 </style>
+<script src="js/global.js"></script>
+<script src="js/welcome.js"></script>
 </body>
 </html>
