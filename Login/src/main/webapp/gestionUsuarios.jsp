@@ -116,7 +116,8 @@
             <h6><%= usuarioR.getNombre() %> <%= usuarioR.getApellido() %></h6>
             <ul>
                 <li><strong>Correo:</strong> <%= usuarioR.getCorreoElectronico() %></li>
-                <li><strong>Correo:</strong> <%= usuarioR.getCategoria() %></li>
+                <li><strong>Categoría:</strong> <%= usuarioR.getCategoria() %></li>
+                <li><strong>Estado:</strong> <%= usuarioR.isEstado() ? "activo" : "inactivo" %></li>
             </ul>
         </div>
         <div class="d-flex flex-column controlesUsuario col-3 p-1 flex-lg-row">

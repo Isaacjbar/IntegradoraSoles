@@ -10,12 +10,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Otra más">
+    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Correcciones y select en agregarUsuario">
+      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/registroCuenta.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/LoginServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/RegistroUsuarioServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/RegistroUsuarioServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/agregarUsuario.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/agregarUsuario.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/gestionUsuarios.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/gestionUsuarios.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/login.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,10 +27,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="Class" />
         <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -268,7 +270,7 @@
       <workItem from="1722443755973" duration="260000" />
       <workItem from="1722445288866" duration="2648000" />
       <workItem from="1722557317682" duration="4371000" />
-      <workItem from="1722570756079" duration="1140000" />
+      <workItem from="1722570756079" duration="3722000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />
@@ -430,7 +432,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722447278315</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Correcciones y select en agregarUsuario">
+      <option name="closed" value="true" />
+      <created>1722572005593</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1722572005594</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -458,6 +468,7 @@
     <MESSAGE value="Correccion links y menu" />
     <MESSAGE value="Otra modificacion" />
     <MESSAGE value="Otra más" />
-    <option name="LAST_COMMIT_MESSAGE" value="Otra más" />
+    <MESSAGE value="Correcciones y select en agregarUsuario" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correcciones y select en agregarUsuario" />
   </component>
 </project>
