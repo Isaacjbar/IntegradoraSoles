@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/stylesIndex.css">
     <link rel="icon" href="img/Logo1.png">
     <link rel="stylesheet" href="css/global.css">
-
+    <link rel="stylesheet" href="css/styleNav.css">
     <title>Gestión de Historias</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/scripts.js"></script>
@@ -84,7 +84,6 @@
         <p>Cerrar sesión</p>
     </a>
 </div>
-
 <br>
 
 <h1 class="title-1 fs-3">Gestión de Historias</h1>
@@ -203,153 +202,6 @@
 <%
     }
 %>
-<style>
-    .card:hover {
-        cursor: pointer !important;
-        transform: scale(1.05) !important;
-        transition: transform 0.2s ease-in-out !important;
-    }
-    .card-text {
-        text-align: justify;
-        height: 110px !important;
-        margin-bottom: 5px;
-    }
-    .card_title {
-        height: 50px;
-    }
-    .img_d_card {
-        width: 90%;
-        margin: 0 auto;
-        display: block;
-        object-fit: contain;
-    }
-    #btn-pub-despub {
-        height: 100%;
-    }
-    @media screen and (max-width: 433px) {
-        .card-text {
-            height: 150px !important;
-        }
-    }
-    .user-info-container {
-        display: none;
-        position: absolute;
-        top: 50px;
-        right: 10px;
-        background-color: #343a40;
-        padding: 15px;
-        border-radius: 5px;
-        z-index: 1000;
-        position: sticky;
-    }
-    .user-info-container .user-info-link-container {
-        display: flex;
-        align-items: center;
-        color: white;
-        margin: 10px 0;
-    }
-    .user-info-container .user-info-link-container svg {
-        margin-right: 10px;
-    }
-    .user-info-container p {
-        margin: 0;
-    }
-    /* Implementación de menu dinámico */
-    #user-icon {
-        color: white;
-        transition: all 200ms ease;
-        cursor: pointer;
-        z-index: 9000;
-    }
-    #user-icon path {
-        z-index: 4;
-    }
-    #user-icon:hover {
-        transform: scale(1.13);
-    }
-    #user-icon:active {
-        transform: scale(1.02);
-    }
-    .user-info-container {
-        position: absolute;
-        right: 1%;
-        top: 50px;
-        background-color: #013c5a;
-        z-index: 9000;
-        width: 300px;
-        border-radius: 10px;
-        padding: 30px 10px;
-        padding-bottom: 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center !important;
-        opacity: .9;
-    }
-    .user-info-container * {
-        z-index: 9001;
-    }
-    .user-info-container > p {
-        padding: 10px;
-        border-bottom: 2px solid white;
-        width: 90%;
-    }
-    #user-icon-dynamic {
-        color: white;
-        margin: 20px auto;
-    }
-    #close-info-container {
-        position: absolute;
-        right: 3%;
-        top: 3%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1;
-        background: none;
-        border: none;
-        transition: all 300ms;
-        margin: 0 auto;
-    }
-    #close-info-container svg {
-        transition: all 300ms !important;
-        color: white !important;
-        z-index: 100 !important;
-    }
-    .user-info-link-container {
-        flex-direction: row;
-        transition: all 300ms;
-        z-index: 700;
-        text-align: center;
-        text-decoration: none;
-        color: white;
-        width: 100% !important;
-        display: flex;
-        justify-content: center !important;
-        text-align: center;
-        justify-content: center;
-        display: block;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-        border-radius: 5px;
-        margin: 2px;
-    }
-    .user-info-link-container svg {
-        color: white;
-        margin-right: 8px;
-    }
-    .user-info-link-container p {
-        margin-bottom: 0;
-    }
-    .user-info-link-container:hover {
-        background-color: white;
-        color: #013c5a;
-    }
-    .user-info-link-container:hover svg {
-        color: #013c5a;
-    }
-</style>
 <script src="js/global.js"></script>
 <script src="js/welcome.js"></script>
 </body>
