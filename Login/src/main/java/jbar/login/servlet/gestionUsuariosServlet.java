@@ -17,13 +17,11 @@ public class gestionUsuariosServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         usuarioDao = new UsuarioDao();
-        System.out.println("Servlet gestionUsuariosServlet inicializado");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        System.out.println("Acción recibida: " + action);
 
         if ("register".equalsIgnoreCase(action)) {
             registrarUsuario(request, response);
@@ -32,7 +30,6 @@ public class gestionUsuariosServlet extends HttpServlet {
         } else if ("activate".equalsIgnoreCase(action)) {
             cambiarEstadoUsuario(request, response, true);
         } else {
-            System.out.println("Acción desconocida: " + action);
             response.sendRedirect("gestionUsuarios.jsp");
         }
     }
@@ -57,7 +54,6 @@ public class gestionUsuariosServlet extends HttpServlet {
 
         // Insertar el usuario en la base de datos
         boolean isInserted = usuarioDao.insertUsuario(usuario);
-        System.out.println("Usuario registrado: " + isInserted);
 
         // Redirigir según el resultado de la inserción
         if (isInserted) {
@@ -71,13 +67,11 @@ public class gestionUsuariosServlet extends HttpServlet {
         // Recuperar el ID del usuario del formulario
         String idStr = request.getParameter("id");
         if (idStr == null || idStr.isEmpty()) {
-            System.out.println("ID no proporcionado");
             response.sendRedirect("gestionUsuarios.jsp?error=noid");
             return;
         }
 
         int id = Integer.parseInt(idStr);
-        System.out.println("ID de usuario a cambiar estado: " + id);
 
         // Obtener el usuario por ID
         Usuario usuario = usuarioDao.getUsuarioById(id);
@@ -85,18 +79,14 @@ public class gestionUsuariosServlet extends HttpServlet {
             // Cambiar el estado del usuario
             usuario.setEstado(nuevoEstado);
             boolean isUpdated = usuarioDao.updateUsuario(usuario);
-            System.out.println("Estado actualizado: " + isUpdated);
 
             // Redirigir según el resultado de la actualización
             if (isUpdated) {
-                System.out.println("Usuario actualizado exitosamente.");
                 response.sendRedirect("gestionUsuarios.jsp?success=" + (nuevoEstado ? "activate" : "deactivate"));
             } else {
-                System.out.println("Error al actualizar el usuario.");
                 response.sendRedirect("gestionUsuarios.jsp?error=" + (nuevoEstado ? "activate" : "deactivate"));
             }
         } else {
-            System.out.println("Usuario no encontrado.");
             response.sendRedirect("gestionUsuarios.jsp?error=notfound");
         }
     }

@@ -46,6 +46,7 @@ public class UsuarioDao {
         return usuario;
     }
 
+
     public boolean insertUsuario(Usuario usuario) {
         String sql = "INSERT INTO usuario (nombre, apellido, correo_electronico, contrasena, estado, codigo, categoria, fecha_registro, fecha_creacion) " +
                 "VALUES (?, ?, ?, SHA2(?, 256), ?, ?, ?, ?, ?)";

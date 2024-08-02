@@ -29,12 +29,11 @@ public class LoginServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        
         if (usuario != null && usuario.isEstado()) {
             session.setAttribute("usuario", usuario);
             response.sendRedirect("welcome.jsp");
         } else {
-            session.setAttribute("errorMessage", "Usuario o contraseña incorrectos.");
+            session.setAttribute("errorMessage", "Usuario o contraseña incorrectos o cuenta desactivada.");
             response.sendRedirect("login.jsp");
         }
     }

@@ -10,14 +10,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Correcciones y select en agregarUsuario">
-      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/registroCuenta.jsp" afterDir="false" />
+    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Mas correcciones en activar y desactivar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/dao/UsuarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/dao/UsuarioDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/RegistroUsuarioServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/RegistroUsuarioServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/gestionUsuarios.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/gestionUsuarios.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/gestionUsuariosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/gestionUsuariosServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,35 +65,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.ReestablecerContra.jsp.executor": "Run",
-    "JavaScript Debug.agregarPortada.jsp.executor": "Run",
-    "JavaScript Debug.agregarUsuario.jsp.executor": "Run",
-    "JavaScript Debug.error.jsp.executor": "Run",
-    "JavaScript Debug.gestionHistoria.jsp.executor": "Run",
-    "JavaScript Debug.gestionUsuarios.jsp.executor": "Run",
-    "JavaScript Debug.login.jsp.executor": "Run",
-    "JavaScript Debug.portadaHistoria.jsp.executor": "Run",
-    "JavaScript Debug.reproductorHistoria.jsp.executor": "Run",
-    "JavaScript Debug.solicitudReestablecerContra.jsp.executor": "Run",
-    "JavaScript Debug.welcome.jsp.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat Server.ReestablecerContra.jsp.executor": "Run",
-    "Tomcat Server.Tomcat 10.1.11.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/eeeri/Downloads/Integradora1Agosto/IntegradoraSoles",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.ReestablecerContra.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.agregarPortada.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.agregarUsuario.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.error.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.gestionHistoria.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.gestionUsuarios.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.login.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.portadaHistoria.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.reproductorHistoria.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.solicitudReestablecerContra.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.welcome.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.ReestablecerContra.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.11.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/eeeri/Downloads/Integradora1Agosto/IntegradoraSoles&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\eeeri\Downloads\Publicar despublicar\IntegradoraSoles\Login\src\main\webapp\img" />
@@ -270,7 +268,7 @@
       <workItem from="1722443755973" duration="260000" />
       <workItem from="1722445288866" duration="2648000" />
       <workItem from="1722557317682" duration="4371000" />
-      <workItem from="1722570756079" duration="3722000" />
+      <workItem from="1722570756079" duration="5466000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />
@@ -440,7 +438,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722572005594</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Mas correcciones en activar y desactivar">
+      <option name="closed" value="true" />
+      <created>1722574712217</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1722574712217</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -469,6 +475,7 @@
     <MESSAGE value="Otra modificacion" />
     <MESSAGE value="Otra más" />
     <MESSAGE value="Correcciones y select en agregarUsuario" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correcciones y select en agregarUsuario" />
+    <MESSAGE value="Mas correcciones en activar y desactivar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mas correcciones en activar y desactivar" />
   </component>
 </project>
