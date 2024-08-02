@@ -113,9 +113,10 @@
     %>
     <div class="usuarioCard row container my-4 mx-auto hoverscale">
         <div class="infoUsuario col-8 p-2">
-            <h6><%= usuario.getNombre() %> <%= usuarioR.getApellido() %></h6>
+            <h6><%= usuarioR.getNombre() %> <%= usuarioR.getApellido() %></h6>
             <ul>
                 <li><strong>Correo:</strong> <%= usuarioR.getCorreoElectronico() %></li>
+                <li><strong>Correo:</strong> <%= usuarioR.getCategoria() %></li>
             </ul>
         </div>
         <div class="d-flex flex-column controlesUsuario col-3 p-1 flex-lg-row">

@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS usuario (
     apellido VARCHAR(100) NOT NULL,
     correo_electronico VARCHAR(100) UNIQUE NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
-    estado BOOLEAN NOT NULL,
+    estado BOOLEAN NOT NULL default true,
     codigo VARCHAR(100),
     categoria varchar(100),
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

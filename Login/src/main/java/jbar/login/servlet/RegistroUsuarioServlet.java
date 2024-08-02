@@ -21,7 +21,7 @@ public class RegistroUsuarioServlet extends HttpServlet {
         String correo = request.getParameter("correoUsuario");
         String contrasena = request.getParameter("contraUsuario");
         String contrasenaRepetida = request.getParameter("contraRepetida");
-        String categoria = request.getParameter("categoriaUsuario");
+        String categoria = (request.getParameter("categoriaUsuario")).toLowerCase();
 
         // Validar que las contraseñas coinciden
         if (!contrasena.equals(contrasenaRepetida)) {
