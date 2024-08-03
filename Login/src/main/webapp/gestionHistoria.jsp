@@ -1,4 +1,5 @@
-<%@ page import="jbar.login.model.Usuario" %><%--
+<%@ page import="jbar.login.model.Usuario" %>
+<%--
   Created by IntelliJ IDEA.
   User: Isaac
   Date: 15/07/2024
@@ -15,7 +16,7 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/diagramStyles.css">
     <link rel="stylesheet" href="css/styleNav.css">
-    <title>GoJS Test 5</title>
+    <title>Modificar Escena</title>
     <script src="https://unpkg.com/gojs/release/go.js"></script>
     <style>
         body {
@@ -56,7 +57,6 @@
             margin: 10px auto;
             border-radius: 10px;
             box-shadow: 5px 7px 14px -1px rgba(133,133,133,0.75);
-            margin: 30px auto;
             max-width: 800px; /* Ajuste del ancho máximo del formulario */
             padding: 15px 40px;
             width: 80%;
@@ -76,7 +76,65 @@
         .form-group {
             margin-bottom: 15px;
         }
+
+        #videoContainer {
+            display: none;
+        }
+
+        #uploadForm {
+            display: none;
+        }
     </style>
+    <script>
+        function validateForm() {
+            const multimediaImage = document.getElementById('multimediaImage').value;
+            const multimediaAudio = document.getElementById('multimediaAudio').value;
+
+            if (!multimediaImage && !multimediaAudio) {
+                alert('Por favor, sube una imagen y/o audio.');
+                return false;
+            }
+
+            return true;
+        }
+
+        function uploadFiles() {
+            var form = document.getElementById('uploadForm');
+            var formData = new FormData(form);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "SubirMultimediaServlet", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    document.getElementById('nodeImage').value = response.imagePath || '';
+                    document.getElementById('nodeAudio').value = response.audioPath || '';
+                }
+            };
+            xhr.send(formData);
+        }
+
+        function toggleMediaFields() {
+            const mediaType = document.getElementById('nodeMediaType').value;
+            document.getElementById('imageAudioFields').style.display = 'none';
+            document.getElementById('videoField').style.display = 'none';
+            document.getElementById('uploadForm').style.display = 'none';
+            document.getElementById('youtubePlayer').src = '';
+
+            if (mediaType === 'imagenAudio') {
+                document.getElementById('imageAudioFields').style.display = 'block';
+                document.getElementById('uploadForm').style.display = 'block';
+            } else if (mediaType === 'video') {
+                document.getElementById('videoField').style.display = 'block';
+            }
+        }
+
+        function updateVideoPlayer() {
+            const videoUrl = document.getElementById('nodeVideo').value;
+            const player = document.getElementById('youtubePlayer');
+            player.src = videoUrl;
+        }
+    </script>
 </head>
 <body>
 <%
@@ -122,7 +180,7 @@
     %>
     <a class="user-info-link-container" href="gestionUsuarios.jsp">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-vcard" viewBox="0 0 16 16">
-            <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5"></path>
+            <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5.5 0 0 1-.5-.5"></path>
             <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96q.04-.245.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 1 1 12z"></path>
         </svg>
         <p>Gestión de usuarios</p>
@@ -148,6 +206,17 @@
 <div id="myDiagramDiv"></div>
 <div id="myOverlay" style="display: none;">
     <div id="myFormDiv">
+        <form id="uploadForm" action="SubirMultimediaServlet" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="multimediaImage">Imagen</label>
+                <input type="file" class="form-control" id="multimediaImage" name="multimediaImage" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="multimediaAudio" class="mt-2">Audio</label>
+                <input type="file" class="form-control" id="multimediaAudio" name="multimediaAudio" accept="audio/*">
+            </div>
+            <button type="button" class="btn btn-primary mt-3" onclick="uploadFiles()">Subir archivos</button>
+        </form>
         <form id="agregarUsuarioForm" action="gestionEscenaServlet" method="post">
             <h1 class="title-1 fs-5">Modificar Escena</h1>
             <div class="row">
@@ -159,16 +228,25 @@
                     <input class="form-control" type="text" name="titulo" id="nodeName" placeholder="Nombre" required>
                     <label for="nodeDesc">Descripción</label>
                     <textarea class="form-control" name="descripcion" id="nodeDesc" placeholder="Descripción" required></textarea>
+                    <input type="hidden" name="image" id="nodeImage">
+                    <input type="hidden" name="audio" id="nodeAudio">
                 </div>
                 <div class="col-md-6">
-                    <label for="nodeImage">Imagen</label>
-                    <input class="form-control" type="text" name="image" id="nodeImage" placeholder="Imagen">
-                    <label for="nodeAudio">Audio</label>
-                    <input class="form-control" type="text" name="audio" id="nodeAudio" placeholder="Audio">
-                    <label for="nodeVideo">Video</label>
-                    <input class="form-control" type="text" name="video" id="nodeVideo" placeholder="Video">
-                    <div id="videoContainer" class="mt-3">
-                        <iframe id="youtubePlayer" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+                    <label for="nodeMediaType">Tipo de Multimedia</label>
+                    <select class="form-control" id="nodeMediaType" onchange="toggleMediaFields()">
+                        <option value="none">Seleccione tipo</option>
+                        <option value="imagenAudio">Imagen y/o Audio</option>
+                        <option value="video">Video</option>
+                    </select>
+                    <div id="imageAudioFields" class="form-group" style="display: none;">
+                        <!-- Estos campos se rellenan automáticamente al subir archivos -->
+                    </div>
+                    <div id="videoField" class="form-group" style="display: none;">
+                        <label for="nodeVideo">Video</label>
+                        <input class="form-control" type="text" name="video" id="nodeVideo" placeholder="Video" oninput="updateVideoPlayer()">
+                        <div id="videoContainer" class="mt-3">
+                            <iframe id="youtubePlayer" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -181,7 +259,26 @@
 </div>
 <jsp:include page="templates/footer.jsp" />
 <script>
-    var historiaId = "<%= historiaId %>"; // Obtener el ID de la historia desde el JSP
+    var historiaId = "<%= historiaId %>";
+    function toggleMediaFields() {
+        const mediaType = document.getElementById('nodeMediaType').value;
+        document.getElementById('imageAudioFields').style.display = 'none';
+        document.getElementById('videoField').style.display = 'none';
+        document.getElementById('uploadForm').style.display = 'none';
+        document.getElementById('youtubePlayer').src = '';
+
+        if (mediaType === 'imagenAudio') {
+            document.getElementById('uploadForm').style.display = 'block';
+        } else if (mediaType === 'video') {
+            document.getElementById('videoField').style.display = 'block';
+        }
+    }
+
+    function updateVideoPlayer() {
+        const videoUrl = document.getElementById('nodeVideo').value;
+        const player = document.getElementById('youtubePlayer');
+        player.src = videoUrl;
+    }
 </script>
 <script src="js/global.js"></script>
 <script src="js/scripts.js"></script>
