@@ -1,4 +1,3 @@
-<%@ page import="jbar.login.model.Usuario" %>
 <%--
   Created by IntelliJ IDEA.
   User: Isaac
@@ -7,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="jbar.login.model.Usuario" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -144,22 +144,43 @@
         return;
     }
 %>
+<%
+    String historiaId = request.getParameter("id_his");
+%>
 <!-- Navbar -->
 <nav id="navbar1" class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container d-flex align-items-center">
-        <a id="logo" href="${pageContext.request.contextPath}/welcome.jsp" class="navbar-brand d-flex align-items-center h-100">
+        <a id="logo" href="#" class="navbar-brand d-flex align-items-center h-100">
             <svg style="margin-right: .4em; border:2px solid white; border-radius:50%; padding: 2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                  class="bi bi-signpost-split-fill" viewBox="0 0 16 16">
                 <path d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5z"></path>
             </svg>
             <strong class="app-name-text fs-6">Histority</strong>
         </a>
+        <form id="logoForm" action="${pageContext.request.contextPath}/guardarHistoriaServlet" method="post" style="display:none;">
+            <input type="hidden" name="id_his" value="<%= historiaId %>">
+        </form>
         <svg id="user-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16" style="cursor:pointer;">
             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"></path>
         </svg>
+        <%--
+        <form action="${pageContext.request.contextPath}/guardarHistoriaServlet" method="post" class="d-inline">
+            <input type="hidden" name="id_his" value="<%= historiaId %>">
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </form>
+        --%>
     </div>
 </nav>
+
+<script>
+    document.getElementById('logo').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('logoForm').submit();
+    });
+</script>
+
+
 <div class="user-info-container" id="user-info-container" style="display: none;">
     <button id="close-info-container">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
@@ -200,9 +221,6 @@
 <br>
 <br>
 <br>
-<%
-    String historiaId = request.getParameter("id_his");
-%>
 <div id="myDiagramDiv"></div>
 <div id="myOverlay" style="display: none;">
     <div id="myFormDiv">
@@ -260,25 +278,6 @@
 <jsp:include page="templates/footer.jsp" />
 <script>
     var historiaId = "<%= historiaId %>";
-    function toggleMediaFields() {
-        const mediaType = document.getElementById('nodeMediaType').value;
-        document.getElementById('imageAudioFields').style.display = 'none';
-        document.getElementById('videoField').style.display = 'none';
-        document.getElementById('uploadForm').style.display = 'none';
-        document.getElementById('youtubePlayer').src = '';
-
-        if (mediaType === 'imagenAudio') {
-            document.getElementById('uploadForm').style.display = 'block';
-        } else if (mediaType === 'video') {
-            document.getElementById('videoField').style.display = 'block';
-        }
-    }
-
-    function updateVideoPlayer() {
-        const videoUrl = document.getElementById('nodeVideo').value;
-        const player = document.getElementById('youtubePlayer');
-        player.src = videoUrl;
-    }
 </script>
 <script src="js/global.js"></script>
 <script src="js/scripts.js"></script>

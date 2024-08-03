@@ -183,4 +183,26 @@ public class HistoriaDao {
 
         return historias;
     }
+
+    public boolean updateDate(int id_his, Timestamp fechaModificacion) {
+        String sql = "UPDATE historia SET fecha_creacion = ? WHERE id = ?";
+        System.out.println("Executing updateDate with id_his: " + id_his + ", fechaModificacion: " + fechaModificacion);
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setTimestamp(1, fechaModificacion);
+            statement.setInt(2, id_his);
+
+            int rowsUpdated = statement.executeUpdate();
+            System.out.println("Rows updated: " + rowsUpdated);
+            return rowsUpdated > 0;
+
+        } catch (SQLException e) {
+            System.out.println("SQLException occurred");
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }
