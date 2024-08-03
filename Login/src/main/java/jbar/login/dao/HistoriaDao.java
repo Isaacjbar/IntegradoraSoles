@@ -86,27 +86,20 @@ public class HistoriaDao {
         return historias;
     }
 
-    public boolean updateHistoria(Historia historia) {
-        String sql = "UPDATE historia SET titulo = ?, autor_id = ?, multimedia = ?, descripcion = ?, fecha_creacion = ? WHERE id = ?";
-
-        try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-
-            statement.setString(1, historia.getTitulo());
-            statement.setInt(2, historia.getAutorId());
-            statement.setString(3, historia.getMultimedia());
-            statement.setString(4, historia.getDescripcion());
-            statement.setTimestamp(5, historia.getFechaCreacion());
-            statement.setInt(6, historia.getId());
-
-            int rowsUpdated = statement.executeUpdate();
-            return rowsUpdated > 0;
-
-        } catch (SQLException e) {
+    public void updateHistoria(Historia historia) {
+        String sql = "UPDATE historia SET titulo = ?, descripcion = ?, multimedia = ? WHERE id = ?"; // Corregido: de `historias` a `historia`
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, historia.getTitulo());
+            ps.setString(2, historia.getDescripcion());
+            ps.setString(3, historia.getMultimedia());
+            ps.setInt(4, historia.getId());
+            ps.executeUpdate();
+        } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
     }
+
 
     public boolean updateHistoriaEstado(int id, String estado) {
         String sql = "UPDATE historia SET estado = ? WHERE id = ?";
