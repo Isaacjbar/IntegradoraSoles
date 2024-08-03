@@ -23,6 +23,7 @@
     String successMessage = (String) request.getAttribute("successMessage");
     String repeatMessage = (String) request.getAttribute("repeatMessage");
     String repeatEmailMessage = (String) request.getAttribute("repeatEmailMessage");
+    Usuario usuarioSesion = (Usuario) session.getAttribute("usuario");
 %>
 
 <% if (errorMessage != null) { %>
@@ -89,11 +90,17 @@
     <input class="form-control" type="password" name="contraUsuario" id="input_contra" placeholder="Contraseña" required>
     <label for="input_contraRepetida">Repita la contraseña</label>
     <input class="form-control" type="password" name="contraRepetida" id="input_contraRepetida"  placeholder="Repita su contraseña" required>
+
+    <% if (usuarioSesion != null) { %>
     <label for="input_categoria">Ingrese la categoría</label>
     <select class="form-control" name="categoriaUsuario" id="input_categoria" required>
         <option value="Administrador">Administrador</option>
         <option value="Editor">Editor</option>
     </select>
+    <% } else { %>
+    <input type="hidden" name="categoriaUsuario" value="Editor">
+    <% } %>
+
     <input class="btn btn-positive text-white hoverscale" type="submit" name="RegistrarUsuario" id="submit_registrar_usuario" value="Agregar">
 </form>
 <jsp:include page="templates/footer.jsp" />

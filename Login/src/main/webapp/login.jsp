@@ -36,7 +36,7 @@
         <input class="btn btn-positive text-white hoverscale" type="submit" name="InicioSesion" id="submit_inicio_sesión" value="Iniciar sesión">
         <p class="signup-link">
             ¿No tienes cuenta?
-            <a href="registroCuenta.jsp">Crea una</a>
+            <a href="agregarUsuario.jsp">Crea una</a>
             <br>
             <br>
             ¿Perdiste tu contraseña?

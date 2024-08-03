@@ -46,6 +46,22 @@ public class UsuarioDao {
         return usuario;
     }
 
+    public boolean updateEstadoById(int id, boolean estado) {
+        String sql = "UPDATE usuario SET estado = ? WHERE id = ?";
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setBoolean(1, estado);
+            statement.setInt(2, id);
+
+            int rowsUpdated = statement.executeUpdate();
+            return rowsUpdated > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     public boolean insertUsuario(Usuario usuario) {
         String sql = "INSERT INTO usuario (nombre, apellido, correo_electronico, contrasena, estado, codigo, categoria, fecha_registro, fecha_creacion) " +
