@@ -12,7 +12,6 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
-
 import java.util.List;
 
 @WebServlet("/historia")
@@ -53,9 +52,14 @@ public class HistoriaServlet extends HttpServlet {
         Usuario usuario = (Usuario) (session != null ? session.getAttribute("usuario") : null);
 
         // Si el usuario no ha iniciado sesión y la historia está archivada, redirigir a la página de historia no disponible
-        if (usuario == null && "archivada".equals(historia.getEstado())) {
-            response.sendRedirect("historiaNoDisponible.jsp");
-            return;
+        if (usuario == null) {
+            if ("archivada".equals(historia.getEstado())) {
+                response.sendRedirect("historiaNoDisponible.jsp");
+                return;
+            } else if (!"publicada".equals(historia.getEstado())) {
+                response.sendRedirect("historiaNoDisponible.jsp");
+                return;
+            }
         }
 
         String escenaIdStr = request.getParameter("id_esc");

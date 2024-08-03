@@ -2,13 +2,17 @@
 .card {
     margin: 1em .5em;
     transition: all 300ms;
-    cursor: default;
+    cursor: pointer !important;
     box-shadow: 13px 11px 9px -11px rgba(0,0,0,0.35) !important;
     -webkit-box-shadow: 13px 11px 9px -11px rgba(0,0,0,0.75);
     -moz-box-shadow: 13px 11px 9px -11px rgba(0,0,0,0.75);
     /* border-left: 4px solid var(--blue2); */
     padding: 16px 5px;
     min-height: 510px !important;
+}
+
+.card:hover{
+    transform: scale(1.05) !important;
 }
 
 .btn-group{

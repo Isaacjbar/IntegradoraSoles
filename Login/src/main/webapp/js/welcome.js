@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.card-normal').forEach(card => {
         card.addEventListener('click', function(event) {
             const target = event.target;
-            // Asegurarnos de que el clic no es en un botón o formulario
+            // Asegurarnos de que el click no es en un botón o formulario
             if (!target.classList.contains('btn') && !target.closest('form')) {
                 const id = card.dataset.id;
                 window.location.href = window.location.origin + '/Login_war/historia?id_his=' + id;

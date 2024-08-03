@@ -10,15 +10,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Mas correcciones en activar y desactivar">
+    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Activar/Desactivar Usuario y correcciones en agregarUsuario">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/dao/UsuarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/dao/UsuarioDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/gestionUsuariosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/gestionUsuariosServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/agregarUsuario.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/agregarUsuario.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/registroCuenta.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/HistoriaServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/HistoriaServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/js/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/js/welcome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,7 +270,7 @@
       <workItem from="1722445288866" duration="2648000" />
       <workItem from="1722557317682" duration="4371000" />
       <workItem from="1722570756079" duration="5466000" />
-      <workItem from="1722712867741" duration="3853000" />
+      <workItem from="1722712867741" duration="6999000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />
@@ -450,7 +448,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722574712217</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Activar/Desactivar Usuario y correcciones en agregarUsuario">
+      <option name="closed" value="true" />
+      <created>1722716783485</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1722716783485</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,6 +486,7 @@
     <MESSAGE value="Otra más" />
     <MESSAGE value="Correcciones y select en agregarUsuario" />
     <MESSAGE value="Mas correcciones en activar y desactivar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mas correcciones en activar y desactivar" />
+    <MESSAGE value="Activar/Desactivar Usuario y correcciones en agregarUsuario" />
+    <option name="LAST_COMMIT_MESSAGE" value="Activar/Desactivar Usuario y correcciones en agregarUsuario" />
   </component>
 </project>
