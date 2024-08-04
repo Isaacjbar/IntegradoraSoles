@@ -106,16 +106,14 @@ public class DecisionDao {
     }
 
     public boolean updateDecision(Decision decision) {
-        String sql = "UPDATE decision SET escena_id = ?, descripcion = ?, escena_destino_id = ?, fecha_creacion = ? WHERE id = ?";
+        String sql = "UPDATE decision SET descripcion = ?, fecha_creacion = ? WHERE escena_destino_id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setInt(1, decision.getEscenaId());
-            statement.setString(2, decision.getDescripcion());
+            statement.setString(1, decision.getDescripcion());
+            statement.setTimestamp(2, decision.getFechaCreacion());
             statement.setInt(3, decision.getEscenaDestinoId());
-            statement.setTimestamp(4, decision.getFechaCreacion());
-            statement.setInt(5, decision.getId());
 
             int rowsUpdated = statement.executeUpdate();
             return rowsUpdated > 0;

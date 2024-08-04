@@ -5,6 +5,7 @@ import jbar.login.dao.DecisionDao;
 import jbar.login.dao.EscenaDao;
 import jbar.login.model.Decision;
 import jbar.login.model.Escena;
+import jbar.login.model.Decision;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -24,6 +25,7 @@ import com.google.gson.Gson;
 public class gestionEscenaServlet extends HttpServlet {
     private EscenaDao escenaDao = new EscenaDao();
     private DecisionDao decisionDao = new DecisionDao();
+    private DecisionDao decisionDao2 = new DecisionDao();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Agregar logs para depuración
@@ -74,7 +76,12 @@ public class gestionEscenaServlet extends HttpServlet {
             escena.setAudio(audio);
             escena.setVideo(video);
 
+            Decision decision2 = new Decision();
+            decision2.setDescripcion(titulo);
+            decision2.setFechaCreacion(fechaCreacion);
+
             boolean resultado;
+            boolean resultado2;
             if (idParam != null && !idParam.equals("0")) {
                 int id = Integer.parseInt(idParam);
                 escena.setId(id);
@@ -83,6 +90,11 @@ public class gestionEscenaServlet extends HttpServlet {
                     System.out.println("Actualizando escena: " + id);
                     escena.setId(id);
                     resultado = escenaDao.updateEscena(escena);
+
+                    decision2.setEscenaDestinoId(id);
+                    resultado2 = decisionDao2.updateDecision(decision2);
+                    System.out.println("Decision modificada "+resultado2);
+
                 } else {
                     // Si el ID es 0 o la escena no existe, insertamos una nueva escena
                     System.out.println("Insertando nueva escena");
@@ -111,38 +123,6 @@ public class gestionEscenaServlet extends HttpServlet {
             String historiaIdParam = request.getParameter("historiaId");
             response.sendRedirect("gestionHistoria.jsp?id_his=" + historiaIdParam);
         }
-    }
-
-    private void addChildNodes(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String parentId = request.getParameter("parentId");
-        String historiaId = request.getParameter("historiaId");
-        String[] childKeys = request.getParameter("childKeys").split(",");
-
-        Timestamp fechaCreacion = new Timestamp(System.currentTimeMillis());
-
-        for (String key : childKeys) {
-            // Crear nueva escena
-            Escena nuevaEscena = new Escena();
-            nuevaEscena.setTitulo("Nueva Escena " + key);
-            nuevaEscena.setDescripcion("Descripción por defecto");
-            nuevaEscena.setFechaCreacion(fechaCreacion);
-            nuevaEscena.setHistoriaId(Integer.parseInt(historiaId));
-
-            // Guardar en la base de datos
-            escenaDao.insertEscenaDefecto(nuevaEscena);
-
-            // Crear nueva decisión
-            Decision nuevaDecision = new Decision();
-            nuevaDecision.setEscenaId(Integer.parseInt(parentId));
-            nuevaDecision.setEscenaDestinoId(nuevaEscena.getId());
-            nuevaDecision.setDescripcion("Decisión " + key);
-
-            // Guardar en la base de datos
-            decisionDao.insertDecisionDefecto(nuevaDecision);
-        }
-
-        response.setContentType("text/html");
-        response.getWriter().println("Escenas hijas y decisiones guardadas exitosamente.");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
