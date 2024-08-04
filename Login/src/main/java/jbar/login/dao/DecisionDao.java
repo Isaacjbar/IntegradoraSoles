@@ -196,4 +196,30 @@ public class DecisionDao {
         }
         return result;
     }
+
+    public Decision getDecisionByEscenaDestinoId(int escenaId) {
+        String sql = "SELECT id, escena_id, escena_destino_id, descripcion, fecha_creacion FROM decision WHERE escena_destino_id = ?";
+        Decision decision = null;
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, escenaId);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                decision = new Decision();
+                decision.setId(resultSet.getInt("id"));
+                decision.setEscenaId(resultSet.getInt("escena_id"));
+                decision.setEscenaDestinoId(resultSet.getInt("escena_destino_id"));
+                decision.setDescripcion(resultSet.getString("descripcion"));
+                decision.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return decision;
+    }
 }

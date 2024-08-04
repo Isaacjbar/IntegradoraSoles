@@ -5,8 +5,6 @@ import jbar.login.dao.DecisionDao;
 import jbar.login.dao.EscenaDao;
 import jbar.login.model.Decision;
 import jbar.login.model.Escena;
-import jbar.login.model.Decision;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,20 +17,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.google.gson.Gson;
 
 @WebServlet("/gestionEscenaServlet")
 public class gestionEscenaServlet extends HttpServlet {
     private EscenaDao escenaDao = new EscenaDao();
     private DecisionDao decisionDao = new DecisionDao();
-    private DecisionDao decisionDao2 = new DecisionDao();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Agregar logs para depuración
         System.out.println("gestionEscenaServlet: Procesando solicitud POST");
 
         try {
-            // Verificar y obtener los parámetros
             String idParam = request.getParameter("id");
             String historiaIdParam = request.getParameter("historiaId");
             String titulo = request.getParameter("titulo");
@@ -40,12 +34,9 @@ public class gestionEscenaServlet extends HttpServlet {
             String imagen = request.getParameter("imagen");
             String audio = request.getParameter("audio");
             String video = request.getParameter("video");
-
-            // Ajuste de parametro esFinal y textoFinal
             boolean esFinal = "1".equals(request.getParameter("esFinal"));
             String textoFinal = request.getParameter("textoFinal");
 
-            // Agregar logs para los parámetros recibidos
             System.out.println("idParam: " + idParam);
             System.out.println("historiaIdParam: " + historiaIdParam);
             System.out.println("titulo: " + titulo);
@@ -56,12 +47,10 @@ public class gestionEscenaServlet extends HttpServlet {
             System.out.println("audio: " + audio);
             System.out.println("video: " + video);
 
-            // Verificar si los parámetros son nulos
             if (historiaIdParam == null) {
                 throw new IllegalArgumentException("ID de historia no proporcionado");
             }
 
-            // Convertir los parámetros a enteros
             int historiaId = Integer.parseInt(historiaIdParam);
             Timestamp fechaCreacion = new Timestamp(System.currentTimeMillis());
 
@@ -76,27 +65,30 @@ public class gestionEscenaServlet extends HttpServlet {
             escena.setAudio(audio);
             escena.setVideo(video);
 
-            Decision decision2 = new Decision();
-            decision2.setDescripcion(titulo);
-            decision2.setFechaCreacion(fechaCreacion);
+            Decision decision = new Decision();
+            decision.setDescripcion(titulo); // Asegurando que la descripción se actualice con el título de la escena
+            decision.setFechaCreacion(fechaCreacion);
 
             boolean resultado;
-            boolean resultado2;
+            boolean resultadoDecision = false;
+
             if (idParam != null && !idParam.equals("0")) {
                 int id = Integer.parseInt(idParam);
                 escena.setId(id);
+
                 if (escenaDao.getEscenaById(id) != null) {
-                    // Si el ID no es 0 y la escena existe, actualizamos la escena
                     System.out.println("Actualizando escena: " + id);
-                    escena.setId(id);
                     resultado = escenaDao.updateEscena(escena);
 
-                    decision2.setEscenaDestinoId(id);
-                    resultado2 = decisionDao2.updateDecision(decision2);
-                    System.out.println("Decision modificada "+resultado2);
-
+                    // Obtener y actualizar la decisión relacionada
+                    Decision existingDecision = decisionDao.getDecisionByEscenaDestinoId(id);
+                    if (existingDecision != null) {
+                        decision.setId(existingDecision.getId());
+                        decision.setEscenaDestinoId(id);
+                        resultadoDecision = decisionDao.updateDecision(decision);
+                        System.out.println("Decisión actualizada: " + resultadoDecision);
+                    }
                 } else {
-                    // Si el ID es 0 o la escena no existe, insertamos una nueva escena
                     System.out.println("Insertando nueva escena");
                     resultado = escenaDao.insertEscena(escena);
                 }
@@ -105,23 +97,17 @@ public class gestionEscenaServlet extends HttpServlet {
                 resultado = escenaDao.insertEscena(escena);
             }
 
-            response.setContentType("text/html");
-            if (resultado) {
-                response.getWriter().println("Escena guardada exitosamente.");
-                System.out.println("Escena guardada exitosamente.");
-            } else {
-                response.getWriter().println("Error al guardar la escena.");
-                System.out.println("Error al guardar la escena.");
-            }
+            response.setContentType("application/json");
+            Map<String, Object> responseData = new HashMap<>();
+            responseData.put("resultado", resultado);
+            responseData.put("escena", escena);
+            responseData.put("decision", decision);
+
+            response.getWriter().write(new Gson().toJson(responseData));
         } catch (Exception e) {
             e.printStackTrace();
-            // Enviar respuesta de error con detalles
             response.setContentType("text/html");
             response.getWriter().println("Error al guardar la escena: " + e.getMessage());
-        } finally {
-            // Redirigir siempre a la misma historia
-            String historiaIdParam = request.getParameter("historiaId");
-            response.sendRedirect("gestionHistoria.jsp?id_his=" + historiaIdParam);
         }
     }
 
@@ -132,12 +118,10 @@ public class gestionEscenaServlet extends HttpServlet {
             List<Escena> escenas = escenaDao.getEscenasByHistoriaId(historiaId);
             List<Decision> decisiones = new ArrayList<>();
 
-            // Obtener todas las decisiones relacionadas con las escenas de la historia
             for (Escena escena : escenas) {
                 decisiones.addAll(decisionDao.getDecisionesByEscenaId(escena.getId()));
             }
 
-            // Crear el array de datos para GoJS
             List<Map<String, Object>> nodeDataArray = new ArrayList<>();
             for (Escena escena : escenas) {
                 Map<String, Object> nodeData = new HashMap<>();
@@ -166,10 +150,10 @@ public class gestionEscenaServlet extends HttpServlet {
             response.setContentType("application/json");
             response.getWriter().write(new Gson().toJson(responseData));
 
-            // Agregar log de los datos enviados al cliente
             Gson gson = new Gson();
             System.out.println("cargarEscenas - nodeDataArray: " + gson.toJson(nodeDataArray));
             System.out.println("cargarEscenas - linkDataArray: " + gson.toJson(linkDataArray));
         }
     }
 }
+

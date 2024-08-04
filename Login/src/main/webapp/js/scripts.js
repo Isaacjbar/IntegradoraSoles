@@ -29,8 +29,18 @@ function init() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 // Procesar la respuesta del servidor
                 console.log("Subtree deleted successfully:", xhr.responseText);
+
+                // Eliminar los nodos hijos
                 childNodes.forEach(function(childKey) {
                     diagram.model.removeNodeData(diagram.model.findNodeDataForKey(childKey));
+                });
+
+                // Eliminar las decisiones relacionadas con los nodos eliminados
+                var linkDataArray = diagram.model.linkDataArray.slice();  // Clonar el array para evitar modificarlo mientras iteramos
+                linkDataArray.forEach(function(linkData) {
+                    if (childNodes.includes(linkData.to)) {
+                        diagram.model.removeLinkData(linkData);
+                    }
                 });
             }
         };
@@ -131,7 +141,6 @@ function init() {
         var nodeVideo = document.getElementById('nodeVideo').value;
         var diagram = currentNode.diagram;
 
-        // Agregar logs de depuración
         console.log("saveForm - nodeId:", nodeId);
         console.log("saveForm - nodeName:", nodeName);
         console.log("saveForm - nodeDesc:", nodeDesc);
@@ -144,14 +153,31 @@ function init() {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                diagram.startTransaction("save form");
-                diagram.model.setDataProperty(currentNode.data, "name", nodeName);
-                diagram.model.setDataProperty(currentNode.data, "description", nodeDesc);
-                diagram.model.setDataProperty(currentNode.data, "image", nodeImage);
-                diagram.model.setDataProperty(currentNode.data, "audio", nodeAudio);
-                diagram.model.setDataProperty(currentNode.data, "video", nodeVideo);
-                diagram.commitTransaction("save form");
-                hideForm();
+                var response = JSON.parse(xhr.responseText);
+                if (response.resultado) {
+                    var escena = response.escena;
+                    var decision = response.decision;
+
+                    diagram.startTransaction("save form");
+                    diagram.model.setDataProperty(currentNode.data, "name", escena.titulo);
+                    diagram.model.setDataProperty(currentNode.data, "description", escena.descripcion);
+                    diagram.model.setDataProperty(currentNode.data, "image", escena.imagen);
+                    diagram.model.setDataProperty(currentNode.data, "audio", escena.audio);
+                    diagram.model.setDataProperty(currentNode.data, "video", escena.video);
+
+                    // Actualizar la decisión en el diagrama
+                    var linkDataArray = diagram.model.linkDataArray;
+                    linkDataArray.forEach(function(linkData) {
+                        if (linkData.to === currentNode.data.key) {
+                            diagram.model.setDataProperty(linkData, "text", decision.descripcion);
+                        }
+                    });
+
+                    diagram.commitTransaction("save form");
+                    hideForm();
+                } else {
+                    alert("Error al guardar la escena");
+                }
             }
         };
 
@@ -161,13 +187,14 @@ function init() {
             "&descripcion=" + encodeURIComponent(nodeDesc) +
             "&imagen=" + encodeURIComponent(nodeImage) +
             "&audio=" + encodeURIComponent(nodeAudio) +
-            "&video=" + encodeURIComponent(nodeVideo) ;
+            "&video=" + encodeURIComponent(nodeVideo);
 
-        // Agregar logs de depuración
         console.log("saveForm - data sent:", data);
 
         xhr.send(data);
     }
+
+
 
     // función para cancelar el formulario
     function cancelForm() {
