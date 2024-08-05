@@ -97,6 +97,7 @@ public class HistoriaServlet extends HttpServlet {
         request.setAttribute("escena", escena);
         request.setAttribute("decisiones", decisiones);
         request.setAttribute("multimediaType", multimediaType);
+        request.setAttribute("nu", contrasenaCifrada); // Añadir el atributo 'nu' para la redirección
 
         request.getRequestDispatcher("/reproductorHistoria.jsp").forward(request, response);
     }

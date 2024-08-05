@@ -30,6 +30,7 @@
                         String multimediaType = (String) request.getAttribute("multimediaType");
                         Escena escena = (Escena) request.getAttribute("escena");
                         String videoUrl = escena.getVideo();
+                        String nu = (String) request.getAttribute("nu");
                     %>
                     <div class="embed-responsive mb-3 mx-auto">
                         <% if ("video".equals(multimediaType) && videoUrl != null && !videoUrl.isEmpty()) { %>
@@ -58,6 +59,7 @@
                         <form action="historia" method="get" style="display: inline;">
                             <input type="hidden" name="id_his" value="<%= historia.getId() %>">
                             <input type="hidden" name="id_esc" value="<%= decision.getEscenaDestinoId() %>">
+                            <input type="hidden" name="nu" value="<%= nu %>">
                             <button type="submit" class="btn btn-primary mx-2"><%= decision.getDescripcion() %></button>
                         </form>
                         <% } %>

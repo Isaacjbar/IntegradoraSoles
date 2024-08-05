@@ -84,7 +84,7 @@
 
 <h1 class="title-1">Gestión de usuarios</h1>
 
-<!-- Barra de búsqueda -->
+<!-- Barra de búsqueda
 <div class="searchBar1 container w-50">
     <form class="d-flex flex-md-row align-items-center  justify-content-between searchBar1__form" role="search">
         <input class="searchBar1-input form-control me-2 " type="search" placeholder="Busque una usuario por nombre"
@@ -96,7 +96,7 @@
             </svg></button>
     </form>
 </div>
-
+-->
 <div class="container w-100 d-flex justify-content-center">
     <button class="btn-agregarUsuario btn btn-positive">
         <a class="text-decoration-none text-white" href="agregarUsuario.jsp">Agregar usuario</a>
