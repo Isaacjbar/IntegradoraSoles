@@ -20,6 +20,9 @@ public class gestionUsuariosServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        Usuario usuarioActual = (Usuario) (session != null ? session.getAttribute("usuario") : null);
+
         String action = request.getParameter("action");
         String idStr = request.getParameter("id");
 
@@ -29,6 +32,12 @@ public class gestionUsuariosServlet extends HttpServlet {
         }
 
         int id = Integer.parseInt(idStr);
+
+        if (usuarioActual != null && usuarioActual.getId() == id && "deactivate".equalsIgnoreCase(action)) {
+            // No permitir que el usuario se desactive a sí mismo
+            response.sendRedirect("gestionUsuarios.jsp?error=selfdeactivate");
+            return;
+        }
 
         if ("deactivate".equalsIgnoreCase(action)) {
             cambiarEstadoUsuario(response, id, false);

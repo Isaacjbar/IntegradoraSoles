@@ -150,32 +150,6 @@ public class UsuarioDao {
 
         return usuarios;
     }
-
-    public boolean updateUsuario(Usuario usuario) {
-        String sql = "UPDATE usuario SET nombre = ?, apellido = ?, correo_electronico = ?, contrasena = SHA2(?, 256), estado = ?, codigo = ?, categoria = ?, fecha_creacion = ? WHERE id = ?";
-
-        try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-
-            statement.setString(1, usuario.getNombre());
-            statement.setString(2, usuario.getApellido());
-            statement.setString(3, usuario.getCorreoElectronico());
-            statement.setString(4, usuario.getContrasena());
-            statement.setBoolean(5, usuario.isEstado());
-            statement.setString(6, usuario.getCodigo());
-            statement.setString(7, usuario.getCategoria());
-            statement.setTimestamp(8, usuario.getFechaCreacion());
-            statement.setInt(9, usuario.getId());
-
-            int rowsUpdated = statement.executeUpdate();
-            return rowsUpdated > 0;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
     public boolean deleteUsuario(int id) {
         String sql = "DELETE FROM usuario WHERE id = ?";
 
