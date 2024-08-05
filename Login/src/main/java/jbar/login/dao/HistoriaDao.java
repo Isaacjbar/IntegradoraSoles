@@ -204,5 +204,33 @@ public class HistoriaDao {
             return false;
         }
     }
+    public Historia getHistoriaByTitulo(String titulo) {
+        Historia historia = null;
+        String sql = "SELECT * FROM historia WHERE titulo = ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, titulo);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                historia = new Historia();
+                historia.setId(resultSet.getInt("id"));
+                historia.setTitulo(resultSet.getString("titulo"));
+                historia.setAutorId(resultSet.getInt("autor_id"));
+                historia.setMultimedia(resultSet.getString("multimedia"));
+                historia.setDescripcion(resultSet.getString("descripcion"));
+                historia.setFechaCreacion(resultSet.getTimestamp("fecha_creacion"));
+                historia.setEstado(resultSet.getString("estado"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return historia;
+    }
 
 }
