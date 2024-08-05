@@ -30,18 +30,20 @@
                         String multimediaType = (String) request.getAttribute("multimediaType");
                         Escena escena = (Escena) request.getAttribute("escena");
                         String videoUrl = escena.getVideo();
+                        String audioUrl = escena.getAudio();
+                        String imageUrl = escena.getImagen();
                         String nu = (String) request.getAttribute("nu");
                     %>
                     <div class="embed-responsive mb-3 mx-auto">
                         <% if ("video".equals(multimediaType) && videoUrl != null && !videoUrl.isEmpty()) { %>
                         <iframe class="embed-responsive-item" src="<%= videoUrl %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         <% } else if ("audio_imagen".equals(multimediaType)) { %>
-                        <% if (escena.getImagen() != null && !escena.getImagen().isEmpty()) { %>
-                        <img src="<%= escena.getImagen() %>" class="embed-responsive-item" alt="Escena Imagen">
+                        <% if (imageUrl != null && !imageUrl.isEmpty()) { %>
+                        <img src="<%= imageUrl %>" class="embed-responsive-item" alt="Escena Imagen">
                         <% } %>
-                        <% if (escena.getAudio() != null && !escena.getAudio().isEmpty()) { %>
+                        <% if (audioUrl != null && !audioUrl.isEmpty()) { %>
                         <audio controls>
-                            <source src="<%= escena.getAudio() %>" type="audio/mpeg">
+                            <source src="<%= audioUrl %>" type="audio/mpeg">
                             Tu navegador no soporta la reproducción de audio.
                         </audio>
                         <% } %>
