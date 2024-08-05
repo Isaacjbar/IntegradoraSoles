@@ -33,7 +33,7 @@ public class CrearHistoriaServlet extends HttpServlet {
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 
         if (usuario == null) {
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("index.jsp");
             return;
         }
 

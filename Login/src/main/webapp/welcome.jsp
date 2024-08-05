@@ -28,7 +28,7 @@
 <%
     Usuario usuario = (Usuario) session.getAttribute("usuario");
     if (usuario == null) {
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("index.jsp");
         return;
     }
 %>
@@ -204,6 +204,12 @@
 <%
     }
 %>
+<%
+    String contrasenaCifrada = usuario.getContrasena(); // Asegúrate de que la contraseña esté cifrada
+%>
+<script type="text/javascript">
+    var contrasenaCifrada = '<%= contrasenaCifrada %>';
+</script>
 <script src="js/global.js"></script>
 <script src="js/welcome.js"></script>
 </body>

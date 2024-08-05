@@ -315,5 +315,26 @@ public class UsuarioDao {
 
         return usuario;
     }
+    public Usuario getUsuarioByContrasenaCifrada(String contrasenaCifrada) {
+        Usuario usuario = null;
+        String sql = "SELECT * FROM usuario WHERE contrasena = ?";
 
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, contrasenaCifrada);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                usuario = new Usuario();
+                usuario.setId(rs.getInt("id"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setApellido(rs.getString("apellido"));
+                usuario.setContrasena(rs.getString("contrasena"));
+                // Rellena el resto de los campos necesarios
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return usuario;
+    }
 }

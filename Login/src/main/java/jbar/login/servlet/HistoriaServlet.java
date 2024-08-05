@@ -3,6 +3,7 @@ package jbar.login.servlet;
 import jbar.login.dao.DecisionDao;
 import jbar.login.dao.EscenaDao;
 import jbar.login.dao.HistoriaDao;
+import jbar.login.dao.UsuarioDao;
 import jbar.login.model.Decision;
 import jbar.login.model.Escena;
 import jbar.login.model.Historia;
@@ -19,10 +20,13 @@ public class HistoriaServlet extends HttpServlet {
     private HistoriaDao historiaDao = new HistoriaDao();
     private EscenaDao escenaDao = new EscenaDao();
     private DecisionDao decisionDao = new DecisionDao();
+    private UsuarioDao usuarioDao = new UsuarioDao(); // Añadido para manejar usuarios
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String historiaIdStr = request.getParameter("id_his");
+        String contrasenaCifrada = request.getParameter("nu");
+
         if (historiaIdStr == null) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Falta el parámetro id_his");
             return;
@@ -47,16 +51,19 @@ public class HistoriaServlet extends HttpServlet {
         response.setHeader("Pragma", "no-cache");
         response.setDateHeader("Expires", 0);
 
-        // Verificar si el usuario ha iniciado sesión
-        HttpSession session = request.getSession(false);
-        Usuario usuario = (Usuario) (session != null ? session.getAttribute("usuario") : null);
+        Usuario usuario = null;
+        if (contrasenaCifrada != null) {
+            usuario = usuarioDao.getUsuarioByContrasenaCifrada(contrasenaCifrada);
+        }
 
-        // Si el usuario no ha iniciado sesión y la historia está archivada, redirigir a la página de historia no disponible
-        if (usuario == null) {
-            if ("archivada".equals(historia.getEstado())) {
+        // Verificar la lógica de acceso
+        if (usuario != null) { // Acceso con usuario autenticado
+            if (usuario.getId() != historia.getAutorId() && "archivada".equals(historia.getEstado())) {
                 response.sendRedirect("historiaNoDisponible.jsp");
                 return;
-            } else if (!"publicada".equals(historia.getEstado())) {
+            }
+        } else { // Acceso público
+            if ("archivada".equals(historia.getEstado())) {
                 response.sendRedirect("historiaNoDisponible.jsp");
                 return;
             }

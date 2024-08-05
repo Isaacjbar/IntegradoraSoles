@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Asegurarnos de que el click no es en un botón o formulario
             if (!target.classList.contains('btn') && !target.closest('form')) {
                 const id = card.dataset.id;
-                window.location.href = window.location.origin + '/Login_war/historia?id_his=' + id;
+                window.open(window.location.origin + '/Login_war/historia?id_his=' + id + '&nu=' + encodeURIComponent(contrasenaCifrada), '_blank');
             }
         });
     });

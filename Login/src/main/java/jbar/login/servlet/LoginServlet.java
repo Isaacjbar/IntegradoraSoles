@@ -35,11 +35,11 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect("welcome.jsp");
             } else {
                 session.setAttribute("errorMessage", "Cuenta desactivada.");
-                response.sendRedirect("login.jsp");
+                response.sendRedirect("index.jsp");
             }
         } else {
             session.setAttribute("errorMessage", "Correo o contraseña incorrectos.");
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("index.jsp");
         }
     }
 }

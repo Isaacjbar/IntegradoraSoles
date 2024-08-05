@@ -66,7 +66,7 @@
         timer: 6000,
         confirmButtonColor: "#078D73"
     }).then(function() {
-        window.location.href = "login.jsp";
+        window.location.href = "index.jsp";
     });
 </script>
 <% } %>
