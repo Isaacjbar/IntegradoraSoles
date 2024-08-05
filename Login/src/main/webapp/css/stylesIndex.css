@@ -25,6 +25,8 @@ h5{
   }
 
 .img_d_card{
+    display: block;
+    min-height: 150px;
     object-fit: contain;
     height: 200px;
 }
@@ -103,7 +105,8 @@ footer{
     margin: 10px auto;
 }
 .card-normal img{
-    height: 150px;
+    display: block;
+    min-heightheight: 150px !important;
     padding-top: 10px;
 }
 .card-normal .card-body{
@@ -171,3 +174,7 @@ footer{
     height: 100% !important;
 }
 
+#editar-portada-btn{
+    width: 60% !important;
+    margin: 15px auto !important;
+}

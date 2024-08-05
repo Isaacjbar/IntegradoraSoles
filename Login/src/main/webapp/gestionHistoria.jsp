@@ -275,7 +275,9 @@
         </form>
     </div>
 </div>
-<jsp:include page="templates/footer.jsp" />
+<footer class="d-flex flex-wrap justify-content-center align-items-center mt-4 border-top">
+    <p class="col-md-4 mb-0 text-body-secondary d-flex justify-content-center">&copy; 2024 Histority SA</p>
+</footer>
 <script>
     var historiaId = "<%= historiaId %>";
 </script>

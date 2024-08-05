@@ -11,11 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Activar/Desactivar Usuario y correcciones en agregarUsuario">
+      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/img/notFound.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/HistoriaServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/HistoriaServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/css/styleNav.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/styleNav.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/js/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/js/welcome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/gestionHistoria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/gestionHistoria.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,37 +67,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.ReestablecerContra.jsp.executor": "Run",
-    "JavaScript Debug.agregarPortada.jsp.executor": "Run",
-    "JavaScript Debug.agregarUsuario.jsp.executor": "Run",
-    "JavaScript Debug.error.jsp.executor": "Run",
-    "JavaScript Debug.gestionHistoria.jsp.executor": "Run",
-    "JavaScript Debug.gestionUsuarios.jsp.executor": "Run",
-    "JavaScript Debug.login.jsp.executor": "Run",
-    "JavaScript Debug.portadaHistoria.jsp.executor": "Run",
-    "JavaScript Debug.reproductorHistoria.jsp.executor": "Run",
-    "JavaScript Debug.solicitudReestablecerContra.jsp.executor": "Run",
-    "JavaScript Debug.welcome.jsp.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat Server.ReestablecerContra.jsp.executor": "Run",
-    "Tomcat Server.Tomcat 10.1.11.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/eeeri/Downloads/Integradora3Agosto/IntegradoraSoles",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.ReestablecerContra.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.agregarPortada.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.agregarUsuario.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.error.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.gestionHistoria.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.gestionUsuarios.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.login.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.portadaHistoria.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.reproductorHistoria.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.solicitudReestablecerContra.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.welcome.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.ReestablecerContra.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.11.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/eeeri/Downloads/Integradora4Agosto/IntegradoraSoles/Login/src/main/webapp/img&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\eeeri\Downloads\Integradora4Agosto\IntegradoraSoles\Login\src\main\webapp\img" />
       <recent name="C:\Users\eeeri\Downloads\Publicar despublicar\IntegradoraSoles\Login\src\main\webapp\img" />
       <recent name="C:\Users\eeeri\Downloads\trabajarAlertas\IntegradoraSoles\Login\src\main\webapp\img" />
     </key>
@@ -118,17 +120,17 @@
       <method v="2" />
     </configuration>
     <configuration name="Tomcat 10.1.11" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.11" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="$PROJECT_DIR$/../../../../../Program Files/Java/jdk-17.0.10" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Login_war/login.jsp" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Login_war/index.jsp" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="Login:war exploded">
-          <settings>
-            <option name="CONTEXT_PATH" value="/Login_war_exploded" />
-          </settings>
-        </artifact>
         <artifact name="Login:war">
           <settings>
             <option name="CONTEXT_PATH" value="/Login_war" />
+          </settings>
+        </artifact>
+        <artifact name="Login:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Login_war_exploded" />
           </settings>
         </artifact>
       </deployment>
@@ -271,6 +273,8 @@
       <workItem from="1722557317682" duration="4371000" />
       <workItem from="1722570756079" duration="5466000" />
       <workItem from="1722712867741" duration="6999000" />
+      <workItem from="1722871447177" duration="2043000" />
+      <workItem from="1722873519309" duration="779000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />

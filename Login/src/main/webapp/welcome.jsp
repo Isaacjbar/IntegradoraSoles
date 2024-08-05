@@ -143,7 +143,7 @@
                                         </button>
                                     </form>
                                 </div>
-                                <button type="button" class="btn btn-sm btn-outline-secondary mt-2" onclick="window.location.href='editarPortada.jsp?id_his=<%= historia.getId() %>'">Editar Portada</button>
+                                <button id="editar-portada-btn" type="button" class="btn btn-sm btn-outline-secondary w-75 mt-1 mb-4 mx-auto" onclick="window.location.href='editarPortada.jsp?id_his=<%= historia.getId() %>'">Editar Portada</button>
                                 <small class="text-body-secondary mt-2"><span class="ultima-mod">Últm. mod:</span> <%= historia.getFechaCreacion() %></small>
                                 <div><strong>Estado: </strong><span class="<%= "publicada".equals(estado) ? "estado-publicada" : "estado-archivada" %>"><%= historia.getEstado() %></span></div>
                             </div>

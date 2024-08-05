@@ -116,3 +116,8 @@
 .user-info-link-container:hover svg {
     color: #013c5a;
 }
+
+#editar-portadad-btn{
+    width: 60% !important;
+    margin: 15px auto !important;
+}
