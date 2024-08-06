@@ -327,5 +327,36 @@ INSERT INTO decision (escena_id, descripcion, escena_destino_id) VALUES
 ((SELECT id FROM escena WHERE titulo='La tormenta' AND historia_id=(SELECT id FROM historia WHERE titulo='El Naufragio')), 'Seguir el curso actual', (SELECT id FROM escena WHERE titulo='El naufragio' AND historia_id=(SELECT id FROM historia WHERE titulo='El Naufragio'))),
 ((SELECT id FROM escena WHERE titulo='La tormenta' AND historia_id=(SELECT id FROM historia WHERE titulo='El Naufragio')), 'Buscar refugio en una isla cercana', (SELECT id FROM escena WHERE titulo='La isla misteriosa' AND historia_id=(SELECT id FROM historia WHERE titulo='El Naufragio')));
 -- ... más decisiones aquí ...
+-- TRIGGER AND PROCEDIMIENTO ALMACENADO --
+USE historiaInteractiva;
+
+DELIMITER //
+
+CREATE TRIGGER ActualizarEstadoUsuario
+AFTER INSERT ON historia
+FOR EACH ROW
+BEGIN
+    IF NEW.estado = 'archivada' THEN
+        UPDATE usuario
+        SET estado = FALSE
+        WHERE id = NEW.autor_id;
+    END IF;
+END//
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE ObtenerUsuarioPorCredenciales(
+    IN p_nombreUsuario VARCHAR(100),
+    IN p_contrasena VARCHAR(255)
+)
+BEGIN
+    SELECT * FROM usuario
+    WHERE (nombre = p_nombreUsuario OR correo_electronico = p_nombreUsuario)
+      AND contrasena = SHA2(p_contrasena, 256);
+END//
+
+DELIMITER ;
 
 
