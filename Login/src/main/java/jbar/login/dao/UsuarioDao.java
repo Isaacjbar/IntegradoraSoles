@@ -3,25 +3,38 @@ package jbar.login.dao;
 import jbar.login.database.DatabaseConnection;
 import jbar.login.model.Usuario;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDao {
 
-    public Usuario getUsuarioByCredenciales(String nombreUsuario, String contrasena) {
-        Usuario usuario = null;
-        String sql = "SELECT * FROM usuario WHERE (nombre = ? OR correo_electronico = ?) AND contrasena = SHA2(?, 256)";
-
+    public boolean updateEstadoById(int id, boolean estado) {
+        String sql = "UPDATE usuario SET estado = ? WHERE id = ?";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
+            statement.setBoolean(1, estado);
+            statement.setInt(2, id);
+
+            int rowsUpdated = statement.executeUpdate();
+            return rowsUpdated > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public Usuario getUsuarioByCredenciales(String nombreUsuario, String contrasena) {
+        Usuario usuario = null;
+        String sql = "{CALL ObtenerUsuarioPorCredenciales(?, ?)}";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             CallableStatement statement = connection.prepareCall(sql)) {
+
             statement.setString(1, nombreUsuario);
-            statement.setString(2, nombreUsuario);
-            statement.setString(3, contrasena);
+            statement.setString(2, contrasena);
 
             ResultSet resultSet = statement.executeQuery();
 
@@ -44,23 +57,6 @@ public class UsuarioDao {
         }
 
         return usuario;
-    }
-
-    public boolean updateEstadoById(int id, boolean estado) {
-        String sql = "UPDATE usuario SET estado = ? WHERE id = ?";
-        try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-
-            statement.setBoolean(1, estado);
-            statement.setInt(2, id);
-
-            int rowsUpdated = statement.executeUpdate();
-            return rowsUpdated > 0;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
     }
 
     public boolean insertUsuario(Usuario usuario) {

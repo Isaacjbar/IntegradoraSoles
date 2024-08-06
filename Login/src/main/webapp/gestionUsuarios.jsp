@@ -172,7 +172,7 @@
             message = 'ID de usuario no proporcionado.';
         }
         Swal.fire({
-            title: "Error",
+            title: "No te puedes desactivar",
             text: message,
             icon: "error",
             confirmButtonText: "Aceptar",
