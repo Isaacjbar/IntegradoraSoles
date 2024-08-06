@@ -1,11 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Document is ready');
+
     document.querySelectorAll('.card-normal').forEach(card => {
         card.addEventListener('click', function(event) {
+            console.log('Card clicked:', card);
             const target = event.target;
             // Asegurarnos de que el click no es en un botón o formulario
             if (!target.classList.contains('btn') && !target.closest('form')) {
                 const id = card.dataset.id;
+                console.log('Navigating to story with id:', id);
                 window.open(window.location.origin + '/Login_war/historia?id_his=' + id + '&nu=' + encodeURIComponent(contrasenaCifrada), '_blank');
+            } else {
+                console.log('Click was on a button or form, not navigating');
             }
         });
     });
@@ -13,9 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.btn-publicar').forEach(button => {
         button.addEventListener('click', function(event) {
             event.preventDefault();
+            console.log('Publish button clicked:', button);
             const id = this.dataset.id;
             const accion = this.dataset.accion;
-            const boton = this;
+            console.log('Publishing action:', accion, 'for story id:', id);
 
             const form = document.createElement('form');
             form.method = 'post';
@@ -36,37 +43,16 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.appendChild(form);
             form.submit();
 
+            console.log('Form submitted:', form);
+
             const nuevoEstado = accion === 'publicar' ? 'publicada' : 'archivada';
             const nuevaAccion = accion === 'publicar' ? 'archivar' : 'publicar';
             const nuevoTexto = accion === 'publicar' ? 'Archivar' : 'Publicar';
 
-            boton.dataset.accion = nuevaAccion;
-            boton.innerText = nuevoTexto;
+            button.dataset.accion = nuevaAccion;
+            button.innerText = nuevoTexto;
             form.remove();
         });
-    });
-
-    const userIcon = document.getElementById('user-icon');
-    const userInfoContainer = document.getElementById('user-info-container');
-    const closeInfoContainer = document.getElementById('close-info-container');
-
-    // Mostrar/Ocultar menú dinámico
-    userIcon.addEventListener('click', (event) => {
-        event.stopPropagation(); // Prevenir que el evento se propague y cierre el menú inmediatamente
-        const isVisible = userInfoContainer.style.display === 'flex';
-        userInfoContainer.style.display = isVisible ? 'none' : 'flex';
-    });
-
-    closeInfoContainer.addEventListener('click', (event) => {
-        event.stopPropagation(); // Prevenir que el evento se propague y vuelva a abrir el menú
-        userInfoContainer.style.display = 'none';
-    });
-
-    // Ocultar menú si se hace clic fuera de él
-    window.addEventListener('click', (event) => {
-        if (!userInfoContainer.contains(event.target) && event.target !== userIcon) {
-            userInfoContainer.style.display = 'none';
-        }
     });
 
     // Manejar la búsqueda
@@ -75,10 +61,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     searchForm.addEventListener('submit', function(event) {
         event.preventDefault();
+        console.log('Search form submitted');
 
         const titulo = searchInput.value.trim();
+        console.log('Search input value:', titulo);
 
         if (titulo === '') {
+            console.log('Search input is empty, reloading page');
             window.location.reload(); // Recargar la página si el campo de búsqueda está vacío
             return;
         }
@@ -86,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(`buscarHistoriaServlet?titulo=${encodeURIComponent(titulo)}`)
             .then(response => response.json())
             .then(data => {
+                console.log('Search results:', data);
                 if (data.error) {
                     Swal.fire({
                         title: "Error",
@@ -153,6 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function copiarEnlace(id) {
+    console.log('Copy link clicked for story id:', id);
     const enlace = window.location.origin + '/Login_war/historia?id_his=' + id;
     Swal.fire({
         title: 'Copiar enlace',
@@ -171,6 +162,7 @@ function copiarEnlace(id) {
         if (result.isConfirmed) {
             const input = Swal.getPopup().querySelector('#enlaceInput');
             navigator.clipboard.writeText(input.value).then(() => {
+                console.log('Link copied to clipboard');
                 Swal.fire({
                     title: "Copiado!",
                     text: "El enlace ha sido copiado al portapapeles.",

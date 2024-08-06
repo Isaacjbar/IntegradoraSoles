@@ -34,7 +34,7 @@
 %>
 <!-- Navbar -->
 <nav id="navbar1" class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
         <a id="logo" href="${pageContext.request.contextPath}/welcome.jsp" class="navbar-brand d-flex align-items-center h-100">
             <svg style="margin-right: .4em; border:2px solid white; border-radius:50%; padding: 2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                  class="bi bi-signpost-split-fill" viewBox="0 0 16 16">
@@ -42,10 +42,12 @@
             </svg>
             <strong class="app-name-text fs-6">Histority</strong>
         </a>
-        <svg id="user-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16" style="cursor:pointer;">
-            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
-            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"></path>
-        </svg>
+        <div id="user-icon-container" style="cursor: pointer;">
+            <svg id="user-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"></path>
+            </svg>
+        </div>
     </div>
 </nav>
 <div class="user-info-container" id="user-info-container" style="display: none;">
@@ -110,8 +112,6 @@
         </button>
     </form>
 </div>
-
-
 
 <main>
     <div class="album py-3 bg-body-tertiary">
