@@ -9,6 +9,7 @@
     /* border-left: 4px solid var(--blue2); */
     padding: 16px 5px;
     min-height: 510px !important;
+    max-width: 452px;
 }
 
 .card:hover{
@@ -29,6 +30,8 @@ h5{
     min-height: 150px;
     object-fit: contain;
     height: 200px;
+    width: 90%;
+    margin: 0 auto;
 }
 .items-card-container small{
     margin: 2em 0;
@@ -106,8 +109,9 @@ footer{
 }
 .card-normal img{
     display: block;
-    min-heightheight: 150px !important;
+    min-height: 150px !important;
     padding-top: 10px;
+    margin: 0 auto !important;
 }
 .card-normal .card-body{
     font-size: 13px;

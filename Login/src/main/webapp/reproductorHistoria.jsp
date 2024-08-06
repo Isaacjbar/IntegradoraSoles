@@ -9,7 +9,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="css/stylesIndex.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/reproductor.css"> <!-- Archivo CSS -->
     <link rel="icon" href="img/Logo1.png">
