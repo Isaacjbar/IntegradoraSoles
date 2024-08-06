@@ -10,11 +10,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Activar/Desactivar Usuario y correcciones en agregarUsuario">
+    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Responsive del welcome y al filtrar la historia">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/database/DatabaseConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/css/reproductor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/reproductor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/reproductorHistoria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/reproductorHistoria.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -273,7 +272,7 @@
       <workItem from="1722712867741" duration="6999000" />
       <workItem from="1722871447177" duration="2043000" />
       <workItem from="1722873519309" duration="779000" />
-      <workItem from="1722915644132" duration="1422000" />
+      <workItem from="1722915644132" duration="7714000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />
@@ -459,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722716783485</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Responsive del welcome y al filtrar la historia">
+      <option name="closed" value="true" />
+      <created>1722917239387</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1722917239387</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -490,6 +497,7 @@
     <MESSAGE value="Correcciones y select en agregarUsuario" />
     <MESSAGE value="Mas correcciones en activar y desactivar" />
     <MESSAGE value="Activar/Desactivar Usuario y correcciones en agregarUsuario" />
-    <option name="LAST_COMMIT_MESSAGE" value="Activar/Desactivar Usuario y correcciones en agregarUsuario" />
+    <MESSAGE value="Responsive del welcome y al filtrar la historia" />
+    <option name="LAST_COMMIT_MESSAGE" value="Responsive del welcome y al filtrar la historia" />
   </component>
 </project>
