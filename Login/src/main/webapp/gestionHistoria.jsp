@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/styleNav.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/form-dinamico.css">
     <title>Modificar Escena</title>
     <script src="https://unpkg.com/gojs/release/go.js"></script>
 </head>
@@ -110,45 +111,50 @@
         <div id="escenaDiv">
             <form id="agregarUsuarioForm" action="gestionEscenaServlet" method="post">
                 <h1 class="title-1 fs-5">Modificar Escena</h1>
-                <div class="row">
+                <div class="row g-3">
                     <div class="col-md-6">
-                        <label for="key">ID de Escena</label>
+                        <label for="key">Escena</label>
                         <input class="form-control" type="hidden" name="id" id="key" readonly>
                         <input type="hidden" id="historiaId" name="historiaId" value="<%= historiaId %>" required>
                         <label for="nodeName">Nombre</label>
                         <input class="form-control" type="text" name="titulo" id="nodeName" placeholder="Nombre" required>
                         <label for="nodeDesc">Descripción</label>
-                        <textarea class="form-control" name="descripcion" id="nodeDesc" placeholder="Descripción" required></textarea>
+                        <textarea style="resize: none" class="form-control" name="descripcion" id="nodeDesc" placeholder="Descripción" required></textarea>
+                    </div>
+                    <div class="col-md-6">
                         <label for="nodeImage">Imagen</label>
                         <input class="form-control" type="text" name="imagen" id="nodeImage" required>
-                        <label for="nodeAudio">Audio</label>
+                        <label for="nodeAudio" class="mt-2">Audio</label>
                         <input class="form-control" type="text" name="audio" id="nodeAudio" required>
-                        <label for="nodeVideo">Video</label>
+                        <label for="nodeVideo" class="mt-2">Video</label>
                         <input class="form-control" type="text" name="video" id="nodeVideo" required>
                     </div>
                 </div>
-                <div class="btn-container">
+                <div class="btn-container mt-3">
                     <button type="button" class="btn btn-primary" onclick="saveForm()">Guardar</button>
                     <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancelar</button>
                 </div>
             </form>
         </div>
-        <div id="multimediaDiv">
+        <div id="multimediaDiv" class="mt-4">
             <form id="uploadForm" enctype="multipart/form-data">
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="multimediaImage">Imagen</label>
                     <input type="file" class="form-control" id="multimediaImage" name="multimediaImage" accept="image/*">
                 </div>
-                <div class="form-group">
-                    <label for="multimediaAudio" class="mt-2">Audio</label>
+                <div class="form-group mb-3">
+                    <label for="multimediaAudio">Audio</label>
                     <input type="file" class="form-control" id="multimediaAudio" name="multimediaAudio" accept="audio/*">
                 </div>
                 <button type="button" class="btn btn-primary mt-3" onclick="uploadFiles()">Subir archivos</button>
                 <div id="message" style="color: red; display: none; margin-top: 10px;"></div>
             </form>
         </div>
+
     </div>
 </div>
+
+
 <footer class="d-flex flex-wrap justify-content-center align-items-center mt-4 border-top">
     <p class="col-md-4 mb-0 text-body-secondary d-flex justify-content-center">&copy; 2024 Histority SA</p>
 </footer>

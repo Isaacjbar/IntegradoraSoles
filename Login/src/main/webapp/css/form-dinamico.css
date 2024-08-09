@@ -1,0 +1,50 @@
+#myFormDiv {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#myFormDiv h1 {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    font-size: 14px;
+    padding: 8px 10px;
+}
+.form-group {
+    display: block;
+    width: 100%;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    #myFormDiv {
+        padding: 10px;
+    }
+
+    .btn-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #multimediaDiv .row {
+        flex-direction: column;
+    }
+
+    #myFormDiv h1 {
+        font-size: 18px;
+    }
+}
