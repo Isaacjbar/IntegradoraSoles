@@ -1,0 +1,38 @@
+.card-icons{
+    display: flex;
+    justify-content: center;
+    margin: 1.1em auto;
+}
+.card-icons button {
+    transition: all 200ms;
+    padding: 8px;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 100%;
+}
+.card-icons button:hover {
+    transform: scale(1.1);
+}
+.card-icons button:active {
+    transform: scale(1.05);
+    filter: brightness(0.4);
+}
+#btn-editar-portada{
+    background-color: #8047B9;
+}
+#btn-editar-escenas{
+    background-color: #49AFC5;
+}
+#btn-copiar-enlace{
+    background-color: #0B6490;
+}
+#btn-publicar-escena{
+    background-color: #068D73;
+}
+#btn-archivar-escena{
+    background-color: #DC3545;
+}

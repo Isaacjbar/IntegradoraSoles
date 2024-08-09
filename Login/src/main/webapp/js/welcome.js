@@ -5,24 +5,40 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('click', function(event) {
             console.log('Card clicked:', card);
             const target = event.target;
-            // Asegurarnos de que el click no es en un botón o formulario
-            if (!target.classList.contains('btn') && !target.closest('form')) {
+
+            // Evitar la redirección si el clic ocurre en un botón, un elemento dentro de un formulario, un enlace, o un SVG
+            if (!target.classList.contains('btn') &&
+                !target.closest('form') &&
+                !target.closest('button') &&
+                !target.closest('a') &&
+                target.tagName !== 'BUTTON' &&
+                target.tagName !== 'A' &&
+                target.tagName !== 'SVG' &&
+                target.tagName !== 'PATH') {
+
                 const id = card.dataset.id;
                 console.log('Navigating to story with id:', id);
                 window.open(window.location.origin + '/Login_war/historia?id_his=' + id + '&nu=' + encodeURIComponent(contrasenaCifrada), '_blank');
             } else {
-                console.log('Click was on a button or form, not navigating');
+                console.log('Click was on a button, form, link, or SVG, not navigating');
             }
         });
     });
 
-    document.querySelectorAll('.btn-publicar').forEach(button => {
+    document.querySelectorAll('.btn-publicar, .btn-archivar').forEach(button => {
         button.addEventListener('click', function(event) {
             event.preventDefault();
-            console.log('Publish button clicked:', button);
+            event.stopPropagation();
+            console.log('Publish/Archive button clicked:', button);
             const id = this.dataset.id;
             const accion = this.dataset.accion;
-            console.log('Publishing action:', accion, 'for story id:', id);
+            console.log('Action:', accion, 'for story id:', id);
+
+            // Verificar si el ID es undefined o no válido
+            if (!id || id === "undefined") {
+                console.error('Error: El ID de la historia es undefined o no válido.');
+                return; // Detener la ejecución si el ID no es válido
+            }
 
             const form = document.createElement('form');
             form.method = 'post';
@@ -44,14 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
             form.submit();
 
             console.log('Form submitted:', form);
-
-            const nuevoEstado = accion === 'publicar' ? 'publicada' : 'archivada';
-            const nuevaAccion = accion === 'publicar' ? 'archivar' : 'publicar';
-            const nuevoTexto = accion === 'publicar' ? 'Archivar' : 'Publicar';
-
-            button.dataset.accion = nuevaAccion;
-            button.innerText = nuevoTexto;
-            form.remove();
         });
     });
 
@@ -110,17 +118,12 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-sm btn-outline-secondary btn-editar" onclick="window.location.href='gestionHistoria.jsp?id_his=${historia.id}'">Editar</button>
                                                 <button type="button" class="btn btn-sm btn-outline-secondary btn-copiar" onclick="copiarEnlace('${historia.id}')">Copiar enlace</button>
-                                                <form method="post" action="estadoPublicacion" style="display: inline;">
-                                                    <input type="hidden" name="id" value="${historia.id}">
-                                                    <input type="hidden" name="accion" value="${historia.estado === 'publicada' ? 'archivar' : 'publicar'}">
-                                                    <button id="btn-pub-despub" type="submit" class="btn btn-sm btn-outline-secondary ${historia.estado === 'publicada' ? 'btn-archivar' : 'btn-publicar'}" data-id="${historia.id}" data-accion="${historia.estado === 'publicada' ? 'archivar' : 'publicar'}">
-                                                        ${historia.estado === 'publicada' ? 'Archivar' : 'Publicar'}
-                                                    </button>
-                                                </form>
+                                                <% if (historia.estado === 'archivada') { %>
+                                                    <button id="btn-publicar-escena" class="btn btn-sm btn-outline-secondary btn-publicar" data-id="<%= historia.getId() %>" data-accion="publicar" data-bs-toggle="tooltip" data-bs-placement="top" title="Publicar escena">Publicar</button>
+                                                <% } else { %>
+                                                    <button id="btn-archivar-escena" class="btn btn-sm btn-outline-secondary btn-archivar" data-id="<%= historia.getId() %>" data-accion="archivar" data-bs-toggle="tooltip" data-bs-placement="top" title="Archivar escena">Archivar</button>
+                                                <% } %>
                                             </div>
-                                            <button id="editar-portada-btn" type="button" class="btn btn-sm btn-outline-secondary w-75 mt-1 mb-4 mx-auto" onclick="window.location.href='editarPortada.jsp?id_his=${historia.id}'">Editar Portada</button>
-                                            <small class="text-body-secondary mt-2"><span class="ultima-mod">Últm. mod:</span> ${historia.fechaCreacion}</small>
-                                            <div><strong>Estado: </strong><span class="${historia.estado === 'publicada' ? 'estado-publicada' : 'estado-archivada'}">${historia.estado}</span></div>
                                         </div>
                                     </div>
                                 </div>

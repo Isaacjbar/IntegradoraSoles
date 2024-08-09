@@ -40,7 +40,11 @@
                         </div>
                         <% } else if ("audio_imagen".equals(multimediaType)) { %>
                         <% if (imageUrl != null && !imageUrl.isEmpty()) { %>
-                        <img src="<%= imageUrl %>" class="img-fluid img-responsive" alt="Escena Imagen">
+                        <img src="<%= (imageUrl != null && !imageUrl.isEmpty()) ? imageUrl : "img/notFound.png" %>"
+                             class="img-fluid img-responsive"
+                             alt="Escena Imagen"
+                             onerror="this.onerror=null; this.src='img/notFound.png';">
+
                         <% } %>
                         <% if (audioUrl != null && !audioUrl.isEmpty()) { %>
                         <audio controls class="audio-responsive mt-3">

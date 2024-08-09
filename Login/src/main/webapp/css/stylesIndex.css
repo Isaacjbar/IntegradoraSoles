@@ -8,7 +8,7 @@
     -moz-box-shadow: 13px 11px 9px -11px rgba(0,0,0,0.75);
     /* border-left: 4px solid var(--blue2); */
     padding: 16px 5px;
-    min-height: 510px !important;
+    height: 520px !important;
     max-width: 452px;
 }
 
@@ -182,3 +182,4 @@ footer{
     width: 60% !important;
     margin: 15px auto !important;
 }
+

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/stylesIndex.css">
     <link rel="stylesheet" href="css/styleNav.css">
+    <link rel="stylesheet" href="css/card-icons.css">
     <title>Gestión de Historias</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/scripts.js"></script>
@@ -128,24 +129,46 @@
                 <div class="col">
                     <div class="card shadow-sm card-normal" data-id="<%= historia.getId() %>">
                         <div class="embed-responsive mb-3 mx-auto">
-                            <img src="<%= multimedia %>" class="embed-responsive-item img_d_card" alt="previsualizaciónHistoria">
+                            <img src="<%= (multimedia != null && !multimedia.isEmpty()) ? multimedia : "img/notFound.png" %>" class="embed-responsive-item img_d_card" alt="previsualizaciónHistoria" onerror="this.src='img/notFound.png';">
                         </div>
+
                         <div class="card-body">
                             <h5 class="card_title"><%= historia.getTitulo() %></h5>
                             <p class="card-text"><%= historia.getDescripcion() %></p>
                             <div class="d-flex flex-column items-card-container">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-editar" onclick="window.location.href='gestionHistoria.jsp?id_his=<%= historia.getId() %>'">Editar</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-copiar" onclick="copiarEnlace('<%= historia.getId() %>')">Copiar enlace</button>
-                                    <form method="post" action="estadoPublicacion" style="display: inline;">
-                                        <input type="hidden" name="id" value="<%= historia.getId() %>">
-                                        <input type="hidden" name="accion" value="<%= "publicada".equals(estado) ? "archivar" : "publicar" %>">
-                                        <button id="btn-pub-despub" type="submit" class="btn btn-sm btn-outline-secondary <%= "publicada".equals(estado) ? "btn-archivar" : "btn-publicar" %>" data-id="<%= historia.getId() %>" data-accion="<%= "publicada".equals(estado) ? "archivar" : "publicar" %>">
-                                            <%= "publicada".equals(estado) ? "Archivar" : "Publicar" %>
-                                        </button>
-                                    </form>
+                                <div class="card-icons">
+                                    <button id="btn-editar-portada" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar portada" onclick="window.location.href='editarPortada.jsp?id_his=<%= historia.getId() %>'">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"></path>
+                                        </svg>
+                                    </button>
+                                    <button id="btn-editar-escenas" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar escenas" onclick="window.location.href='gestionHistoria.jsp?id_his=<%= historia.getId() %>'">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"></path>
+                                            <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"></path>
+                                        </svg>
+                                    </button>
+                                    <button id="btn-copiar-enlace" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar enlace" onclick="copiarEnlace('<%= historia.getId() %>')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
+                                        </svg>
+                                    </button>
+                                    <% if ("archivada".equals(estado)) { %>
+                                    <button id="btn-publicar-escena" class="btn-publicar" data-id="<%= historia.getId() %>" data-accion="publicar" data-bs-toggle="tooltip" data-bs-placement="top" title="Publicar Historia">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-arrow-up" viewBox="0 0 16 16">
+                                            <path d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707z"></path>
+                                            <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"></path>
+                                        </svg>
+                                    </button>
+                                    <% } else if ("publicada".equals(estado)) { %>
+                                    <button id="btn-archivar-escena" class="btn-archivar" data-id="<%= historia.getId() %>" data-accion="archivar" data-bs-toggle="tooltip" data-bs-placement="top" title="Archivar Historia">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-square" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.5 2.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"></path>
+                                        </svg>
+                                    </button>
+                                    <% } %>
                                 </div>
-                                <button id="editar-portada-btn" type="button" class="btn btn-sm btn-outline-secondary w-75 mt-1 mb-4 mx-auto" onclick="window.location.href='editarPortada.jsp?id_his=<%= historia.getId() %>'">Editar Portada</button>
+
                                 <small class="text-body-secondary mt-2"><span class="ultima-mod">Últm. mod:</span> <%= historia.getFechaCreacion() %></small>
                                 <div><strong>Estado: </strong><span class="<%= "publicada".equals(estado) ? "estado-publicada" : "estado-archivada" %>"><%= historia.getEstado() %></span></div>
                             </div>
@@ -211,6 +234,17 @@
 %>
 <script type="text/javascript">
     var contrasenaCifrada = '<%= contrasenaCifrada %>';
+</script>
+
+<script src="bootstrap-5.2.3-dist/js/popper.min.js"></script>
+<script src="bootstrap-5.2.3-dist/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    });
 </script>
 <script src="js/global.js"></script>
 <script src="js/welcome.js"></script>
