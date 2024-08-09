@@ -1,7 +1,8 @@
 .card-icons{
     display: flex;
-    justify-content: center;
     margin: 1.1em auto;
+    justify-content: space-around;
+    width: 60%;
 }
 .card-icons button {
     transition: all 200ms;
@@ -22,7 +23,7 @@
     filter: brightness(0.4);
 }
 #btn-editar-portada{
-    background-color: #8047B9;
+    background-color: #4d42a8;
 }
 #btn-editar-escenas{
     background-color: #49AFC5;

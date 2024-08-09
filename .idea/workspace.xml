@@ -10,7 +10,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Iconos e imagenes de respaldo" />
+    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Bootstrap :D">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/css/card-icons.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/card-icons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -271,6 +275,7 @@
       <workItem from="1723174422059" duration="7996000" />
       <workItem from="1723182671504" duration="2769000" />
       <workItem from="1723220150605" duration="653000" />
+      <workItem from="1723228346685" duration="2097000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />
@@ -472,14 +477,21 @@
       <option name="project" value="LOCAL" />
       <updated>1723222951178</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Bootstrap :D">
+      <option name="closed" value="true" />
+      <created>1723228460593</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1723228460593</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="falto eliminar un  federico casillas" />
     <MESSAGE value="pie de pagina" />
     <MESSAGE value="falto eliminar un federico casillas" />
     <MESSAGE value="Correccion de menu" />
@@ -504,6 +516,7 @@
     <MESSAGE value="Activar/Desactivar Usuario y correcciones en agregarUsuario" />
     <MESSAGE value="Responsive del welcome y al filtrar la historia" />
     <MESSAGE value="Iconos e imagenes de respaldo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Iconos e imagenes de respaldo" />
+    <MESSAGE value="Bootstrap :D" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bootstrap :D" />
   </component>
 </project>
