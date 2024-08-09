@@ -113,7 +113,6 @@
                 <h1 class="title-1 fs-5">Modificar Escena</h1>
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label for="key">Escena</label>
                         <input class="form-control" type="hidden" name="id" id="key" readonly>
                         <input type="hidden" id="historiaId" name="historiaId" value="<%= historiaId %>" required>
                         <label for="nodeName">Nombre</label>
@@ -138,6 +137,8 @@
         </div>
         <div id="multimediaDiv" class="mt-4">
             <form id="uploadForm" enctype="multipart/form-data">
+                <br>
+                <br>
                 <div class="form-group mb-3">
                     <label for="multimediaImage">Imagen</label>
                     <input type="file" class="form-control" id="multimediaImage" name="multimediaImage" accept="image/*">
@@ -167,6 +168,7 @@
         // Ensure no upload if video exists
         if (videoField.value) {
             alert("No puedes subir imagen y/o audio si ya ingresaste la url de un video");
+            document.getElementById("uploadForm").reset();
             return;
         }
 
@@ -182,7 +184,7 @@
                 if (response.audioPath) {
                     document.getElementById("nodeAudio").value = response.audioPath;
                 }
-                checkMultimediaState();  // Re-check after upload
+                document.getElementById("uploadForm").reset();
             }
         };
         xhr.send(formData);

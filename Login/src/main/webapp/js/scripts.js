@@ -107,7 +107,14 @@ function init() {
         diagram.commitTransaction("add children");
     }
 
+    function resetMessageDiv() {
+        var messageDiv = document.getElementById("message");
+        messageDiv.textContent = "";  // Limpia el texto
+        messageDiv.style.display = "none";  // Oculta el elemento
+    }
+
     function showForm(e, obj) {
+        resetMessageDiv();
         currentNode = obj.part.adornedPart;  // El nodo al que se le hace clic
         document.getElementById('myOverlay').style.display = 'flex';
         document.getElementById('key').value = currentNode.data.key; // Establece el ID del nodo
@@ -128,15 +135,6 @@ function init() {
         nodeAudio.value = currentNode.data.audio || '';
         nodeVideo.value = currentNode.data.video || '';
 
-        // Deshabilitar campos según los datos establecidos
-        if (nodeVideo.value) {
-            nodeImage.disabled = true;
-            nodeAudio.disabled = true;
-        }
-
-        if (nodeImage.value || nodeAudio.value) {
-            nodeVideo.disabled = true;
-        }
 
         // Mostrar el video si la URL está presente
         const videoUrl = currentNode.data.video || '';
@@ -169,10 +167,16 @@ function init() {
         console.log("saveForm - nodeVideo:", nodeVideo);
 
         // Validación para permitir sólo imagen o audio, o sólo video
-        if ( (nodeImage || nodeAudio) && nodeVideo) {
+        if ((nodeImage && nodeAudio) && nodeVideo) {
             messageDiv.textContent = "No puedes ingresar imagen, audio y video juntos";
             messageDiv.style.display = "block";
-            return; // Previene la sumisión del formulario
+            return;
+        }
+
+        if ((nodeAudio && nodeVideo) || (nodeImage && nodeVideo)) {
+            messageDiv.textContent = "No puedes ingresar audio y video juntos o imagen y video juntos";
+            messageDiv.style.display = "block";
+            return;
         }
 
         var xhr = new XMLHttpRequest();
@@ -349,10 +353,3 @@ function init() {
 }
 
 window.addEventListener('DOMContentLoaded', init);
-// Attach checkMultimediaState to the input events
-document.getElementById("nodeImage").addEventListener("input", checkMultimediaState);
-document.getElementById("nodeAudio").addEventListener("input", checkMultimediaState);
-document.getElementById("nodeVideo").addEventListener("input", checkMultimediaState);
-
-// Run the check when the page loads
-document.addEventListener("DOMContentLoaded", checkMultimediaState);
