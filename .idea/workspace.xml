@@ -10,58 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Responsive del welcome y al filtrar la historia">
-      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/card-icons.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-grid.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-grid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-grid.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-grid.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-grid.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-grid.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-grid.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-reboot.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-reboot.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-reboot.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-reboot.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-reboot.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-reboot.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-reboot.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-reboot.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-utilities.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-utilities.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-utilities.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-utilities.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-utilities.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-utilities.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-utilities.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap-utilities.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/css/bootstrap.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/js/bootstrap.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/js/bootstrap.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/js/bootstrap.esm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/js/bootstrap.esm.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/js/bootstrap.esm.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/js/bootstrap.esm.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/js/bootstrap.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/bootstrap-5.2.3-dist/js/bootstrap.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/js/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/js/welcome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/reproductorHistoria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/reproductorHistoria.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Iconos e imagenes de respaldo" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -321,7 +270,7 @@
       <workItem from="1722915644132" duration="7714000" />
       <workItem from="1723174422059" duration="7996000" />
       <workItem from="1723182671504" duration="2769000" />
-      <workItem from="1723220150605" duration="599000" />
+      <workItem from="1723220150605" duration="653000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />
@@ -515,14 +464,21 @@
       <option name="project" value="LOCAL" />
       <updated>1722917239387</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Iconos e imagenes de respaldo">
+      <option name="closed" value="true" />
+      <created>1723222951178</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1723222951178</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="git commit -m &quot;correcciones menu&quot;" />
     <MESSAGE value="falto eliminar un  federico casillas" />
     <MESSAGE value="pie de pagina" />
     <MESSAGE value="falto eliminar un federico casillas" />
@@ -547,6 +503,7 @@
     <MESSAGE value="Mas correcciones en activar y desactivar" />
     <MESSAGE value="Activar/Desactivar Usuario y correcciones en agregarUsuario" />
     <MESSAGE value="Responsive del welcome y al filtrar la historia" />
-    <option name="LAST_COMMIT_MESSAGE" value="Responsive del welcome y al filtrar la historia" />
+    <MESSAGE value="Iconos e imagenes de respaldo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Iconos e imagenes de respaldo" />
   </component>
 </project>
