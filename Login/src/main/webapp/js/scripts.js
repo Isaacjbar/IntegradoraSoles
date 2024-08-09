@@ -108,15 +108,35 @@ function init() {
     }
 
     function showForm(e, obj) {
-        currentNode = obj.part.adornedPart;  // el nodo al que se le hace clic
+        currentNode = obj.part.adornedPart;  // El nodo al que se le hace clic
         document.getElementById('myOverlay').style.display = 'flex';
         document.getElementById('key').value = currentNode.data.key; // Establece el ID del nodo
         document.getElementById('nodeName').value = currentNode.data.name;
         document.getElementById('nodeDesc').value = currentNode.data.description || '';
-        document.getElementById('nodeImage').value = currentNode.data.image || '';
-        document.getElementById('nodeAudio').value = currentNode.data.audio || '';
-        document.getElementById('nodeVideo').value = currentNode.data.video || '';
+        const nodeImage = document.getElementById('nodeImage');
+        const nodeAudio = document.getElementById('nodeAudio');
+        const nodeVideo = document.getElementById('nodeVideo');
         myDiagram.div.style.pointerEvents = 'none'; // Disable interactions with the diagram
+
+        // Restablecer el estado de los campos
+        nodeImage.disabled = false;
+        nodeAudio.disabled = false;
+        nodeVideo.disabled = false;
+
+        // Establecer valores
+        nodeImage.value = currentNode.data.image || '';
+        nodeAudio.value = currentNode.data.audio || '';
+        nodeVideo.value = currentNode.data.video || '';
+
+        // Deshabilitar campos según los datos establecidos
+        if (nodeVideo.value) {
+            nodeImage.disabled = true;
+            nodeAudio.disabled = true;
+        }
+
+        if (nodeImage.value || nodeAudio.value) {
+            nodeVideo.disabled = true;
+        }
 
         // Mostrar el video si la URL está presente
         const videoUrl = currentNode.data.video || '';
@@ -131,7 +151,6 @@ function init() {
         console.log("showForm - node ID set to:", currentNode.data.key);
     }
 
-    // función para guardar los datos del formulario
     function saveForm() {
         var nodeId = document.getElementById('key').value;
         var nodeName = document.getElementById('nodeName').value;
@@ -140,6 +159,7 @@ function init() {
         var nodeAudio = document.getElementById('nodeAudio').value;
         var nodeVideo = document.getElementById('nodeVideo').value;
         var diagram = currentNode.diagram;
+        var messageDiv = document.getElementById("message");
 
         console.log("saveForm - nodeId:", nodeId);
         console.log("saveForm - nodeName:", nodeName);
@@ -147,6 +167,13 @@ function init() {
         console.log("saveForm - nodeImage:", nodeImage);
         console.log("saveForm - nodeAudio:", nodeAudio);
         console.log("saveForm - nodeVideo:", nodeVideo);
+
+        // Validación para permitir sólo imagen o audio, o sólo video
+        if ( (nodeImage || nodeAudio) && nodeVideo) {
+            messageDiv.textContent = "No puedes ingresar imagen, audio y video juntos";
+            messageDiv.style.display = "block";
+            return; // Previene la sumisión del formulario
+        }
 
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "gestionEscenaServlet", true);
@@ -193,8 +220,6 @@ function init() {
 
         xhr.send(data);
     }
-
-
 
     // función para cancelar el formulario
     function cancelForm() {
@@ -324,3 +349,10 @@ function init() {
 }
 
 window.addEventListener('DOMContentLoaded', init);
+// Attach checkMultimediaState to the input events
+document.getElementById("nodeImage").addEventListener("input", checkMultimediaState);
+document.getElementById("nodeAudio").addEventListener("input", checkMultimediaState);
+document.getElementById("nodeVideo").addEventListener("input", checkMultimediaState);
+
+// Run the check when the page loads
+document.addEventListener("DOMContentLoaded", checkMultimediaState);

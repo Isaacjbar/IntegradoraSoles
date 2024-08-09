@@ -14,127 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/diagramStyles.css">
     <link rel="stylesheet" href="css/styleNav.css">
+    <link rel="stylesheet" href="css/index.css">
     <title>Modificar Escena</title>
     <script src="https://unpkg.com/gojs/release/go.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-            position: relative;
-        }
-
-        #myDiagramDiv {
-            width: 80%;
-            height: 80%;
-            border: 1px solid black;
-            background-color: white;
-        }
-
-        #myOverlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-        }
-
-        #myFormDiv {
-            margin: 10px auto;
-            border-radius: 10px;
-            box-shadow: 5px 7px 14px -1px rgba(133,133,133,0.75);
-            max-width: 800px; /* Ajuste del ancho máximo del formulario */
-            padding: 15px 40px;
-            width: 80%;
-            background-color: white; /* Asegurarse de que el fondo sea blanco */
-        }
-
-        .row > [class*='col-'] {
-            padding: 10px;
-        }
-
-        .btn-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        #videoContainer {
-            display: none;
-        }
-
-        #uploadForm {
-            display: none;
-        }
-    </style>
-    <script>
-        function validateForm() {
-            const multimediaImage = document.getElementById('multimediaImage').value;
-            const multimediaAudio = document.getElementById('multimediaAudio').value;
-
-            if (!multimediaImage && !multimediaAudio) {
-                alert('Por favor, sube una imagen y/o audio.');
-                return false;
-            }
-
-            return true;
-        }
-
-        function uploadFiles() {
-            var form = document.getElementById('uploadForm');
-            var formData = new FormData(form);
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "SubirMultimediaServlet", true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    document.getElementById('nodeImage').value = response.imagePath || '';
-                    document.getElementById('nodeAudio').value = response.audioPath || '';
-                }
-            };
-            xhr.send(formData);
-        }
-
-        function toggleMediaFields() {
-            const mediaType = document.getElementById('nodeMediaType').value;
-            document.getElementById('imageAudioFields').style.display = 'none';
-            document.getElementById('videoField').style.display = 'none';
-            document.getElementById('uploadForm').style.display = 'none';
-            document.getElementById('youtubePlayer').src = '';
-
-            if (mediaType === 'imagenAudio') {
-                document.getElementById('imageAudioFields').style.display = 'block';
-                document.getElementById('uploadForm').style.display = 'block';
-            } else if (mediaType === 'video') {
-                document.getElementById('videoField').style.display = 'block';
-            }
-        }
-
-        function updateVideoPlayer() {
-            const videoUrl = document.getElementById('nodeVideo').value;
-            const player = document.getElementById('youtubePlayer');
-            player.src = videoUrl;
-        }
-    </script>
 </head>
 <body>
 <%
@@ -224,55 +107,46 @@
 <div id="myDiagramDiv"></div>
 <div id="myOverlay" style="display: none;">
     <div id="myFormDiv">
-        <form id="uploadForm" action="SubirMultimediaServlet" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="multimediaImage">Imagen</label>
-                <input type="file" class="form-control" id="multimediaImage" name="multimediaImage" accept="image/*">
-            </div>
-            <div class="form-group">
-                <label for="multimediaAudio" class="mt-2">Audio</label>
-                <input type="file" class="form-control" id="multimediaAudio" name="multimediaAudio" accept="audio/*">
-            </div>
-            <button type="button" class="btn btn-primary mt-3" onclick="uploadFiles()">Subir archivos</button>
-        </form>
-        <form id="agregarUsuarioForm" action="gestionEscenaServlet" method="post">
-            <h1 class="title-1 fs-5">Modificar Escena</h1>
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="key">ID de Escena</label>
-                    <input class="form-control" type="text" name="id" id="key" readonly>
-                    <input type="hidden" id="historiaId" name="historiaId" value="<%= historiaId %>" required>
-                    <label for="nodeName">Nombre</label>
-                    <input class="form-control" type="text" name="titulo" id="nodeName" placeholder="Nombre" required>
-                    <label for="nodeDesc">Descripción</label>
-                    <textarea class="form-control" name="descripcion" id="nodeDesc" placeholder="Descripción" required></textarea>
-                    <input type="hidden" name="image" id="nodeImage">
-                    <input type="hidden" name="audio" id="nodeAudio">
-                </div>
-                <div class="col-md-6">
-                    <label for="nodeMediaType">Tipo de Multimedia</label>
-                    <select class="form-control" id="nodeMediaType" onchange="toggleMediaFields()">
-                        <option value="none">Seleccione tipo</option>
-                        <option value="imagenAudio">Imagen y/o Audio</option>
-                        <option value="video">Video</option>
-                    </select>
-                    <div id="imageAudioFields" class="form-group" style="display: none;">
-                        <!-- Estos campos se rellenan automáticamente al subir archivos -->
-                    </div>
-                    <div id="videoField" class="form-group" style="display: none;">
+        <div id="escenaDiv">
+            <form id="agregarUsuarioForm" action="gestionEscenaServlet" method="post">
+                <h1 class="title-1 fs-5">Modificar Escena</h1>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="key">ID de Escena</label>
+                        <input class="form-control" type="hidden" name="id" id="key" readonly>
+                        <input type="hidden" id="historiaId" name="historiaId" value="<%= historiaId %>" required>
+                        <label for="nodeName">Nombre</label>
+                        <input class="form-control" type="text" name="titulo" id="nodeName" placeholder="Nombre" required>
+                        <label for="nodeDesc">Descripción</label>
+                        <textarea class="form-control" name="descripcion" id="nodeDesc" placeholder="Descripción" required></textarea>
+                        <label for="nodeImage">Imagen</label>
+                        <input class="form-control" type="text" name="imagen" id="nodeImage" required>
+                        <label for="nodeAudio">Audio</label>
+                        <input class="form-control" type="text" name="audio" id="nodeAudio" required>
                         <label for="nodeVideo">Video</label>
-                        <input class="form-control" type="text" name="video" id="nodeVideo" placeholder="Video" oninput="updateVideoPlayer()">
-                        <div id="videoContainer" class="mt-3">
-                            <iframe id="youtubePlayer" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
-                        </div>
+                        <input class="form-control" type="text" name="video" id="nodeVideo" required>
                     </div>
                 </div>
-            </div>
-            <div class="btn-container">
-                <button type="button" class="btn btn-primary" onclick="saveForm()">Guardar</button>
-                <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancelar</button>
-            </div>
-        </form>
+                <div class="btn-container">
+                    <button type="button" class="btn btn-primary" onclick="saveForm()">Guardar</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+        <div id="multimediaDiv">
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="multimediaImage">Imagen</label>
+                    <input type="file" class="form-control" id="multimediaImage" name="multimediaImage" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="multimediaAudio" class="mt-2">Audio</label>
+                    <input type="file" class="form-control" id="multimediaAudio" name="multimediaAudio" accept="audio/*">
+                </div>
+                <button type="button" class="btn btn-primary mt-3" onclick="uploadFiles()">Subir archivos</button>
+                <div id="message" style="color: red; display: none; margin-top: 10px;"></div>
+            </form>
+        </div>
     </div>
 </div>
 <footer class="d-flex flex-wrap justify-content-center align-items-center mt-4 border-top">
@@ -280,6 +154,33 @@
 </footer>
 <script>
     var historiaId = "<%= historiaId %>";
+
+    function uploadFiles() {
+        const videoField = document.getElementById("nodeVideo");
+
+        // Ensure no upload if video exists
+        if (videoField.value) {
+            alert("No puedes subir imagen y/o audio si ya ingresaste la url de un video");
+            return;
+        }
+
+        const formData = new FormData(document.getElementById("uploadForm"));
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "SubirMultimediaServlet", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                if (response.imagePath) {
+                    document.getElementById("nodeImage").value = response.imagePath;
+                }
+                if (response.audioPath) {
+                    document.getElementById("nodeAudio").value = response.audioPath;
+                }
+                checkMultimediaState();  // Re-check after upload
+            }
+        };
+        xhr.send(formData);
+    }
 </script>
 <script src="js/global.js"></script>
 <script src="js/scripts.js"></script>
