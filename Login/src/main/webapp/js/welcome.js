@@ -18,7 +18,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 const id = card.dataset.id;
                 console.log('Navigating to story with id:', id);
-                window.open(window.location.origin + '/Login_war/historia?id_his=' + id + '&nu=' + encodeURIComponent(contrasenaCifrada), '_blank');
+
+                // Obtener la ruta base de la aplicación de manera dinámica
+                const rutaBase = window.location.origin + window.location.pathname.split('/').slice(0, -1).join('/');
+
+                // Construir la URL completa de manera dinámica
+                const url = rutaBase + '/historia?id_his=' + id + '&nu=' + encodeURIComponent(contrasenaCifrada);
+
+                // Abrir la URL en una nueva pestaña
+                window.open(url, '_blank');
             } else {
                 console.log('Click was on a button, form, link, or SVG, not navigating');
             }
@@ -147,7 +155,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function copiarEnlace(id) {
     console.log('Copy link clicked for story id:', id);
-    const enlace = window.location.origin + '/Login_war/historia?id_his=' + id;
+
+    // Obtener la ruta base de la aplicación de manera dinámica
+    const rutaBase = window.location.origin + window.location.pathname.split('/').slice(0, -1).join('/');
+
+    // Concatenar la ruta base con el segmento estático y el id
+    const enlace = rutaBase + '/historia?id_his=' + id;
+
     Swal.fire({
         title: 'Copiar enlace',
         html: '<input type="text" id="enlaceInput" class="swal2-input" value="' + enlace + '" readonly style="width: 80%;">',
