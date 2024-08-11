@@ -182,33 +182,9 @@ public class EscenaDao {
 
         return escena;
     }
-
-    public boolean updateEscenaSinM(Escena escena) {
-        String sql = "UPDATE escena SET historia_id = ?, titulo = ?, " +
-                "descripcion = ?, es_final = ?, texto_final = ?, fecha_creacion = ? WHERE id = ?";
-
-        try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-
-            statement.setInt(1, escena.getHistoriaId());
-            statement.setString(2, escena.getTitulo());
-            statement.setString(3, escena.getDescripcion());
-            statement.setBoolean(4, escena.isEsFinal());
-            statement.setString(5, escena.getTextoFinal());
-            statement.setTimestamp(6, escena.getFechaCreacion());
-            statement.setInt(7, escena.getId());
-
-            int rowsUpdated = statement.executeUpdate();
-            return rowsUpdated > 0;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
     public List<Escena> getEscenasByHistoriaId(int historiaId) {
         List<Escena> escenas = new ArrayList<>();
-        String sql = "SELECT id, titulo, descripcion, imagen, audio, video FROM Escena WHERE historia_id = ?";
+        String sql = "SELECT id, titulo, descripcion, imagen, audio, video FROM escena WHERE historia_id = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
