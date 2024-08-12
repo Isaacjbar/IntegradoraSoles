@@ -10,13 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Bootstrap :D">
-      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/form-dinamico.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Login/src/main/webapp/templates/importsToolTip.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/gestionHistoria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/gestionHistoria.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Bootstrap :D" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,35 +59,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.ReestablecerContra.jsp.executor": "Run",
-    "JavaScript Debug.agregarPortada.jsp.executor": "Run",
-    "JavaScript Debug.agregarUsuario.jsp.executor": "Run",
-    "JavaScript Debug.error.jsp.executor": "Run",
-    "JavaScript Debug.gestionHistoria.jsp.executor": "Run",
-    "JavaScript Debug.gestionUsuarios.jsp.executor": "Run",
-    "JavaScript Debug.login.jsp.executor": "Run",
-    "JavaScript Debug.portadaHistoria.jsp.executor": "Run",
-    "JavaScript Debug.reproductorHistoria.jsp.executor": "Run",
-    "JavaScript Debug.solicitudReestablecerContra.jsp.executor": "Run",
-    "JavaScript Debug.welcome.jsp.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat Server.ReestablecerContra.jsp.executor": "Run",
-    "Tomcat Server.Tomcat 10.1.11.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/eeeri/Downloads/ULTIMA2/IntegradoraSoles",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.ReestablecerContra.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.agregarPortada.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.agregarUsuario.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.error.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.gestionHistoria.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.gestionUsuarios.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.login.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.portadaHistoria.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.reproductorHistoria.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.solicitudReestablecerContra.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.welcome.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.ReestablecerContra.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.11.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/eeeri/Downloads/ULTIMA2/IntegradoraSoles&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\eeeri\Downloads\Integradora4Agosto\IntegradoraSoles\Login\src\main\webapp\img" />
@@ -279,6 +273,8 @@
       <workItem from="1723220150605" duration="653000" />
       <workItem from="1723228346685" duration="2097000" />
       <workItem from="1723230894489" duration="2145000" />
+      <workItem from="1723349689693" duration="778000" />
+      <workItem from="1723424213654" duration="4851000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />

@@ -1,10 +1,16 @@
+/* Estilo general para el formulario */
 #myFormDiv {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0 auto; /* Centrado horizontal */
     padding: 15px;
     background-color: #f8f9fa;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row; /* Columnas por defecto */
+    align-items: flex-start; /* Alinea el contenido hacia el inicio */
+    justify-content: center; /* Centrado horizontal */
+    gap: 20px;
 }
 
 #myFormDiv h1 {
@@ -15,6 +21,7 @@
     font-size: 14px;
     padding: 8px 10px;
 }
+
 .form-group {
     display: block;
     width: 100%;
@@ -27,21 +34,22 @@
 
 .btn-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end; /* Alinear botones al final */
+    gap: 10px; /* Espacio entre los botones */
 }
 
+/* Responsivo: Cambios en pantallas más pequeñas */
 @media (max-width: 768px) {
     #myFormDiv {
-        padding: 10px;
+        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+        align-items: center; /* Centrar el contenido en pantallas pequeñas */
     }
 
+    /* Alinear los botones horizontalmente y centrados */
     .btn-container {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    #multimediaDiv .row {
-        flex-direction: column;
+        flex-direction: row; /* Mantener los botones en fila */
+        justify-content: center; /* Centrar los botones */
+        width: 100%;
     }
 
     #myFormDiv h1 {

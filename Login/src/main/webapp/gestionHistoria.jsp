@@ -151,7 +151,6 @@
                 <div id="message" style="color: red; display: none; margin-top: 10px;"></div>
             </form>
         </div>
-
     </div>
 </div>
 
