@@ -101,7 +101,12 @@ function init() {
 
             xhr.send(data);
         } else {
-            alert("No puede añadir más de dos nodos hijos");
+            Swal.fire({
+                title: 'Límite de nodos alcanzado',
+                text: 'No puede añadir más de dos nodos hijos.',
+                icon: 'warning',
+                confirmButtonText: 'Entendido'
+            });
         }
 
         diagram.commitTransaction("add children");

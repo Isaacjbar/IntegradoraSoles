@@ -11,13 +11,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="img/Logo1.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/styleNav.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/form-dinamico.css">
-    <title>Modificar Escena</title>
+    <title>Escenas de historia</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/gojs/release/go.js"></script>
 </head>
 <body>
@@ -153,9 +155,7 @@
         </div>
     </div>
 </div>
-
-
-<footer class="d-flex flex-wrap justify-content-center align-items-center mt-4 border-top">
+<footer class="d-flex flex-wrap justify-content-center align-items-center border-top">
     <p class="col-md-4 mb-0 text-body-secondary d-flex justify-content-center">&copy; 2024 Histority SA</p>
 </footer>
 <script>
