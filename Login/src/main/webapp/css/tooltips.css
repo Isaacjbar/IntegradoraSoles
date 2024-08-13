@@ -1,0 +1,26 @@
+.tooltip-container{
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.tooltip-container .tooltip-svg{
+    position: absolute;
+    top: -4%;
+    right:2%;
+    width: 25px;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    z-index: 800000;
+    color: #0B6490;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .tooltip-container .tooltip-svg{
+        width: 20px;
+        height: 20px;
+        top: 0%;
+        right: 5%;
+    }
+}

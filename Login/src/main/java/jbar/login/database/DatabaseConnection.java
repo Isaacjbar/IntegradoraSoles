@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String URL = "jdbc:mysql://db-historiainteractiva.chutbwctkgaj.us-east-1.rds.amazonaws.com:3306/historiaInteractiva";
-    private static final String USER = "IsaacJbar";
-    private static final String PASSWORD = "deol_bcl#18";
+    private static final String URL = "jdbc:mysql://localhost:3306/historiainteractiva";
+    private static final String USER = "root";
+    private static final String PASSWORD = "root";
 
     public static Connection getConnection() throws SQLException {
         try {

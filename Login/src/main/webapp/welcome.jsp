@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/stylesIndex.css">
     <link rel="stylesheet" href="css/styleNav.css">
     <link rel="stylesheet" href="css/card-icons.css">
+    <link rel="stylesheet" href="css/tooltips.css">
     <title>Gestión de Historias</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/scripts.js"></script>
@@ -117,7 +118,15 @@
 <main>
     <div class="album py-3 bg-body-tertiary">
         <div id="contenedorPrincipalCard" class="container">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 tooltip-container" >
+                <svg id="welcome-tooltip" data-bs-toggle="tooltip" data-placement="bottom"
+                     title="Haz click en una card para acceder a la vista previa.
+        Utiliza los botones de (Editar Portada, Editar Escenas, Copiar Enlace y Publicar/Despublicar)
+        para gestionar las historias."
+                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle tooltip-svg" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
+                    <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"></path>
+                </svg>
                 <%
                     HistoriaDao historiaDao = new HistoriaDao();
                     List<Historia> historias = historiaDao.getAllHistoriasByUsuarioId(usuario.getId());
