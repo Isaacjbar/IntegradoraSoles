@@ -320,7 +320,10 @@ function init() {
                         $("ContextMenuButton",
                             $(go.TextBlock, "Añadir escenas"),
                             { click: addChildNodes })
-                    )
+                    ),
+                doubleClick: function(e, node) {
+                    node.diagram.commandHandler.showContextMenu(node);  // Muestra el contextMenu al hacer doble clic en un nodo
+                }
             }
         );
 
