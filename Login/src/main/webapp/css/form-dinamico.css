@@ -1,4 +1,3 @@
-/* Estilo general para el formulario */
 #myFormDiv {
     max-width: 800px;
     margin: 0 auto; /* Centrado horizontal */
@@ -11,31 +10,8 @@
     align-items: flex-start; /* Alinea el contenido hacia el inicio */
     justify-content: center; /* Centrado horizontal */
     gap: 20px;
-}
-
-#myFormDiv h1 {
-    margin-bottom: 15px;
-}
-
-.form-control {
-    font-size: 14px;
-    padding: 8px 10px;
-}
-
-.form-group {
-    display: block;
-    width: 100%;
-}
-
-.form-control {
-    display: block;
-    width: 100%;
-}
-
-.btn-container {
-    display: flex;
-    justify-content: flex-end; /* Alinear botones al final */
-    gap: 10px; /* Espacio entre los botones */
+    position: relative;
+    padding-top: 40px;
 }
 
 /* Responsivo: Cambios en pantallas más pequeñas */
@@ -43,6 +19,15 @@
     #myFormDiv {
         flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
         align-items: center; /* Centrar el contenido en pantallas pequeñas */
+    }
+
+    /* Cambiar el orden de los divs que contienen los formularios */
+    #multimediaDiv {
+        order: -1; /* Mover el formulario de subida al principio */
+    }
+
+    #escenaDiv {
+        order: 0; /* Mantener el orden del formulario de usuario */
     }
 
     /* Alinear los botones horizontalmente y centrados */
@@ -55,4 +40,10 @@
     #myFormDiv h1 {
         font-size: 18px;
     }
+}
+#title-form-escena{
+    margin: 0 auto;
+    width: 90%;
+    position: absolute;
+    top: 1%;
 }

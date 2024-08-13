@@ -120,9 +120,9 @@
 <div id="myDiagramDiv"></div>
 <div id="myOverlay" style="display: none;">
     <div id="myFormDiv">
+        <h1 id="title-form-escena" class="title-1 fs-5">Modificar Escena</h1>
         <div id="escenaDiv">
             <form id="agregarUsuarioForm" action="gestionEscenaServlet" method="post">
-                <h1 class="title-1 fs-5">Modificar Escena</h1>
                 <div class="row g-3">
                     <div class="col-md-6">
                         <input class="form-control" type="hidden" name="id" id="key" readonly>
