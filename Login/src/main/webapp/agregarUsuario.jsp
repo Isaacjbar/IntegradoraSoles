@@ -82,14 +82,34 @@
     <h1 class="title-1 fs-5">Registro de cuenta</h1>
     <label for="input_nombre">Ingrese el nombre</label>
     <input class="form-control" type="text" name="nombreUsuario" id="input_nombre" placeholder="Nombre(s)" required>
+
     <label for="input_apellidos">Ingrese los apellidos</label>
     <input class="form-control" type="text" name="apellidosUsuario" id="input_apellidos" placeholder="Apellidos" required>
+
     <label for="input_correo">Ingrese el email</label>
     <input class="form-control" type="email" name="correoUsuario" id="input_correo" placeholder="Email" required>
+
     <label for="input_contra">Ingrese la contraseña</label>
-    <input class="form-control" type="password" name="contraUsuario" id="input_contra" placeholder="Contraseña" required>
+    <input
+            class="form-control"
+            type="password"
+            name="contraUsuario"
+            id="input_contra"
+            placeholder="Contraseña"
+            required
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&.,-_])[A-Za-z\d@$!%*?&.,-_]{8,}"
+            title="La contraseña debe tener al menos 8 caracteres, incluyendo un número, una letra mayúscula y un símbolo especial (@$!%*?&.,-_).">
+
     <label for="input_contraRepetida">Repita la contraseña</label>
-    <input class="form-control" type="password" name="contraRepetida" id="input_contraRepetida"  placeholder="Repita su contraseña" required>
+    <input
+            class="form-control"
+            type="password"
+            name="contraRepetida"
+            id="input_contraRepetida"
+            placeholder="Repita su contraseña"
+            required
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&.,-_])[A-Za-z\d@$!%*?&.,-_]{8,}"
+            title="La contraseña debe tener al menos 8 caracteres, incluyendo un número, una letra mayúscula y un símbolo especial (@$!%*?&.,-_).">
 
     <% if (usuarioSesion != null) { %>
     <label for="input_categoria">Ingrese la categoría</label>
@@ -103,6 +123,7 @@
 
     <input class="btn btn-positive text-white hoverscale" type="submit" name="RegistrarUsuario" id="submit_registrar_usuario" value="Agregar">
 </form>
+
 <jsp:include page="templates/footer.jsp" />
 </body>
 <script src="js/global.js"></script>
