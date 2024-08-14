@@ -1,5 +1,5 @@
 #myFormDiv {
-    max-width: 800px;
+    max-width: 600px; /* Reducir el ancho máximo para pantallas más pequeñas */
     margin: 0 auto; /* Centrado horizontal */
     padding: 15px;
     background-color: #f8f9fa;
@@ -14,27 +14,88 @@
     padding-top: 50px;
 }
 
+/* Responsivo: Cambios en pantallas medianas a grandes */
+@media (max-width: 1200px) {
+    #myFormDiv {
+        max-width: 80%; /* Reducir el ancho máximo en pantallas medianas */
+    }
+
+    #myFormDiv .col-md-6 {
+        width: 100%; /* Columnas ocupan todo el ancho */
+    }
+
+    .btn-container {
+        justify-content: center; /* Centrar los botones en pantallas medianas */
+    }
+}
+/* Responsivo: Cambios en pantallas más grandes */
+@media (min-width: 992px) {
+    #multimediaDiv {
+        max-width: 600px; /* Ajusta el tamaño máximo del contenedor */
+        width: 100%; /* Asegura que el formulario ocupe todo el ancho disponible */
+        padding: 20px; /* Añadir padding para hacer que el formulario ocupe más espacio */
+        background-color: #f8f9fa; /* Coincidir con el fondo del formulario de escena */
+        border-radius: 5px; /* Bordes redondeados para mantener consistencia */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra similar al formulario de escena */
+        margin: 0 auto; /* Centrar el formulario en la página */
+    }
+
+    /* Ajustes para asegurarse de que el contenido esté bien alineado */
+    #multimediaDiv .btn-container {
+        justify-content: flex-start; /* Alinear los botones a la izquierda */
+        gap: 10px; /* Espacio entre los botones */
+    }
+
+    #multimediaDiv form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Espacio entre los campos del formulario */
+    }
+
+    #multimediaDiv .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #multimediaDiv label {
+        margin-bottom: 5px; /* Espacio entre las etiquetas y los campos */
+    }
+
+    #multimediaDiv input[type="file"] {
+        width: 100%; /* Asegurar que los inputs ocupen todo el ancho */
+    }
+
+    #multimediaDiv .btn-container button {
+        width: auto; /* Ajustar el ancho de los botones a su contenido */
+    }
+}
+
+
 /* Responsivo: Cambios en pantallas más pequeñas */
 @media (max-width: 768px) {
     #myFormDiv {
+        max-width: 100%; /* Usar todo el ancho disponible en pantallas pequeñas */
         flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
         align-items: center; /* Centrar el contenido en pantallas pequeñas */
+        padding: 10px; /* Reducir el padding en pantallas pequeñas */
     }
 
     /* Cambiar el orden de los divs que contienen los formularios */
     #multimediaDiv {
+        display: none; /* Ocultar formulario multimedia por defecto */
         order: -1; /* Mover el formulario de subida al principio */
-        width: 80%;
+        width: 100%;
     }
 
     #escenaDiv {
+        display: block; /* Mostrar formulario de escena por defecto */
         order: 0; /* Mantener el orden del formulario de usuario */
     }
 
-    /* Alinear los botones horizontalmente y centrados */
+    /* Ajustar los botones para que estén en una fila y centrados */
     .btn-container {
         flex-direction: row; /* Mantener los botones en fila */
-        justify-content: center; /* Centrar los botones */
+        justify-content: space-between; /* Espaciar los botones */
         width: 100%;
     }
 
@@ -42,12 +103,43 @@
         font-size: 18px;
     }
 }
-#title-form-escena{
+
+#title-form-escena {
     margin: 0 auto;
     width: 90%;
     position: absolute;
     top: 4%;
 }
-textarea{
+
+textarea {
     height: 100px;
+}
+
+/* Estilos adicionales */
+#multimediaBtn {
+    width: 100%; /* Hacer que el botón ocupe todo el ancho */
+    margin-top: 10px; /* Espacio superior para separar de los botones de guardar/cancelar */
+}
+
+.btn-container {
+    margin-top: 10px; /* Espacio adicional encima de los botones */
+    display: flex;
+    justify-content: space-between; /* Espaciar los botones "Guardar" y "Cancelar" */
+    width: 100%;
+}
+
+.btn-container button {
+    width: 48%; /* Hacer que los botones ocupen el 48% del ancho */
+}
+
+/* Estilos para formulario multimedia */
+#multimediaDiv .btn-container {
+    display: flex;
+    justify-content: space-between; /* Espacio entre los botones */
+    width: 100%;
+    margin-top: 10px; /* Espacio superior para separar de los campos del formulario */
+}
+
+#multimediaDiv .btn-container button {
+    width: 48%; /* Hacer que los botones ocupen el 48% del ancho */
 }

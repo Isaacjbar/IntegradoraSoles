@@ -60,12 +60,6 @@
             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"></path>
         </svg>
-        <%--
-        <form action="${pageContext.request.contextPath}/guardarHistoriaServlet" method="post" class="d-inline">
-            <input type="hidden" name="id_his" value="<%= historiaId %>">
-            <button type="submit" class="btn btn-success">Guardar</button>
-        </form>
-        --%>
     </div>
 </nav>
 
@@ -75,7 +69,6 @@
         document.getElementById('logoForm').submit();
     });
 </script>
-
 
 <div class="user-info-container" id="user-info-container" style="display: none;">
     <button id="close-info-container">
@@ -120,7 +113,7 @@
 <div id="myDiagramDiv"></div>
 <div id="myOverlay" style="display: none;">
     <div id="myFormDiv">
-        <h1 id="title-form-escena" class="title-1 fs-5">Modificar Escena</h1>
+
         <div id="escenaDiv">
             <form id="agregarUsuarioForm" action="gestionEscenaServlet" method="post">
                 <div class="row g-3">
@@ -145,9 +138,10 @@
                     <button type="button" class="btn btn-primary" onclick="saveForm()">Guardar</button>
                     <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancelar</button>
                 </div>
+                <button type="button" class="btn btn-info mt-3 w-100" id="multimediaBtn" onclick="showMultimediaForm()">Multimedia</button>
             </form>
         </div>
-        <div id="multimediaDiv" class="mt-4">
+        <div id="multimediaDiv" class="mt-4" style="display:none;">
             <form id="uploadForm" enctype="multipart/form-data">
                 <p>Cargar multimedia</p>
                 <div class="form-group mb-3">
@@ -158,7 +152,10 @@
                     <label for="multimediaAudio">Audio</label>
                     <input type="file" class="form-control" id="multimediaAudio" name="multimediaAudio" accept="audio/*">
                 </div>
-                <button type="button" class="btn btn-primary mt-3" onclick="uploadFiles()">Subir archivos</button>
+                <div class="btn-container">
+                    <button type="button" class="btn btn-primary" onclick="uploadFiles()">Subir archivos</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelFormM()">Cancelar</button>
+                </div>
                 <div id="message" style="color: red; display: none; margin-top: 10px;"></div>
             </form>
         </div>
@@ -169,6 +166,20 @@
 </footer>
 <script>
     var historiaId = "<%= historiaId %>";
+
+    function showMultimediaForm() {
+        document.getElementById('escenaDiv').style.display = 'none'; // Ocultar formulario de escena
+        document.getElementById('multimediaDiv').style.display = 'block'; // Mostrar formulario multimedia
+    }
+
+    function hideMultimediaForm() {
+        document.getElementById('multimediaDiv').style.display = 'none'; // Ocultar formulario multimedia
+        document.getElementById('escenaDiv').style.display = 'block'; // Mostrar formulario de escena
+    }
+
+    function cancelFormM() {
+        hideMultimediaForm();
+    }
 
     function uploadFiles() {
         const videoField = document.getElementById("nodeVideo");
@@ -196,6 +207,7 @@
             }
         };
         xhr.send(formData);
+        hideMultimediaForm();
     }
 </script>
 <jsp:include page="templates/importsToolTip.jsp"/>

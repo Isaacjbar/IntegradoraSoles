@@ -167,14 +167,12 @@ function init() {
 
         // Validación para permitir sólo imagen o audio, o sólo video
         if ((nodeImage && nodeAudio) && nodeVideo) {
-            messageDiv.textContent = "No puedes ingresar imagen, audio y video juntos";
-            messageDiv.style.display = "block";
+            alert("No puedes ingresar imagen y audio juntos o imagen y video juntos");
             return;
         }
 
         if ((nodeAudio && nodeVideo) || (nodeImage && nodeVideo)) {
-            messageDiv.textContent = "No puedes ingresar audio y video juntos o imagen y video juntos";
-            messageDiv.style.display = "block";
+            alert("No puedes ingresar audio o imagen y video juntos")
             return;
         }
 
