@@ -30,11 +30,9 @@ public class RecuperacionServlet extends HttpServlet {
 
             // 3) Generar y enviar el correo electrónico (Clase)
             try {
+                String url = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + req.getContextPath() + "/recupera?codigo=" + cody;
                 GmailSender gs = new GmailSender();
-                gs.sendMail(correo, "Reestablece tu contraseña",
-                        "<a href='http://localhost:8080/Login_war_exploded/recupera?codigo="
-                                + cody + "'>Restablecer contraseña</a>"
-                );
+                gs.sendMail(correo, "Reestablece tu contraseña", "<a href='" + url + "'>Restablecer contraseña</a>");
                 resp.sendRedirect("correoEnviado.jsp");
                 return;
             } catch (Exception e) {

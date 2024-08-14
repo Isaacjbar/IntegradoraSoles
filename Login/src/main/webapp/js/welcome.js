@@ -153,6 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Función dedicada a generar enlaces
 function copiarEnlace(id) {
     console.log('Copy link clicked for story id:', id);
 
@@ -178,7 +179,10 @@ function copiarEnlace(id) {
     }).then((result) => {
         if (result.isConfirmed) {
             const input = Swal.getPopup().querySelector('#enlaceInput');
-            navigator.clipboard.writeText(input.value).then(() => {
+            try {
+                // Método antiguo usando document.execCommand
+                input.select();
+                document.execCommand('copy');
                 console.log('Link copied to clipboard');
                 Swal.fire({
                     title: "Copiado!",
@@ -189,9 +193,9 @@ function copiarEnlace(id) {
                     timer: 5000,
                     confirmButtonColor: "#0B6490"
                 });
-            }).catch(err => {
+            } catch (err) {
                 console.error('Error al copiar el texto: ', err);
-            });
+            }
         }
     });
 }

@@ -121,11 +121,6 @@ footer{
         width: 70%;
     }
 }
-@media screen and (max-width: 576px) {
-  .btn-publicar{
-      height: 51.6px !important;
-  }
-}
 /* Estilo para el botón Archivar con hover rojo */
 /* Estilo para el botón Archivar con hover rojo */
 .btn-group .btn-archivar {
