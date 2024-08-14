@@ -10,13 +10,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Bootstrap :D">
+    <list default="true" id="fa64def3-f774-4e39-89d2-af04c28c4513" name="Changes" comment="Algunos cambios y correcciones">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/RecuperacionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/servlet/RecuperacionServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/java/jbar/login/utils/GmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/java/jbar/login/utils/GmailSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/css/stylesIndex.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/js/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/js/welcome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Login/src/main/webapp/welcome.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +280,8 @@
       <workItem from="1723424213654" duration="9041000" />
       <workItem from="1723511767488" duration="1379000" />
       <workItem from="1723573520058" duration="2385000" />
-      <workItem from="1723604723602" duration="3866000" />
+      <workItem from="1723604723602" duration="4526000" />
+      <workItem from="1723653860875" duration="981000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de menu">
       <option name="closed" value="true" />
@@ -495,14 +491,21 @@
       <option name="project" value="LOCAL" />
       <updated>1723228460593</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Algunos cambios y correcciones">
+      <option name="closed" value="true" />
+      <created>1723610397018</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1723610397018</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="pie de pagina" />
     <MESSAGE value="falto eliminar un federico casillas" />
     <MESSAGE value="Correccion de menu" />
     <MESSAGE value="Alertas en agregar usuario y correccion footer" />
@@ -527,6 +530,7 @@
     <MESSAGE value="Responsive del welcome y al filtrar la historia" />
     <MESSAGE value="Iconos e imagenes de respaldo" />
     <MESSAGE value="Bootstrap :D" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bootstrap :D" />
+    <MESSAGE value="Algunos cambios y correcciones" />
+    <option name="LAST_COMMIT_MESSAGE" value="Algunos cambios y correcciones" />
   </component>
 </project>
