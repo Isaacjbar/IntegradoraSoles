@@ -149,8 +149,7 @@
         </div>
         <div id="multimediaDiv" class="mt-4">
             <form id="uploadForm" enctype="multipart/form-data">
-                <br>
-                <br>
+                <p>Cargar multimedia</p>
                 <div class="form-group mb-3">
                     <label for="multimediaImage">Imagen</label>
                     <input type="file" class="form-control" id="multimediaImage" name="multimediaImage" accept="image/*">

@@ -143,12 +143,6 @@ function init() {
 
         // Mostrar el video si la URL está presente
         const videoUrl = currentNode.data.video || '';
-        if (videoUrl) {
-            document.getElementById('youtubePlayer').src = videoUrl;
-        } else {
-            document.getElementById('youtubePlayer').src = '';
-        }
-
         // Agregar logs de depuración
         console.log("showForm - currentNode data:", currentNode.data);
         console.log("showForm - node ID set to:", currentNode.data.key);

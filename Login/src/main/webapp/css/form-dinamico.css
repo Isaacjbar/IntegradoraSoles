@@ -11,7 +11,7 @@
     justify-content: center; /* Centrado horizontal */
     gap: 20px;
     position: relative;
-    padding-top: 40px;
+    padding-top: 50px;
 }
 
 /* Responsivo: Cambios en pantallas más pequeñas */
@@ -24,6 +24,7 @@
     /* Cambiar el orden de los divs que contienen los formularios */
     #multimediaDiv {
         order: -1; /* Mover el formulario de subida al principio */
+        width: 80%;
     }
 
     #escenaDiv {
@@ -45,5 +46,8 @@
     margin: 0 auto;
     width: 90%;
     position: absolute;
-    top: 1%;
+    top: 4%;
+}
+textarea{
+    height: 100px;
 }
