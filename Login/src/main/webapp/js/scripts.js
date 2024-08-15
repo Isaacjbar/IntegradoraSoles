@@ -15,6 +15,12 @@ function init() {
     function deleteSubTree(e, obj) {
         var node = obj.part.adornedPart;  // el nodo al que se le hace clic
         var diagram = node.diagram;
+
+        // Mostrar confirmación y continuar solo si el usuario acepta
+        if (!confirm("Recuerda que se eliminarán todas las ramificaciones. ¿Deseas continuar?")) {
+            return;
+        }
+
         diagram.startTransaction("delete sub tree");
 
         // Obtener todos los nodos hijos recursivamente

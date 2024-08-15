@@ -113,30 +113,30 @@ document.addEventListener('DOMContentLoaded', function() {
                     const contenedorPrincipalCard = document.getElementById('contenedorPrincipalCard');
                     contenedorPrincipalCard.innerHTML = ''; // Limpiar el contenedor
                     data.forEach(historia => {
+                        const estadoBtn = historia.estado === 'archivada' ?
+                            `<button class="btn btn-sm btn-outline-secondary btn-publicar" data-id="${historia.id}" data-accion="publicar" title="Publicar historia">Publicar</button>` :
+                            `<button class="btn btn-sm btn-outline-secondary btn-archivar" data-id="${historia.id}" data-accion="archivar" title="Archivar historia">Archivar</button>`;
+
                         contenedorPrincipalCard.innerHTML += `
-                            <div class="col">
-                                <div class="card shadow-sm card-normal" data-id="${historia.id}">
-                                    <div class="embed-responsive mb-3 mx-auto">
-                                        <img src="${historia.multimedia}" class="embed-responsive-item img_d_card" alt="previsualizaciónHistoria">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card_title">${historia.titulo}</h5>
-                                        <p class="card-text">${historia.descripcion}</p>
-                                        <div class="d-flex flex-column items-card-container">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary btn-editar" onclick="window.location.href='gestionHistoria.jsp?id_his=${historia.id}'">Editar</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary btn-copiar" onclick="copiarEnlace('${historia.id}')">Copiar enlace</button>
-                                                <% if (historia.estado === 'archivada') { %>
-                                                    <button id="btn-publicar-escena" class="btn btn-sm btn-outline-secondary btn-publicar" data-id="<%= historia.getId() %>" data-accion="publicar" data-bs-toggle="tooltip" data-bs-placement="top" title="Publicar escena">Publicar</button>
-                                                <% } else { %>
-                                                    <button id="btn-archivar-escena" class="btn btn-sm btn-outline-secondary btn-archivar" data-id="<%= historia.getId() %>" data-accion="archivar" data-bs-toggle="tooltip" data-bs-placement="top" title="Archivar escena">Archivar</button>
-                                                <% } %>
-                                            </div>
+                        <div class="col">
+                            <div class="card shadow-sm card-normal" data-id="${historia.id}">
+                                <div class="embed-responsive mb-3 mx-auto">
+                                    <img src="${historia.multimedia ? historia.multimedia : 'img/notFound.png'}" class="embed-responsive-item img_d_card" alt="previsualizaciónHistoria" onerror="this.src='img/notFound.png';">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card_title">${historia.titulo}</h5>
+                                    <p class="card-text">${historia.descripcion}</p>
+                                    <div class="d-flex flex-column items-card-container">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary btn-editar" onclick="window.location.href='gestionHistoria.jsp?id_his=${historia.id}'">Editar</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary btn-copiar" onclick="copiarEnlace('${historia.id}')">Copiar enlace</button>
+                                            ${estadoBtn}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        `;
+                        </div>
+                    `;
                     });
                 }
             })
@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
     });
+
 });
 
 // Función dedicada a generar enlaces
