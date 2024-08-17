@@ -70,7 +70,7 @@ public class UsuarioDao {
             statement.setString(2, usuario.getApellido());
             statement.setString(3, usuario.getCorreoElectronico());
             statement.setString(4, usuario.getContrasena());
-            statement.setBoolean(5, usuario.isEstado());
+            statement.setBoolean(5, true);
             statement.setString(6, usuario.getCodigo());
             statement.setString(7, usuario.getCategoria());
             statement.setTimestamp(8, usuario.getFechaRegistro());
@@ -306,5 +306,21 @@ public class UsuarioDao {
         }
 
         return usuario;
+    }
+    // Método para actualizar el estado del usuario a true por su ID
+    public boolean updateEstadoToTrueById(int id) {
+        String sql = "UPDATE usuario SET estado = true WHERE id = ?";
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, id);
+
+            int rowsUpdated = statement.executeUpdate();
+            return rowsUpdated > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

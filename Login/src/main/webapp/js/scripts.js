@@ -94,7 +94,7 @@ function init() {
                     var response = JSON.parse(xhr.responseText);
                     response.newNodes.forEach(function(nodeData) {
                         diagram.model.addNodeData(nodeData);
-                        var linkData = { from: parentId, to: nodeData.key, text: "Decisión " + nodeData.key };
+                        var linkData = { from: parentId, to: nodeData.key, text: "Decisión por defecto"};
                         diagram.model.addLinkData(linkData);
                     });
                 }

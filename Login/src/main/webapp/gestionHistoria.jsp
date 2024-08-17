@@ -204,11 +204,16 @@
                 if (response.audioPath) {
                     document.getElementById("nodeAudio").value = response.audioPath;
                 }
+                // Después de recibir la respuesta exitosa, ocultar el formulario multimedia
+                document.getElementById("uploadForm").reset();
+                hideMultimediaForm();
+            } else if (xhr.readyState === 4) {
+                // Mostrar un mensaje de error si algo falla
+                alert("Error al subir, intente de nuevo o con otro archivo");
                 document.getElementById("uploadForm").reset();
             }
         };
         xhr.send(formData);
-        hideMultimediaForm();
     }
 </script>
 <jsp:include page="templates/importsToolTip.jsp"/>

@@ -44,7 +44,6 @@ public class RegistroUsuarioServlet extends HttpServlet {
         usuario.setApellido(apellidos);
         usuario.setCorreoElectronico(correo);
         usuario.setContrasena(contrasena);
-        usuario.setEstado(true);
         usuario.setCategoria(categoria);
         usuario.setFechaRegistro(new Timestamp(System.currentTimeMillis()));
         usuario.setFechaCreacion(new Timestamp(System.currentTimeMillis()));

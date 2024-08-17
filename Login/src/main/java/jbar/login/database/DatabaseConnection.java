@@ -1,4 +1,4 @@
-package jbar.login.database;
+/*package jbar.login.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,9 +18,8 @@ public class DatabaseConnection {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }
-/*
-*
-* package jbar.login.database;
+*/
+package jbar.login.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -41,7 +40,3 @@ public class DatabaseConnection {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }
-
-*
-*
-* */

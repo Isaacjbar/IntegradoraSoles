@@ -18,25 +18,6 @@
             resize: none;
         }
     </style>
-    <script>
-        function validateForm() {
-            const imagen = document.getElementById('imagen').value;
-            const audio = document.getElementById('audio').value;
-            const video = document.getElementById('video').value;
-
-            if ((imagen || audio) && video) {
-                alert('Por favor, sube o una imagen/audio o un video, pero no ambos.');
-                return false;
-            }
-
-            if (!imagen && !audio && !video) {
-                alert('Por favor, sube al menos una imagen, audio o video.');
-                return false;
-            }
-
-            return true;
-        }
-    </script>
 </head>
 <body>
 <%
@@ -104,7 +85,7 @@
 <h1 class="title-1 fs-3">Crear portada</h1>
 <main>
     <div class="container">
-        <form id="form-portada" action="CrearHistoriaServlet" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+        <form id="form-portada" action="CrearHistoriaServlet" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="titulo" class="form-label">Título</label>
                 <input type="text" class="form-control" id="titulo" name="titulo" required>

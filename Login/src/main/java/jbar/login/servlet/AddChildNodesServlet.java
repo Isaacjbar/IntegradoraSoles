@@ -69,7 +69,7 @@ public class AddChildNodesServlet extends HttpServlet {
             Decision nuevaDecision = new Decision();
             nuevaDecision.setEscenaId(Integer.parseInt(parentId));
             nuevaDecision.setEscenaDestinoId(escena.getId());
-            nuevaDecision.setDescripcion(" ");
+            nuevaDecision.setDescripcion("Descripción por defecto");
             nuevaDecision.setFechaCreacion(fechaCreacion);
 
             boolean decisionResult = decisionDao.insertDecisionDefecto(nuevaDecision);

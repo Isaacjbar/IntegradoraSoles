@@ -48,21 +48,89 @@ CREATE TABLE IF NOT EXISTS decision (
     FOREIGN KEY (escena_id) REFERENCES escena(id),
     FOREIGN KEY (escena_destino_id) REFERENCES escena(id)
     );
--- INSERSIONES --
+
+-- TRIGGER AND PROCEDIMIENTO ALMACENADO --
+DELIMITER //
+
+CREATE PROCEDURE ObtenerUsuarioPorCredenciales(
+    IN p_nombreUsuario VARCHAR(100),
+    IN p_contrasena VARCHAR(255)
+)
+BEGIN
+SELECT * FROM usuario
+WHERE (nombre = p_nombreUsuario OR correo_electronico = p_nombreUsuario)
+  AND contrasena = SHA2(p_contrasena, 256);
+END//
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE TRIGGER after_escena_insert
+    AFTER INSERT ON escena
+    FOR EACH ROW
+BEGIN
+    UPDATE historia
+    SET fecha_creacion = NEW.fecha_creacion
+    WHERE id = NEW.historia_id;
+END;
+//
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER update_historia_fecha_creacion
+    AFTER UPDATE ON escena
+    FOR EACH ROW
+BEGIN
+    IF NEW.fecha_creacion <> OLD.fecha_creacion THEN
+    UPDATE historia
+    SET fecha_creacion = NEW.fecha_creacion
+    WHERE id = NEW.historia_id;
+END IF;
+END;
+//
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER after_escena_delete
+    AFTER DELETE ON escena
+    FOR EACH ROW
+BEGIN
+    DECLARE max_fecha TIMESTAMP;
+
+    -- Encontrar la fecha de creación más reciente de las escenas restantes
+    SELECT MAX(fecha_creacion) INTO max_fecha
+    FROM escena
+    WHERE historia_id = OLD.historia_id;
+
+    -- Si no hay escenas restantes, usa la fecha actual
+    IF max_fecha IS NULL THEN
+        SET max_fecha = CURRENT_TIMESTAMP;
+END IF;
+
+-- Actualizar la fecha de creación en la tabla historia
+UPDATE historia
+SET fecha_creacion = max_fecha
+WHERE id = OLD.historia_id;
+END;
+//
+
+DELIMITER ;
+-- INSERCIONES --
 USE historiaInteractiva;
 
 -- Insertar datos en la tabla usuario
 INSERT INTO usuario (nombre, apellido, correo_electronico, contrasena, estado, codigo, categoria) VALUES
-                                                                                                      ('Isaac', 'Jimenez', '20233tn182@utez.edu.mx', SHA2('pedropedro', 256), 1, 'codigo1','administrador'),
-                                                                                                      ('María', 'Gómez', 'maria.gomez@example.com', SHA2('password2', 256), 1, 'codigo2','editor');
-
+('Isaac', 'Jimenez', '20233tn182@utez.edu.mx', SHA2('pedropedro', 256), 1, 'codigo1','administrador'),
+('María', 'Gómez', 'maria.gomez@example.com', SHA2('password2', 256), 1, 'codigo2','editor');
 -- Historias (Ya con datos de portada)
 INSERT INTO historia (titulo, autor_id, multimedia, descripcion)
-VALUES ('Los Casi Algo', 1, 'https://images.ctfassets.net/o65uf8qogksw/5EmziMufd0XHWqlGhKsB8o/e78246920eb651e3e2dda74b0dd56feb/por-que-duelen-tanto-los-casi-algo-int-articulo-1.jpg', 'No eres tu, soy yo'),
-       ('El Bosque Embrujado', 1, 'https://png.pngtree.com/background/20231101/original/pngtree-spooky-landscape-of-a-haunted-forest-3d-illustration-for-halloween-picture-image_5833695.jpg', 'Una historia de terror en un bosque oscuro.'),
-       ('El Misterio del Detective', 1,'https://c0.klipartz.com/pngpicture/375/580/gratis-png-emoji-emoticono-de-tristeza-emoticon-adios.png','Un asesinato por resolver.'),
-       ('El Naufragio', 1, 'https://st2.depositphotos.com/3418487/7119/i/450/depositphotos_71199187-stock-photo-shipwrecks.jpg','Una tragedia en alta mar.');
-
+VALUES ('Los Casi Algo', 1, 'https://images.ctfassets.net/o65uf8qogksw/5EmziMufd0XHWqlGhKsB8o/e78246920eb651e3e2dda74b0dd56feb/por-que-duelen-tanto-los-casi-algo-int-articulo-1.jpg', 'No eres tu, soy yo');
 -- Escena 1
 INSERT INTO escena (historia_id, titulo, descripcion, es_final, fecha_creacion)
 VALUES (1, 'La Relación Se Rompe', 'Recibes un mensaje de texto de esa persona especial. Te dice que necesitan hablar. Sabes que algo no está bien.', FALSE, CURRENT_TIMESTAMP);
@@ -285,137 +353,3 @@ INSERT INTO decision (escena_id, descripcion, escena_destino_id, fecha_creacion)
 -- Escena 24 Decisiones
 INSERT INTO decision (escena_id, descripcion, escena_destino_id, fecha_creacion) VALUES (24, 'Aplicar lo aprendido', 25, CURRENT_TIMESTAMP);
 INSERT INTO decision (escena_id, descripcion, escena_destino_id, fecha_creacion) VALUES (24, 'Ayudar a otros', 35, CURRENT_TIMESTAMP);
-
--- EL BOSQUE EMBRUJADO
--- Escenas
-INSERT INTO escena (historia_id, titulo, video, audio, imagen, descripcion, es_final, texto_final) VALUES
-                                                                                                       ((SELECT id FROM historia WHERE titulo='El Bosque Embrujado'), 'La entrada al bosque', '', '', 'img/forest_entry.jpg', 'Es una noche oscura y tormentosa...', 0, ''),
-                                                                                                       ((SELECT id FROM historia WHERE titulo='El Bosque Embrujado'), 'El crujido de las hojas', '', '', 'img/forest_crackle.jpg', 'Escuchas el crujido de hojas detrás de ti...', 0, ''),
-                                                                                                       ((SELECT id FROM historia WHERE titulo='El Bosque Embrujado'), 'La tranquilidad del hogar', '', '', 'img/home.jpg', 'Decides no arriesgarte y vuelves a casa.', 1, 'A veces, es mejor no ceder a la curiosidad.');
--- ... más escenas aquí ...
-
--- Decisiones
-INSERT INTO decision (escena_id, descripcion, escena_destino_id) VALUES
-                                                                     ((SELECT id FROM escena WHERE titulo='La entrada al bosque' AND historia_id=(SELECT id FROM historia WHERE titulo='El Bosque Embrujado')), 'Entrar al bosque', (SELECT id FROM escena WHERE titulo='El crujido de las hojas' AND historia_id=(SELECT id FROM historia WHERE titulo='El Bosque Embrujado'))),
-                                                                     ((SELECT id FROM escena WHERE titulo='La entrada al bosque' AND historia_id=(SELECT id FROM historia WHERE titulo='El Bosque Embrujado')), 'Volver a casa', (SELECT id FROM escena WHERE titulo='La tranquilidad del hogar' AND historia_id=(SELECT id FROM historia WHERE titulo='El Bosque Embrujado')));
--- ... más decisiones aquí ...
-
--- MISTERIO DEL DETECTIVE
--- Escenas
-INSERT INTO escena (historia_id, titulo, video, audio, imagen, descripcion, es_final, texto_final) VALUES
-                                                                                                       ((SELECT id FROM historia WHERE titulo='El Misterio del Detective'), 'La llamada urgente', '', '', 'img/urgent_call.jpg', 'Recibes una llamada urgente sobre un asesinato...', 0, ''),
-                                                                                                       ((SELECT id FROM historia WHERE titulo='El Misterio del Detective'), 'La escena del crimen', '', '', 'img/crime_scene.jpg', 'Llegas a la escena del crimen...', 0, ''),
-                                                                                                       ((SELECT id FROM historia WHERE titulo='El Misterio del Detective'), 'La llamada de auxilio', '', '', 'img/help_call.jpg', 'Envías a tu asistente, pero recibe una llamada de auxilio.', 1, 'A veces, la acción directa es necesaria.');
--- ... más escenas aquí ...
-
--- Decisiones
-INSERT INTO decision (escena_id, descripcion, escena_destino_id) VALUES
-                                                                     ((SELECT id FROM escena WHERE titulo='La llamada urgente' AND historia_id=(SELECT id FROM historia WHERE titulo='El Misterio del Detective')), 'Ir a la escena del crimen', (SELECT id FROM escena WHERE titulo='La escena del crimen' AND historia_id=(SELECT id FROM historia WHERE titulo='El Misterio del Detective'))),
-                                                                     ((SELECT id FROM escena WHERE titulo='La llamada urgente' AND historia_id=(SELECT id FROM historia WHERE titulo='El Misterio del Detective')), 'Enviar a tu asistente', (SELECT id FROM escena WHERE titulo='La llamada de auxilio' AND historia_id=(SELECT id FROM historia WHERE titulo='El Misterio del Detective')));
--- ... más decisiones aquí ...
-
--- NAUFRAGIO
--- Escenas
-INSERT INTO escena (historia_id, titulo, video, audio, imagen, descripcion, es_final, texto_final) VALUES
-                                                                                                       ((SELECT id FROM historia WHERE titulo='El Naufragio'), 'La tormenta', '', '', 'img/storm.jpg', 'Estás en un barco en medio de una tormenta feroz...', 0, ''),
-                                                                                                       ((SELECT id FROM historia WHERE titulo='El Naufragio'), 'El naufragio', '', '', 'img/shipwreck.jpg', 'La tormenta se intensifica y el barco se hunde.', 0, ''),
-                                                                                                       ((SELECT id FROM historia WHERE titulo='El Naufragio'), 'La isla misteriosa', '', '', 'img/mysterious_island.jpg', 'Encuentras refugio en una isla cercana, pero es un lugar misterioso.', 0, '');
--- ... más escenas aquí ...
-
--- Decisiones
-INSERT INTO decision (escena_id, descripcion, escena_destino_id) VALUES
-                                                                     ((SELECT id FROM escena WHERE titulo='La tormenta' AND historia_id=(SELECT id FROM historia WHERE titulo='El Naufragio')), 'Seguir el curso actual', (SELECT id FROM escena WHERE titulo='El naufragio' AND historia_id=(SELECT id FROM historia WHERE titulo='El Naufragio'))),
-                                                                     ((SELECT id FROM escena WHERE titulo='La tormenta' AND historia_id=(SELECT id FROM historia WHERE titulo='El Naufragio')), 'Buscar refugio en una isla cercana', (SELECT id FROM escena WHERE titulo='La isla misteriosa' AND historia_id=(SELECT id FROM historia WHERE titulo='El Naufragio')));
--- ... más decisiones aquí ...
--- TRIGGER AND PROCEDIMIENTO ALMACENADO --
-USE historiaInteractiva;
-
-DELIMITER //
-
-CREATE TRIGGER ActualizarEstadoUsuario
-    AFTER INSERT ON historia
-    FOR EACH ROW
-BEGIN
-    IF NEW.estado = 'archivada' THEN
-    UPDATE usuario
-    SET estado = FALSE
-    WHERE id = NEW.autor_id;
-END IF;
-END//
-
-DELIMITER ;
-
-DELIMITER //
-
-CREATE PROCEDURE ObtenerUsuarioPorCredenciales(
-    IN p_nombreUsuario VARCHAR(100),
-    IN p_contrasena VARCHAR(255)
-)
-BEGIN
-SELECT * FROM usuario
-WHERE (nombre = p_nombreUsuario OR correo_electronico = p_nombreUsuario)
-  AND contrasena = SHA2(p_contrasena, 256);
-END//
-
-DELIMITER ;
-
-
-DELIMITER //
-
-CREATE TRIGGER after_escena_insert
-    AFTER INSERT ON escena
-    FOR EACH ROW
-BEGIN
-    UPDATE historia
-    SET fecha_creacion = NEW.fecha_creacion
-    WHERE id = NEW.historia_id;
-END;
-//
-
-DELIMITER ;
-
-DELIMITER //
-
-CREATE TRIGGER update_historia_fecha_creacion
-    AFTER UPDATE ON escena
-    FOR EACH ROW
-BEGIN
-    IF NEW.fecha_creacion <> OLD.fecha_creacion THEN
-    UPDATE historia
-    SET fecha_creacion = NEW.fecha_creacion
-    WHERE id = NEW.historia_id;
-END IF;
-END;
-//
-
-DELIMITER ;
-
-DELIMITER //
-
-CREATE TRIGGER after_escena_delete
-    AFTER DELETE ON escena
-    FOR EACH ROW
-BEGIN
-    DECLARE max_fecha TIMESTAMP;
-
-    -- Encontrar la fecha de creación más reciente de las escenas restantes
-    SELECT MAX(fecha_creacion) INTO max_fecha
-    FROM escena
-    WHERE historia_id = OLD.historia_id;
-
-    -- Si no hay escenas restantes, usa la fecha actual
-    IF max_fecha IS NULL THEN
-        SET max_fecha = CURRENT_TIMESTAMP;
-END IF;
-
--- Actualizar la fecha de creación en la tabla historia
-UPDATE historia
-SET fecha_creacion = max_fecha
-WHERE id = OLD.historia_id;
-END;
-//
-
-DELIMITER ;
-
-
-
