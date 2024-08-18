@@ -1,9 +1,18 @@
+function initializeTooltips() {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Document is ready');
+    initializeTooltips();
 
     document.querySelectorAll('.card-normal').forEach(card => {
         card.addEventListener('click', function(event) {
             console.log('Card clicked:', card);
+            initializeTooltips();
             const target = event.target;
 
             // Evitar la redirección si el clic ocurre en un botón, un elemento dentro de un formulario, un enlace, o un SVG
@@ -109,36 +118,68 @@ document.addEventListener('DOMContentLoaded', function() {
                         confirmButtonColor: "#0B6490"
                     });
                 } else {
-                    // Mostrar las historias encontradas
+                    // Mostrar las historias encontradas en el nuevo diseño
                     const contenedorPrincipalCard = document.getElementById('contenedorPrincipalCard');
                     contenedorPrincipalCard.innerHTML = ''; // Limpiar el contenedor
+
                     data.forEach(historia => {
-                        const estadoBtn = historia.estado === 'archivada' ?
-                            `<button class="btn btn-sm btn-outline-secondary btn-publicar" data-id="${historia.id}" data-accion="publicar" title="Publicar historia">Publicar</button>` :
-                            `<button class="btn btn-sm btn-outline-secondary btn-archivar" data-id="${historia.id}" data-accion="archivar" title="Archivar historia">Archivar</button>`;
+                        const multimedia = historia.multimedia ? historia.multimedia : 'img/notFound.png';
+                        const estado = historia.estado;
+                        const estadoBtn = estado === 'archivada' ?
+                            `<button id="btn-publicar-escena" class="btn-publicar" data-id="${historia.id}" data-accion="publicar" data-bs-toggle="tooltip" data-bs-placement="top" title="Publicar Historia">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-arrow-up" viewBox="0 0 16 16">
+                                <path d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707z"></path>
+                                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"></path>
+                            </svg>
+                        </button>` :
+                            `<button id="btn-archivar-escena" class="btn-archivar" data-id="${historia.id}" data-accion="archivar" data-bs-toggle="tooltip" data-bs-placement="top" title="Archivar Historia">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-square" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.5 2.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"></path>
+                            </svg>
+                        </button>`;
 
                         contenedorPrincipalCard.innerHTML += `
-                        <div class="col">
-                            <div class="card shadow-sm card-normal" data-id="${historia.id}">
-                                <div class="embed-responsive mb-3 mx-auto">
-                                    <img src="${historia.multimedia ? historia.multimedia : 'img/notFound.png'}" class="embed-responsive-item img_d_card" alt="previsualizaciónHistoria" onerror="this.src='img/notFound.png';">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card_title">${historia.titulo}</h5>
-                                    <p class="card-text">${historia.descripcion}</p>
-                                    <div class="d-flex flex-column items-card-container">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary btn-editar" onclick="window.location.href='gestionHistoria.jsp?id_his=${historia.id}'">Editar</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary btn-copiar" onclick="copiarEnlace('${historia.id}')">Copiar enlace</button>
-                                            ${estadoBtn}
-                                        </div>
+                    <div class="col">
+                        <div class="card shadow-sm card-normal" data-id="${historia.id}">
+                            <div class="embed-responsive mb-3 mx-auto">
+                                <img src="${multimedia}" class="embed-responsive-item img_d_card" alt="previsualizaciónHistoria" onerror="this.src='img/notFound.png';">
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card_title">${historia.titulo}</h5>
+                                <p class="card-text">${historia.descripcion}</p>
+                                <div class="d-flex flex-column items-card-container">
+                                    <div class="card-icons">
+                                        <button id="btn-editar-portada" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar portada" onclick="window.location.href='editarPortada.jsp?id_his=${historia.id}'">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-journal-richtext" viewBox="0 0 16 16">
+                                                <path d="M7.5 3.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m-.861 1.542 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047L11 4.75V7a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 7v-.5s1.54-1.274 1.639-1.208M5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"></path>
+                                                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"></path>
+                                                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"></path>
+                                            </svg>
+                                        </button>
+                                        <button id="btn-editar-escenas" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar escenas" onclick="window.location.href='gestionHistoria.jsp?id_his=${historia.id}'">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"></path>
+                                            </svg>
+                                        </button>
+                                        <button id="btn-copiar-enlace" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar enlace" onclick="copiarEnlace('${historia.id}')">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
+                                            </svg>
+                                        </button>
+                                        ${estadoBtn}
                                     </div>
+
+                                    <small class="text-body-secondary mt-2"><span class="ultima-mod">Últm. mod:</span> ${historia.fechaCreacion}</small>
+                                    <div><strong>Estado: </strong><span class="${estado === 'publicada' ? 'estado-publicada' : 'estado-archivada'}">${estado}</span></div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     `;
                     });
                 }
+                initializeTooltips();
             })
             .catch(error => {
                 console.error('Error:', error);
